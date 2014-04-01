@@ -7,3 +7,5 @@ Repo for the iOS project in EDA397
 
 
 [iOS Stanford course](https://itunes.apple.com/us/course/developing-ios-7-apps-for/id733644550)
+
+[Objective c library](https://github.com/octokit/octokit.objc)
