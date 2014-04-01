@@ -1,0 +1,500 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A059511818EAF9D900E6BB44 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A059511718EAF9D900E6BB44 /* Foundation.framework */; };
+		A059511A18EAF9D900E6BB44 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A059511918EAF9D900E6BB44 /* CoreGraphics.framework */; };
+		A059511C18EAF9D900E6BB44 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A059511B18EAF9D900E6BB44 /* UIKit.framework */; };
+		A059511E18EAF9D900E6BB44 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A059511D18EAF9D900E6BB44 /* CoreData.framework */; };
+		A059512418EAF9D900E6BB44 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A059512218EAF9D900E6BB44 /* InfoPlist.strings */; };
+		A059512618EAF9D900E6BB44 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A059512518EAF9D900E6BB44 /* main.m */; };
+		A059512A18EAF9D900E6BB44 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A059512918EAF9D900E6BB44 /* AppDelegate.m */; };
+		A059512D18EAF9D900E6BB44 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A059512B18EAF9D900E6BB44 /* Main.storyboard */; };
+		A059513018EAF9D900E6BB44 /* jeju.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A059512E18EAF9D900E6BB44 /* jeju.xcdatamodeld */; };
+		A059513318EAF9D900E6BB44 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A059513218EAF9D900E6BB44 /* MasterViewController.m */; };
+		A059513618EAF9D900E6BB44 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A059513518EAF9D900E6BB44 /* DetailViewController.m */; };
+		A059513818EAF9D900E6BB44 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A059513718EAF9D900E6BB44 /* Images.xcassets */; };
+		A059513F18EAF9D900E6BB44 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A059513E18EAF9D900E6BB44 /* XCTest.framework */; };
+		A059514018EAF9D900E6BB44 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A059511718EAF9D900E6BB44 /* Foundation.framework */; };
+		A059514118EAF9D900E6BB44 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A059511B18EAF9D900E6BB44 /* UIKit.framework */; };
+		A059514218EAF9D900E6BB44 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A059511D18EAF9D900E6BB44 /* CoreData.framework */; };
+		A059514A18EAF9D900E6BB44 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A059514818EAF9D900E6BB44 /* InfoPlist.strings */; };
+		A059514C18EAF9D900E6BB44 /* jejuTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A059514B18EAF9D900E6BB44 /* jejuTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A059514318EAF9D900E6BB44 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A059510C18EAF9D900E6BB44 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A059511318EAF9D900E6BB44;
+			remoteInfo = jeju;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		A059511418EAF9D900E6BB44 /* jeju.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = jeju.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A059511718EAF9D900E6BB44 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A059511918EAF9D900E6BB44 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A059511B18EAF9D900E6BB44 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A059511D18EAF9D900E6BB44 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		A059512118EAF9D900E6BB44 /* jeju-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "jeju-Info.plist"; sourceTree = "<group>"; };
+		A059512318EAF9D900E6BB44 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A059512518EAF9D900E6BB44 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A059512718EAF9D900E6BB44 /* jeju-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "jeju-Prefix.pch"; sourceTree = "<group>"; };
+		A059512818EAF9D900E6BB44 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		A059512918EAF9D900E6BB44 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		A059512C18EAF9D900E6BB44 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A059512F18EAF9D900E6BB44 /* jeju.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = jeju.xcdatamodel; sourceTree = "<group>"; };
+		A059513118EAF9D900E6BB44 /* MasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
+		A059513218EAF9D900E6BB44 /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
+		A059513418EAF9D900E6BB44 /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		A059513518EAF9D900E6BB44 /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		A059513718EAF9D900E6BB44 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		A059513D18EAF9D900E6BB44 /* jejuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = jejuTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A059513E18EAF9D900E6BB44 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		A059514718EAF9D900E6BB44 /* jejuTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "jejuTests-Info.plist"; sourceTree = "<group>"; };
+		A059514918EAF9D900E6BB44 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A059514B18EAF9D900E6BB44 /* jejuTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = jejuTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A059511118EAF9D900E6BB44 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A059511A18EAF9D900E6BB44 /* CoreGraphics.framework in Frameworks */,
+				A059511E18EAF9D900E6BB44 /* CoreData.framework in Frameworks */,
+				A059511C18EAF9D900E6BB44 /* UIKit.framework in Frameworks */,
+				A059511818EAF9D900E6BB44 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A059513A18EAF9D900E6BB44 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A059513F18EAF9D900E6BB44 /* XCTest.framework in Frameworks */,
+				A059514218EAF9D900E6BB44 /* CoreData.framework in Frameworks */,
+				A059514118EAF9D900E6BB44 /* UIKit.framework in Frameworks */,
+				A059514018EAF9D900E6BB44 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A059510B18EAF9D900E6BB44 = {
+			isa = PBXGroup;
+			children = (
+				A059511F18EAF9D900E6BB44 /* jeju */,
+				A059514518EAF9D900E6BB44 /* jejuTests */,
+				A059511618EAF9D900E6BB44 /* Frameworks */,
+				A059511518EAF9D900E6BB44 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A059511518EAF9D900E6BB44 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A059511418EAF9D900E6BB44 /* jeju.app */,
+				A059513D18EAF9D900E6BB44 /* jejuTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A059511618EAF9D900E6BB44 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A059511718EAF9D900E6BB44 /* Foundation.framework */,
+				A059511918EAF9D900E6BB44 /* CoreGraphics.framework */,
+				A059511B18EAF9D900E6BB44 /* UIKit.framework */,
+				A059511D18EAF9D900E6BB44 /* CoreData.framework */,
+				A059513E18EAF9D900E6BB44 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A059511F18EAF9D900E6BB44 /* jeju */ = {
+			isa = PBXGroup;
+			children = (
+				A059512818EAF9D900E6BB44 /* AppDelegate.h */,
+				A059512918EAF9D900E6BB44 /* AppDelegate.m */,
+				A059512B18EAF9D900E6BB44 /* Main.storyboard */,
+				A059513118EAF9D900E6BB44 /* MasterViewController.h */,
+				A059513218EAF9D900E6BB44 /* MasterViewController.m */,
+				A059513418EAF9D900E6BB44 /* DetailViewController.h */,
+				A059513518EAF9D900E6BB44 /* DetailViewController.m */,
+				A059513718EAF9D900E6BB44 /* Images.xcassets */,
+				A059512E18EAF9D900E6BB44 /* jeju.xcdatamodeld */,
+				A059512018EAF9D900E6BB44 /* Supporting Files */,
+			);
+			path = jeju;
+			sourceTree = "<group>";
+		};
+		A059512018EAF9D900E6BB44 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A059512118EAF9D900E6BB44 /* jeju-Info.plist */,
+				A059512218EAF9D900E6BB44 /* InfoPlist.strings */,
+				A059512518EAF9D900E6BB44 /* main.m */,
+				A059512718EAF9D900E6BB44 /* jeju-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A059514518EAF9D900E6BB44 /* jejuTests */ = {
+			isa = PBXGroup;
+			children = (
+				A059514B18EAF9D900E6BB44 /* jejuTests.m */,
+				A059514618EAF9D900E6BB44 /* Supporting Files */,
+			);
+			path = jejuTests;
+			sourceTree = "<group>";
+		};
+		A059514618EAF9D900E6BB44 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A059514718EAF9D900E6BB44 /* jejuTests-Info.plist */,
+				A059514818EAF9D900E6BB44 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A059511318EAF9D900E6BB44 /* jeju */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A059514F18EAF9D900E6BB44 /* Build configuration list for PBXNativeTarget "jeju" */;
+			buildPhases = (
+				A059511018EAF9D900E6BB44 /* Sources */,
+				A059511118EAF9D900E6BB44 /* Frameworks */,
+				A059511218EAF9D900E6BB44 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = jeju;
+			productName = jeju;
+			productReference = A059511418EAF9D900E6BB44 /* jeju.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A059513C18EAF9D900E6BB44 /* jejuTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A059515218EAF9D900E6BB44 /* Build configuration list for PBXNativeTarget "jejuTests" */;
+			buildPhases = (
+				A059513918EAF9D900E6BB44 /* Sources */,
+				A059513A18EAF9D900E6BB44 /* Frameworks */,
+				A059513B18EAF9D900E6BB44 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A059514418EAF9D900E6BB44 /* PBXTargetDependency */,
+			);
+			name = jejuTests;
+			productName = jejuTests;
+			productReference = A059513D18EAF9D900E6BB44 /* jejuTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A059510C18EAF9D900E6BB44 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Markus Berget";
+				TargetAttributes = {
+					A059513C18EAF9D900E6BB44 = {
+						TestTargetID = A059511318EAF9D900E6BB44;
+					};
+				};
+			};
+			buildConfigurationList = A059510F18EAF9D900E6BB44 /* Build configuration list for PBXProject "jeju" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A059510B18EAF9D900E6BB44;
+			productRefGroup = A059511518EAF9D900E6BB44 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A059511318EAF9D900E6BB44 /* jeju */,
+				A059513C18EAF9D900E6BB44 /* jejuTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A059511218EAF9D900E6BB44 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A059513818EAF9D900E6BB44 /* Images.xcassets in Resources */,
+				A059512418EAF9D900E6BB44 /* InfoPlist.strings in Resources */,
+				A059512D18EAF9D900E6BB44 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A059513B18EAF9D900E6BB44 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A059514A18EAF9D900E6BB44 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A059511018EAF9D900E6BB44 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A059513618EAF9D900E6BB44 /* DetailViewController.m in Sources */,
+				A059513318EAF9D900E6BB44 /* MasterViewController.m in Sources */,
+				A059513018EAF9D900E6BB44 /* jeju.xcdatamodeld in Sources */,
+				A059512A18EAF9D900E6BB44 /* AppDelegate.m in Sources */,
+				A059512618EAF9D900E6BB44 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A059513918EAF9D900E6BB44 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A059514C18EAF9D900E6BB44 /* jejuTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A059514418EAF9D900E6BB44 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A059511318EAF9D900E6BB44 /* jeju */;
+			targetProxy = A059514318EAF9D900E6BB44 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		A059512218EAF9D900E6BB44 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A059512318EAF9D900E6BB44 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		A059512B18EAF9D900E6BB44 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A059512C18EAF9D900E6BB44 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		A059514818EAF9D900E6BB44 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A059514918EAF9D900E6BB44 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A059514D18EAF9D900E6BB44 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		A059514E18EAF9D900E6BB44 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A059515018EAF9D900E6BB44 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "jeju/jeju-Prefix.pch";
+				INFOPLIST_FILE = "jeju/jeju-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		A059515118EAF9D900E6BB44 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "jeju/jeju-Prefix.pch";
+				INFOPLIST_FILE = "jeju/jeju-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		A059515318EAF9D900E6BB44 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/jeju.app/jeju";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "jeju/jeju-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "jejuTests/jejuTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		A059515418EAF9D900E6BB44 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/jeju.app/jeju";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "jeju/jeju-Prefix.pch";
+				INFOPLIST_FILE = "jejuTests/jejuTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A059510F18EAF9D900E6BB44 /* Build configuration list for PBXProject "jeju" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A059514D18EAF9D900E6BB44 /* Debug */,
+				A059514E18EAF9D900E6BB44 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A059514F18EAF9D900E6BB44 /* Build configuration list for PBXNativeTarget "jeju" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A059515018EAF9D900E6BB44 /* Debug */,
+				A059515118EAF9D900E6BB44 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		A059515218EAF9D900E6BB44 /* Build configuration list for PBXNativeTarget "jejuTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A059515318EAF9D900E6BB44 /* Debug */,
+				A059515418EAF9D900E6BB44 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A059512E18EAF9D900E6BB44 /* jeju.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A059512F18EAF9D900E6BB44 /* jeju.xcdatamodel */,
+			);
+			currentVersion = A059512F18EAF9D900E6BB44 /* jeju.xcdatamodel */;
+			path = jeju.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = A059510C18EAF9D900E6BB44 /* Project object */;
+}
