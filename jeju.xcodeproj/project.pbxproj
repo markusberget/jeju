@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		22A31B9418EDDC0600ADB7FB /* octocat_gems.png in Resources */ = {isa = PBXBuildFile; fileRef = 22A31B9318EDDC0600ADB7FB /* octocat_gems.png */; };
 		3DC80690CA5244C7A6D79B31 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A3C1FE5AAFE74CA8ADA25BFA /* libPods.a */; };
 		A02E50FC18ED7BAE00CF81EB /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A02E50FB18ED7BAE00CF81EB /* LoginViewController.m */; };
 		A059511818EAF9D900E6BB44 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A059511718EAF9D900E6BB44 /* Foundation.framework */; };
@@ -40,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		22A31B9318EDDC0600ADB7FB /* octocat_gems.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = octocat_gems.png; sourceTree = "<group>"; };
 		A02E50FA18ED7BAE00CF81EB /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		A02E50FB18ED7BAE00CF81EB /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		A059511418EAF9D900E6BB44 /* jeju.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = jeju.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -96,6 +98,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		22A31B9518EDDC1A00ADB7FB /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				22A31B9318EDDC0600ADB7FB /* octocat_gems.png */,
+			);
+			name = Assets;
+			sourceTree = "<group>";
+		};
 		A059510B18EAF9D900E6BB44 = {
 			isa = PBXGroup;
 			children = (
@@ -132,6 +142,7 @@
 		A059511F18EAF9D900E6BB44 /* jeju */ = {
 			isa = PBXGroup;
 			children = (
+				22A31B9518EDDC1A00ADB7FB /* Assets */,
 				A059512818EAF9D900E6BB44 /* AppDelegate.h */,
 				A059512918EAF9D900E6BB44 /* AppDelegate.m */,
 				A059512B18EAF9D900E6BB44 /* Main.storyboard */,
@@ -258,6 +269,7 @@
 				A059513818EAF9D900E6BB44 /* Images.xcassets in Resources */,
 				A059512418EAF9D900E6BB44 /* InfoPlist.strings in Resources */,
 				A059512D18EAF9D900E6BB44 /* Main.storyboard in Resources */,
+				22A31B9418EDDC0600ADB7FB /* octocat_gems.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

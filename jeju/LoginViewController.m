@@ -29,12 +29,29 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    [self styleButtons];
+}
+
+-(void)login
+{
     [[OCTClient signInToServerUsingWebBrowser:OCTServer.dotComServer scopes:OCTClientAuthorizationScopesUser] subscribeNext:^(OCTClient *authenticatedClient) {
         NSLog(@"Success!");
     } error:^(NSError *error) {
         
     }];
 }
+
+-(void)styleButtons
+{
+    [[self.loginButton layer] setBorderWidth:0.25f];
+    [[self.loginButton layer] setBorderColor:[UIColor blackColor].CGColor];
+    [[self.loginButton layer] setCornerRadius:6];
+    
+    [[self.signUpButton layer] setBorderWidth:0.25f];
+    [[self.signUpButton layer] setCornerRadius:6];
+    
+}
+
 
 - (void)didReceiveMemoryWarning
 {
