@@ -32,11 +32,13 @@
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
-    if ([url.host isEqual:@"oauth"]) {
+    if ([url.host isEqual:@"hellomamma"]) {
         [OCTClient completeSignInWithCallbackURL:url];
+        NSLog(@"successful login");
         return YES;
     }
     else {
+        NSLog(@"%@", url.host);
         return NO;
     }
 }
