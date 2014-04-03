@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 
 #import "MasterViewController.h"
+#import "octokit.h"
 
 @implementation AppDelegate
 
@@ -22,7 +23,22 @@
     UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
     MasterViewController *controller = (MasterViewController *)navigationController.topViewController;
     controller.managedObjectContext = self.managedObjectContext;
+    
+    //TODO: Need to change it to use IOS keychain
+    [OCTClient setClientID:@"0c9b68d809228a3a32ee" clientSecret:@"9c3a30ef75902e96b20e903f37c3ae952580040a"];
+
     return YES;
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+    if ([url.host isEqual:@"oauth"]) {
+        [OCTClient completeSignInWithCallbackURL:url];
+        return YES;
+    }
+    else {
+        return NO;
+    }
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application

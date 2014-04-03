@@ -7,6 +7,7 @@
 //
 
 #import "LoginViewController.h"
+#import "Octokit.h"
 
 @interface LoginViewController ()
 
@@ -27,6 +28,12 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    [[OCTClient signInToServerUsingWebBrowser:OCTServer.dotComServer scopes:OCTClientAuthorizationScopesUser] subscribeNext:^(OCTClient *authenticatedClient) {
+        NSLog(@"Success!");
+    } error:^(NSError *error) {
+        
+    }];
 }
 
 - (void)didReceiveMemoryWarning
