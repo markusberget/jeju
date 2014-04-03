@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A02E50FC18ED7BAE00CF81EB /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A02E50FB18ED7BAE00CF81EB /* LoginViewController.m */; };
 		A059511818EAF9D900E6BB44 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A059511718EAF9D900E6BB44 /* Foundation.framework */; };
 		A059511A18EAF9D900E6BB44 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A059511918EAF9D900E6BB44 /* CoreGraphics.framework */; };
 		A059511C18EAF9D900E6BB44 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A059511B18EAF9D900E6BB44 /* UIKit.framework */; };
@@ -38,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A02E50FA18ED7BAE00CF81EB /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		A02E50FB18ED7BAE00CF81EB /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		A059511418EAF9D900E6BB44 /* jeju.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = jeju.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A059511718EAF9D900E6BB44 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A059511918EAF9D900E6BB44 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -133,6 +136,8 @@
 				A059513718EAF9D900E6BB44 /* Images.xcassets */,
 				A059512E18EAF9D900E6BB44 /* jeju.xcdatamodeld */,
 				A059512018EAF9D900E6BB44 /* Supporting Files */,
+				A02E50FA18ED7BAE00CF81EB /* LoginViewController.h */,
+				A02E50FB18ED7BAE00CF81EB /* LoginViewController.m */,
 			);
 			path = jeju;
 			sourceTree = "<group>";
@@ -265,6 +270,7 @@
 			files = (
 				A059513618EAF9D900E6BB44 /* DetailViewController.m in Sources */,
 				A059513318EAF9D900E6BB44 /* MasterViewController.m in Sources */,
+				A02E50FC18ED7BAE00CF81EB /* LoginViewController.m in Sources */,
 				A059513018EAF9D900E6BB44 /* jeju.xcdatamodeld in Sources */,
 				A059512A18EAF9D900E6BB44 /* AppDelegate.m in Sources */,
 				A059512618EAF9D900E6BB44 /* main.m in Sources */,
@@ -472,6 +478,7 @@
 				A059515118EAF9D900E6BB44 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A059515218EAF9D900E6BB44 /* Build configuration list for PBXNativeTarget "jejuTests" */ = {
 			isa = XCConfigurationList;
@@ -480,6 +487,7 @@
 				A059515418EAF9D900E6BB44 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
