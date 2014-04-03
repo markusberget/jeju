@@ -59,7 +59,7 @@
                     <navigationItem key="navigationItem" title="Master" id="tQt-TN-PWz">
                         <barButtonItem key="rightBarButtonItem" title="Profile" id="5U0-hY-zxx">
                             <connections>
-                                <segue destination="nYQ-ey-voi" kind="modal" id="oBw-mh-ZHD"/>
+                                <segue destination="nYQ-ey-voi" kind="modal" id="EYZ-XJ-TaE"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -79,16 +79,9 @@
                     <view key="view" contentMode="scaleToFill" id="jtK-Qm-cpJ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Add Login here:)" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bOi-4T-wVR">
-                                <rect key="frame" x="101" y="237" width="128" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="oo6-F4-m50"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Mq-Kc-IFi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
