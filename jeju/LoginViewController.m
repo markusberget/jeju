@@ -35,6 +35,9 @@
 -(void)login
 {
     [[OCTClient signInToServerUsingWebBrowser:OCTServer.dotComServer scopes:OCTClientAuthorizationScopesUser] subscribeNext:^(OCTClient *authenticatedClient) {
+        [self dismissViewControllerAnimated:YES completion:^{
+            
+        }];
         NSLog(@"Success!");
     } error:^(NSError *error) {
         
