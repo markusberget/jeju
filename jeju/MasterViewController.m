@@ -8,7 +8,7 @@
 
 #import "MasterViewController.h"
 
-#import "DetailViewController.h"
+#import "RepoDetailTableViewController.h"
 
 #import "Octokit.h"
 
@@ -23,17 +23,23 @@
     [super awakeFromNib];
 }
 
-
-- (void)viewDidLoad
+- (void) viewDidAppear:(BOOL)animated
 {
-    [super viewDidLoad];
-    
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    
+    if ([defaults objectForKey:@"user"] != nil && [defaults objectForKey:@"token"] != nil) {
+        [self fetchData];
+    }
+}
+
+- (void)fetchData {
+    NSLog(@"Fetching data");
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+
     self.user = [OCTUser userWithRawLogin:[defaults objectForKey:@"user"] server:OCTServer.dotComServer];
     self.client = [OCTClient authenticatedClientWithUser:self.user token:[defaults objectForKey:@"token"]];
     
     RACSignal *request = [self.client fetchUserRepositories];
+
     
     NSMutableArray *newRepos = [[NSMutableArray alloc] init];
     
@@ -46,10 +52,30 @@
                                               cancelButtonTitle:nil
                                               otherButtonTitles:nil];
         [alert show];
+        [self presentViewController:self.loginViewController animated:YES completion:NULL];
     } completed:^{
         self.repos = newRepos;
         [self.tableView reloadData];
     }];
+}
+
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    NSLog(@"ViewDidLoad");
+
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+
+    self.loginViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+    
+    if ([defaults objectForKey:@"user"] == nil || [defaults objectForKey:@"token"] == nil) {
+        [self presentViewController:self.loginViewController animated:YES completion:NULL];
+    } else {
+        
+        [self fetchData];
+    }
 }
 
 - (void)didReceiveMemoryWarning

@@ -20,7 +20,6 @@
 		A059512D18EAF9D900E6BB44 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A059512B18EAF9D900E6BB44 /* Main.storyboard */; };
 		A059513018EAF9D900E6BB44 /* jeju.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A059512E18EAF9D900E6BB44 /* jeju.xcdatamodeld */; };
 		A059513318EAF9D900E6BB44 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A059513218EAF9D900E6BB44 /* MasterViewController.m */; };
-		A059513618EAF9D900E6BB44 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A059513518EAF9D900E6BB44 /* DetailViewController.m */; };
 		A059513818EAF9D900E6BB44 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A059513718EAF9D900E6BB44 /* Images.xcassets */; };
 		A059513F18EAF9D900E6BB44 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A059513E18EAF9D900E6BB44 /* XCTest.framework */; };
 		A059514018EAF9D900E6BB44 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A059511718EAF9D900E6BB44 /* Foundation.framework */; };
@@ -28,7 +27,8 @@
 		A059514218EAF9D900E6BB44 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A059511D18EAF9D900E6BB44 /* CoreData.framework */; };
 		A059514A18EAF9D900E6BB44 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A059514818EAF9D900E6BB44 /* InfoPlist.strings */; };
 		A059514C18EAF9D900E6BB44 /* jejuTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A059514B18EAF9D900E6BB44 /* jejuTests.m */; };
-		A06BEB3D18F2D095007810AE /* RepoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A06BEB3C18F2D095007810AE /* RepoTableViewController.m */; };
+		A06BEB4018F30873007810AE /* RepoDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A06BEB3F18F30873007810AE /* RepoDetailTableViewController.m */; };
+		A06BEB4618F30CA8007810AE /* FeedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A06BEB4518F30CA8007810AE /* FeedTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,16 +60,16 @@
 		A059512F18EAF9D900E6BB44 /* jeju.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = jeju.xcdatamodel; sourceTree = "<group>"; };
 		A059513118EAF9D900E6BB44 /* MasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
 		A059513218EAF9D900E6BB44 /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
-		A059513418EAF9D900E6BB44 /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
-		A059513518EAF9D900E6BB44 /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		A059513718EAF9D900E6BB44 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		A059513D18EAF9D900E6BB44 /* jejuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = jejuTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A059513E18EAF9D900E6BB44 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		A059514718EAF9D900E6BB44 /* jejuTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "jejuTests-Info.plist"; sourceTree = "<group>"; };
 		A059514918EAF9D900E6BB44 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A059514B18EAF9D900E6BB44 /* jejuTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = jejuTests.m; sourceTree = "<group>"; };
-		A06BEB3B18F2D095007810AE /* RepoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepoTableViewController.h; sourceTree = "<group>"; };
-		A06BEB3C18F2D095007810AE /* RepoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepoTableViewController.m; sourceTree = "<group>"; };
+		A06BEB3E18F30873007810AE /* RepoDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepoDetailTableViewController.h; sourceTree = "<group>"; };
+		A06BEB3F18F30873007810AE /* RepoDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepoDetailTableViewController.m; sourceTree = "<group>"; };
+		A06BEB4418F30CA8007810AE /* FeedTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedTableViewController.h; sourceTree = "<group>"; };
+		A06BEB4518F30CA8007810AE /* FeedTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedTableViewController.m; sourceTree = "<group>"; };
 		A3C1FE5AAFE74CA8ADA25BFA /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5F2C2F2CA484458BAC13ACE /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -149,17 +149,17 @@
 				A059512818EAF9D900E6BB44 /* AppDelegate.h */,
 				A059512918EAF9D900E6BB44 /* AppDelegate.m */,
 				A059512B18EAF9D900E6BB44 /* Main.storyboard */,
+				A06BEB3E18F30873007810AE /* RepoDetailTableViewController.h */,
+				A06BEB3F18F30873007810AE /* RepoDetailTableViewController.m */,
 				A059513118EAF9D900E6BB44 /* MasterViewController.h */,
 				A059513218EAF9D900E6BB44 /* MasterViewController.m */,
-				A06BEB3B18F2D095007810AE /* RepoTableViewController.h */,
-				A06BEB3C18F2D095007810AE /* RepoTableViewController.m */,
-				A059513418EAF9D900E6BB44 /* DetailViewController.h */,
-				A059513518EAF9D900E6BB44 /* DetailViewController.m */,
 				A059513718EAF9D900E6BB44 /* Images.xcassets */,
 				A059512E18EAF9D900E6BB44 /* jeju.xcdatamodeld */,
 				A059512018EAF9D900E6BB44 /* Supporting Files */,
 				A02E50FA18ED7BAE00CF81EB /* LoginViewController.h */,
 				A02E50FB18ED7BAE00CF81EB /* LoginViewController.m */,
+				A06BEB4418F30CA8007810AE /* FeedTableViewController.h */,
+				A06BEB4518F30CA8007810AE /* FeedTableViewController.m */,
 			);
 			path = jeju;
 			sourceTree = "<group>";
@@ -326,13 +326,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A059513618EAF9D900E6BB44 /* DetailViewController.m in Sources */,
 				A059513318EAF9D900E6BB44 /* MasterViewController.m in Sources */,
+				A06BEB4018F30873007810AE /* RepoDetailTableViewController.m in Sources */,
 				A02E50FC18ED7BAE00CF81EB /* LoginViewController.m in Sources */,
 				A059513018EAF9D900E6BB44 /* jeju.xcdatamodeld in Sources */,
-				A06BEB3D18F2D095007810AE /* RepoTableViewController.m in Sources */,
 				A059512A18EAF9D900E6BB44 /* AppDelegate.m in Sources */,
 				A059512618EAF9D900E6BB44 /* main.m in Sources */,
+				A06BEB4618F30CA8007810AE /* FeedTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
 #import "Octokit.h"
+#import "LoginViewController.h"
 
 #import <CoreData/CoreData.h>
 
@@ -20,5 +20,7 @@
 @property (strong, nonatomic) OCTClient *client;
 @property (strong, nonatomic) OCTUser *user;
 @property (strong, nonatomic) NSArray *repos;
+
+@property (strong, nonatomic) LoginViewController *loginViewController;
 
 @end

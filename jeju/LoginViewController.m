@@ -34,7 +34,7 @@
 
 -(void)login
 {
-    [[OCTClient signInToServerUsingWebBrowser:OCTServer.dotComServer scopes:OCTClientAuthorizationScopesUser] subscribeNext:^(OCTClient *authenticatedClient) {
+    [[OCTClient signInToServerUsingWebBrowser:OCTServer.dotComServer scopes:OCTClientAuthorizationScopesRepository | OCTClientAuthorizationScopesUser ] subscribeNext:^(OCTClient *authenticatedClient) {
         [self dismissViewControllerAnimated:YES completion:^{
             NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
             [defaults setObject:[authenticatedClient user].rawLogin forKey:@"user"];
