@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Octokit.h"
 
 @interface DetailViewController : UIViewController
 
-@property (strong, nonatomic) id detailItem;
+@property (strong, nonatomic) OCTRepository *repo;
 
 @property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
 @end

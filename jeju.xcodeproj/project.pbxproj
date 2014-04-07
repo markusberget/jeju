@@ -28,6 +28,7 @@
 		A059514218EAF9D900E6BB44 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A059511D18EAF9D900E6BB44 /* CoreData.framework */; };
 		A059514A18EAF9D900E6BB44 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A059514818EAF9D900E6BB44 /* InfoPlist.strings */; };
 		A059514C18EAF9D900E6BB44 /* jejuTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A059514B18EAF9D900E6BB44 /* jejuTests.m */; };
+		A06BEB3D18F2D095007810AE /* RepoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A06BEB3C18F2D095007810AE /* RepoTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,8 @@
 		A059514718EAF9D900E6BB44 /* jejuTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "jejuTests-Info.plist"; sourceTree = "<group>"; };
 		A059514918EAF9D900E6BB44 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A059514B18EAF9D900E6BB44 /* jejuTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = jejuTests.m; sourceTree = "<group>"; };
+		A06BEB3B18F2D095007810AE /* RepoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepoTableViewController.h; sourceTree = "<group>"; };
+		A06BEB3C18F2D095007810AE /* RepoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepoTableViewController.m; sourceTree = "<group>"; };
 		A3C1FE5AAFE74CA8ADA25BFA /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5F2C2F2CA484458BAC13ACE /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -148,6 +151,8 @@
 				A059512B18EAF9D900E6BB44 /* Main.storyboard */,
 				A059513118EAF9D900E6BB44 /* MasterViewController.h */,
 				A059513218EAF9D900E6BB44 /* MasterViewController.m */,
+				A06BEB3B18F2D095007810AE /* RepoTableViewController.h */,
+				A06BEB3C18F2D095007810AE /* RepoTableViewController.m */,
 				A059513418EAF9D900E6BB44 /* DetailViewController.h */,
 				A059513518EAF9D900E6BB44 /* DetailViewController.m */,
 				A059513718EAF9D900E6BB44 /* Images.xcassets */,
@@ -325,6 +330,7 @@
 				A059513318EAF9D900E6BB44 /* MasterViewController.m in Sources */,
 				A02E50FC18ED7BAE00CF81EB /* LoginViewController.m in Sources */,
 				A059513018EAF9D900E6BB44 /* jeju.xcdatamodeld in Sources */,
+				A06BEB3D18F2D095007810AE /* RepoTableViewController.m in Sources */,
 				A059512A18EAF9D900E6BB44 /* AppDelegate.m in Sources */,
 				A059512618EAF9D900E6BB44 /* main.m in Sources */,
 			);

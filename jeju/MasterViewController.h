@@ -8,11 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+#import "Octokit.h"
+
 #import <CoreData/CoreData.h>
 
 @interface MasterViewController : UITableViewController <NSFetchedResultsControllerDelegate>
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+
+@property (strong, nonatomic) OCTClient *client;
+@property (strong, nonatomic) OCTUser *user;
+@property (strong, nonatomic) NSArray *repos;
 
 @end

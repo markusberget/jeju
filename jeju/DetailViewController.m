@@ -16,10 +16,10 @@
 
 #pragma mark - Managing the detail item
 
-- (void)setDetailItem:(id)newDetailItem
+- (void)setRepo:(OCTRepository *) newRepo
 {
-    if (_detailItem != newDetailItem) {
-        _detailItem = newDetailItem;
+    if (_repo != newRepo) {
+        _repo = newRepo;
         
         // Update the view.
         [self configureView];
@@ -30,8 +30,8 @@
 {
     // Update the user interface for the detail item.
 
-    if (self.detailItem) {
-        self.detailDescriptionLabel.text = [[self.detailItem valueForKey:@"timeStamp"] description];
+    if (self.repo) {
+        self.detailDescriptionLabel.text = self.repo.name;
     }
 }
 
