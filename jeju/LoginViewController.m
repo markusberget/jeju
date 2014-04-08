@@ -35,10 +35,10 @@
 -(void)login
 {
     [[OCTClient signInToServerUsingWebBrowser:OCTServer.dotComServer scopes:OCTClientAuthorizationScopesRepository | OCTClientAuthorizationScopesUser ] subscribeNext:^(OCTClient *authenticatedClient) {
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setObject:[authenticatedClient user].rawLogin forKey:@"user"];
+        [defaults setObject:[authenticatedClient token] forKey:@"token"];
         [self dismissViewControllerAnimated:YES completion:^{
-            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-            [defaults setObject:[authenticatedClient user].rawLogin forKey:@"user"];
-            [defaults setObject:[authenticatedClient token] forKey:@"token"];
         }];
         NSLog(@"Success!");
     } error:^(NSError *error) {

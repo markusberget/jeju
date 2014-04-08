@@ -70,11 +70,8 @@
 
     self.loginViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
     
-    if ([defaults objectForKey:@"user"] == nil || [defaults objectForKey:@"token"] == nil) {
-        [self presentViewController:self.loginViewController animated:YES completion:NULL];
-    } else {
-        
-        [self fetchData];
+    if ([defaults objectForKey:@"user"] == nil && [defaults objectForKey:@"token"] == nil) {
+        [self presentViewController:self.loginViewController animated:YES completion:nil];
     }
 }
 
