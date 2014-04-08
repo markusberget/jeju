@@ -53,6 +53,10 @@
 			<false/>
 		</dict>
 	</dict>
+	<key>Github.clientID</key>
+	<string>0c9b68d809228a3a32ee</string>
+	<key>Github.clientSecret</key>
+	<string>9c3a30ef75902e96b20e903f37c3ae952580040a</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

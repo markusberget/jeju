@@ -25,7 +25,11 @@
 {
     BFTaskCompletionSource * source = [BFTaskCompletionSource taskCompletionSource];
 
-    [OCTClient setClientID:CLIENT_ID clientSecret:CLIENT_SECRET];
+    //Loading clientID and clientSecret from jeju-info.plist
+    NSString *clientID = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"Github.clientID"];
+    NSString *clientSecret = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"Github.clientSecret"];
+
+    [OCTClient setClientID:clientID clientSecret:clientSecret];
     
     [[OCTClient signInToServerUsingWebBrowser:[OCTServer dotComServer]  scopes:scopes]
      subscribeNext:^(OCTClient* authenticatedClient) {

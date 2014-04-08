@@ -10,9 +10,6 @@
 #import "Octokit.h"
 #import "Bolts.h"
 
-#define CLIENT_ID @"0c9b68d809228a3a32ee"
-#define CLIENT_SECRET @"9c3a30ef75902e96b20e903f37c3ae952580040a"
-
 @interface OctokitModel : NSObject
 
 @property (nonatomic, weak) NSString* token;
