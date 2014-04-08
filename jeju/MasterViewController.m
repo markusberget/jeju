@@ -10,7 +10,6 @@
 
 #import "RepoDetailTableViewController.h"
 #import "Models/OctokitModel.h"
-#import "Octokit.h"
 
 @interface MasterViewController ()
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
@@ -30,18 +29,22 @@
         [self fetchData];
     }
     
+    
+    
     //Setting username for profile button
-    NSLog(@"%@",self.user.rawLogin);
-    self.navigationItem.rightBarButtonItem.title = self.user ? self.user.rawLogin : NSLocalizedString(@"Profile", nil);
+    
+    NSLog(@"%@", self.octokitModel.userName);
+    
+    self.navigationItem.rightBarButtonItem.title = self.octokitModel.userName ? self.octokitModel.userName : NSLocalizedString(@"Profile", nil);
 }
 
 - (void)fetchData {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
-    OctokitModel* model = [[OctokitModel alloc] initWithToken:[defaults objectForKey:@"token"]
+    self.octokitModel = [[OctokitModel alloc] initWithToken:[defaults objectForKey:@"token"]
                                                   andUserName:[defaults objectForKey:@"user"]];
     // we get the repositories
-    [[model getRepositories] continueWithBlock:^id(BFTask *task) {
+    [[self.octokitModel getRepositories] continueWithBlock:^id(BFTask *task) {
         
         if (task.error) {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Whoops!"
