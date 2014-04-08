@@ -32,9 +32,6 @@
     
     
     //Setting username for profile button
-    
-    NSLog(@"%@", self.octokitModel.userName);
-    
     self.navigationItem.rightBarButtonItem.title = self.octokitModel.userName ? self.octokitModel.userName : NSLocalizedString(@"Profile", nil);
 }
 
@@ -50,7 +47,7 @@
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Whoops!"
                                                             message:@"Something went wrong."
                                                            delegate:nil
-                                                  cancelButtonTitle:nil
+                                                  cancelButtonTitle:@"Ok"
                                                   otherButtonTitles:nil];
             [alert show];
             [self presentViewController:self.loginViewController animated:YES completion:NULL];
