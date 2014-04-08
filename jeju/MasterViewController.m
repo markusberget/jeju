@@ -29,6 +29,10 @@
     if ([defaults objectForKey:@"user"] != nil && [defaults objectForKey:@"token"] != nil) {
         [self fetchData];
     }
+    
+    //Setting username for profile button
+    NSLog(@"%@",self.user.rawLogin);
+    self.navigationItem.rightBarButtonItem.title = self.user ? self.user.rawLogin : NSLocalizedString(@"Profile", nil);
 }
 
 - (void)fetchData {
@@ -131,7 +135,7 @@
 {
     OCTRepository *repo = [self.repos objectAtIndex:indexPath.row];
     cell.textLabel.text = repo.name;
-    cell.detailTextLabel.text = repo.isPrivate ? @"Private" : @"Public";
+    cell.detailTextLabel.text = repo.isPrivate ? NSLocalizedString(@"Private", nil) : NSLocalizedString(@"Public", nil);
 }
 
 @end
