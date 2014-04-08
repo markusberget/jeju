@@ -131,7 +131,7 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     
-    if ([[segue identifier] isEqualToString:@"showFeed"] || [[segue identifier] isEqualToString:@"showConversations"]) {
+    if ([[segue identifier] isEqualToString:@"showFeed"] || [segue identifier] isEqualToString:@"<#string#>") {
         [[segue destinationViewController] setRepo:self.repo];
     }
 }
