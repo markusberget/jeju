@@ -18,7 +18,6 @@
 
 @property (strong, nonatomic) NSArray *conversations;
 
-
 @property (strong, nonatomic) OctokitModel *octokitModel;
 
 @end

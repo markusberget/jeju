@@ -59,6 +59,6 @@
 /**
  *Fetches all issues
  **/
--(BFTask *) getIssues:(NSURL *) issueURL;
+-(BFTask *) getIssues;
 
 @end

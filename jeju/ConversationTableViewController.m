@@ -42,35 +42,27 @@
         
         self.octokitModel = [[OctokitModel alloc] initWithToken:[defaults objectForKey:@"token"]
                                                     andUserName:[defaults objectForKey:@"user"]];
-//        // we get the repositories
-//        [[self.octokitModel getIssues:<#(NSURL *)#>] continueWithBlock:^id(BFTask *task) {
-//            
-//            if (task.error) {
-//                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Whoops!"
-//                                                                message:@"Something went wrong."
-//                                                               delegate:nil
-//                                                      cancelButtonTitle:@"Ok"
-//                                                      otherButtonTitles:nil];
-//                [alert show];
-//                [self presentViewController:self.loginViewController animated:YES completion:NULL];
-//                
-//            } else {
-//                self.repos = task.result;
-//                [self.tableView reloadData];
-//            }
-//        
-//            return nil;
-//        }];
-//
-        
-        
-        NSString *satring = self.repo.issuesHTMLURL.absoluteString;
-        NSLog(satring);
-//        NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
-//        
-//        OctokitModel * model = [[OctokitModel alloc] initWithToken:[defaults objectForKey:@"token"] andUserName:[defaults objectForKey:@"user"]];
-//        
-//        self.navigationItem.title = self.repo.name;
+        // we get the repositories
+        [[self.octokitModel getIssues] continueWithBlock:^id(BFTask *task) {
+            
+            if (task.error) {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Whoops!"
+                                                                message:@"Something went wrong."
+                                                               delegate:nil
+                                                      cancelButtonTitle:@"Ok"
+                                                      otherButtonTitles:nil];
+                [alert show];
+            } else {
+                NSMutableArray *results = [[NSMutableArray alloc] init];
+                for(OCTResponse *object in task.result) {
+                    [results addObject: [object parsedResult]];
+                }
+                self.conversations = results;
+                [self.tableView reloadData];
+            }
+            return nil;
+        }];
+
     }
 }
 
@@ -95,28 +87,29 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
     return self.conversations.count;
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"conversationCell" forIndexPath:indexPath];
+    
+    OCTIssue *issue = [self.conversations objectAtIndex:indexPath.row];
+    
+    cell.textLabel.text = issue.title;
     
     // Configure the cell...
     
     return cell;
 }
-*/
 
 /*
 // Override to support conditional editing of the table view.
