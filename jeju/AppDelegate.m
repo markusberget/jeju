@@ -25,7 +25,7 @@
     controller.managedObjectContext = self.managedObjectContext;
     
     //TODO: Need to change it to use IOS keychain
-    [OCTClient setClientID:@"0c9b68d809228a3a32ee" clientSecret:@"9c3a30ef75902e96b20e903f37c3ae952580040a"];
+    [OCTClient setClientID:@"0c9b68d809228a3a32ee" clientSecret:@"e463b2f82444afdb5c666a2e103e1e91d7e19e89"];
 
     return YES;
 }

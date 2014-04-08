@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		22A31B9418EDDC0600ADB7FB /* octocat_gems.png in Resources */ = {isa = PBXBuildFile; fileRef = 22A31B9318EDDC0600ADB7FB /* octocat_gems.png */; };
 		3DC80690CA5244C7A6D79B31 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A3C1FE5AAFE74CA8ADA25BFA /* libPods.a */; };
+		835A51FC18F3E14A00AC83C7 /* PlanningPokerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 835A51FB18F3E14A00AC83C7 /* PlanningPokerViewController.m */; };
+		835A51FF18F420B000AC83C7 /* PlanningPokerCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 835A51FE18F420B000AC83C7 /* PlanningPokerCardViewController.m */; };
 		A02E50FC18ED7BAE00CF81EB /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A02E50FB18ED7BAE00CF81EB /* LoginViewController.m */; };
 		A059511818EAF9D900E6BB44 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A059511718EAF9D900E6BB44 /* Foundation.framework */; };
 		A059511A18EAF9D900E6BB44 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A059511918EAF9D900E6BB44 /* CoreGraphics.framework */; };
@@ -43,6 +45,10 @@
 
 /* Begin PBXFileReference section */
 		22A31B9318EDDC0600ADB7FB /* octocat_gems.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = octocat_gems.png; sourceTree = "<group>"; };
+		835A51FA18F3E14A00AC83C7 /* PlanningPokerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlanningPokerViewController.h; sourceTree = "<group>"; };
+		835A51FB18F3E14A00AC83C7 /* PlanningPokerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlanningPokerViewController.m; sourceTree = "<group>"; };
+		835A51FD18F420B000AC83C7 /* PlanningPokerCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlanningPokerCardViewController.h; sourceTree = "<group>"; };
+		835A51FE18F420B000AC83C7 /* PlanningPokerCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlanningPokerCardViewController.m; sourceTree = "<group>"; };
 		A02E50FA18ED7BAE00CF81EB /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		A02E50FB18ED7BAE00CF81EB /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		A059511418EAF9D900E6BB44 /* jeju.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = jeju.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -149,6 +155,10 @@
 				A059512818EAF9D900E6BB44 /* AppDelegate.h */,
 				A059512918EAF9D900E6BB44 /* AppDelegate.m */,
 				A059512B18EAF9D900E6BB44 /* Main.storyboard */,
+				835A51FD18F420B000AC83C7 /* PlanningPokerCardViewController.h */,
+				835A51FE18F420B000AC83C7 /* PlanningPokerCardViewController.m */,
+				835A51FA18F3E14A00AC83C7 /* PlanningPokerViewController.h */,
+				835A51FB18F3E14A00AC83C7 /* PlanningPokerViewController.m */,
 				A06BEB3E18F30873007810AE /* RepoDetailTableViewController.h */,
 				A06BEB3F18F30873007810AE /* RepoDetailTableViewController.m */,
 				A059513118EAF9D900E6BB44 /* MasterViewController.h */,
@@ -327,12 +337,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				A059513318EAF9D900E6BB44 /* MasterViewController.m in Sources */,
+				835A51FF18F420B000AC83C7 /* PlanningPokerCardViewController.m in Sources */,
 				A06BEB4018F30873007810AE /* RepoDetailTableViewController.m in Sources */,
 				A02E50FC18ED7BAE00CF81EB /* LoginViewController.m in Sources */,
 				A059513018EAF9D900E6BB44 /* jeju.xcdatamodeld in Sources */,
 				A059512A18EAF9D900E6BB44 /* AppDelegate.m in Sources */,
 				A059512618EAF9D900E6BB44 /* main.m in Sources */,
 				A06BEB4618F30CA8007810AE /* FeedTableViewController.m in Sources */,
+				835A51FC18F3E14A00AC83C7 /* PlanningPokerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

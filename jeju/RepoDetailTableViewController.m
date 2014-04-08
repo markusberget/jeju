@@ -7,6 +7,7 @@
 //
 
 #import "RepoDetailTableViewController.h"
+#import "PlanningPokerViewController.h"
 
 @interface RepoDetailTableViewController ()
 
@@ -45,8 +46,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.items = [[NSArray alloc] initWithObjects:@"Feed", nil];
+    self.items = [[NSArray alloc] initWithObjects:@"Feed", @"Planning Poker", nil];
     
     [self configureView];
 
@@ -81,7 +81,15 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"item" forIndexPath:indexPath];
+    NSLog(@"%ld", (long)indexPath.row);
+    UITableViewCell *cell = nil;
+    
+    if (indexPath.row == 0) {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"item" forIndexPath:indexPath];
+    } else if (indexPath.row == 1) {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"PlanningPokerItem" forIndexPath:indexPath];
+    }
+//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"item" forIndexPath:indexPath];
     
     cell.textLabel.text = [self.items objectAtIndex:indexPath.row];
     // Configure the cell...
@@ -138,6 +146,11 @@
     
     if ([[segue identifier] isEqualToString:@"showFeed"]) {
         [[segue destinationViewController] setRepo:self.repo];
+    } else if ([[segue identifier] isEqualToString:@"Planning Poker"]) {
+        if ([segue.destinationViewController isKindOfClass:[PlanningPokerViewController class]]) {
+            PlanningPokerViewController *ppvc = (PlanningPokerViewController *)segue.destinationViewController;
+            ppvc.title = @"Planning Poker";
+        }
     }
 }
 
