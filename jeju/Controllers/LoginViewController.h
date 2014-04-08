@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Models/OctokitModel.h"
+#import "OctokitModel.h"
 
 @interface LoginViewController : UIViewController
 

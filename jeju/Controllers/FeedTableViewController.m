@@ -1,18 +1,19 @@
 //
-//  ConversationTableViewController.m
+//  FeedTableViewController.m
 //  jeju
 //
-//  Created by Joel Lundell on 4/8/14.
+//  Created by Markus Berget on 2014-04-07.
 //  Copyright (c) 2014 Markus Berget. All rights reserved.
 //
 
-#import "ConversationTableViewController.h"
+#import "FeedTableViewController.h"
+#import "OctokitModel.h"
 
-@interface ConversationTableViewController ()
+@interface FeedTableViewController ()
 
 @end
 
-@implementation ConversationTableViewController
+@implementation FeedTableViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -21,57 +22,6 @@
         // Custom initialization
     }
     return self;
-}
-
-- (void)setRepo:(OCTRepository *) newRepo
-{
-    if (_repo != newRepo) {
-        _repo = newRepo;
-        
-        // Update the view.
-        [self configureView];
-    }
-}
-
-- (void)configureView
-{
-    // Update the user interface for the detail item.
-    if (self.repo) {
-        
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        
-        self.octokitModel = [[OctokitModel alloc] initWithToken:[defaults objectForKey:@"token"]
-                                                    andUserName:[defaults objectForKey:@"user"]];
-//        // we get the repositories
-//        [[self.octokitModel getIssues:<#(NSURL *)#>] continueWithBlock:^id(BFTask *task) {
-//            
-//            if (task.error) {
-//                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Whoops!"
-//                                                                message:@"Something went wrong."
-//                                                               delegate:nil
-//                                                      cancelButtonTitle:@"Ok"
-//                                                      otherButtonTitles:nil];
-//                [alert show];
-//                [self presentViewController:self.loginViewController animated:YES completion:NULL];
-//                
-//            } else {
-//                self.repos = task.result;
-//                [self.tableView reloadData];
-//            }
-//        
-//            return nil;
-//        }];
-//
-        
-        
-        NSString *satring = self.repo.issuesHTMLURL.absoluteString;
-        NSLog(satring);
-//        NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
-//        
-//        OctokitModel * model = [[OctokitModel alloc] initWithToken:[defaults objectForKey:@"token"] andUserName:[defaults objectForKey:@"user"]];
-//        
-//        self.navigationItem.title = self.repo.name;
-    }
 }
 
 - (void)viewDidLoad
@@ -83,6 +33,31 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+- (void)setRepo:(OCTRepository *) newRepo
+{
+    if (_repo != newRepo) {
+        _repo = newRepo;
+        
+        
+        
+        // Update the view.
+        [self configureView];
+    }
+}
+
+- (void)configureView
+{
+    // Update the user interface for the detail item.
+    
+    if (self.repo) {
+        NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+        
+        OctokitModel * model = [[OctokitModel alloc] initWithToken:[defaults objectForKey:@"token"] andUserName:[defaults objectForKey:@"user"]];
+    
+        self.navigationItem.title = self.repo.name;
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -97,14 +72,14 @@
 {
 #warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 1;
+    return 0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 #warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return self.conversations.count;
+    return 0;
 }
 
 /*
