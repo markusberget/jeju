@@ -81,6 +81,25 @@
     return source.task;
 }
 
+-(BFTask *) getIssues
+{
+    BFTaskCompletionSource *source = [BFTaskCompletionSource taskCompletionSource];
+    
+    NSMutableURLRequest *request = [[self getAuthenticatedClient] requestWithMethod:@"GET" path:@"issues" parameters:nil];
+    
+    RACSignal *signal = [[self getAuthenticatedClient] enqueueRequest:request resultClass:OCTIssue.class];
+    
+    [[[signal deliverOn:[RACScheduler mainThreadScheduler]] collect] subscribeNext:^(NSArray *issues) {
+        [source setResult:issues];
+    }
+        error:^(NSError *error) {
+            [source setError:error];
+    }];
+    
+    return source.task;
+}
+
+
 -(BFTask *) getBranches:(NSString *)repo withOwner:(NSString *)owner
 {
     BFTaskCompletionSource * source = [BFTaskCompletionSource taskCompletionSource];

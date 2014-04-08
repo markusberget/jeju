@@ -52,8 +52,8 @@
 		635DD8ED18F3EDFE009D7590 /* OctokitModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OctokitModel.m; path = Models/OctokitModel.m; sourceTree = "<group>"; };
 		81741A7118F43932000C4033 /* ConversationTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConversationTableViewController.h; sourceTree = "<group>"; };
 		81741A7218F43932000C4033 /* ConversationTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConversationTableViewController.m; sourceTree = "<group>"; };
-		81741A7418F43D7F000C4033 /* ConversationsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConversationsTableViewCell.h; path = jeju/ConversationsTableViewCell.h; sourceTree = "<group>"; };
-		81741A7518F43D7F000C4033 /* ConversationsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ConversationsTableViewCell.m; path = jeju/ConversationsTableViewCell.m; sourceTree = "<group>"; };
+		81741A7418F43D7F000C4033 /* ConversationsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConversationsTableViewCell.h; sourceTree = "<group>"; };
+		81741A7518F43D7F000C4033 /* ConversationsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConversationsTableViewCell.m; sourceTree = "<group>"; };
 		81741A7718F4770F000C4033 /* PlanningPokerCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlanningPokerCardViewController.h; sourceTree = "<group>"; };
 		81741A7818F4770F000C4033 /* PlanningPokerCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlanningPokerCardViewController.m; sourceTree = "<group>"; };
 		81741A7918F4770F000C4033 /* PlanningPokerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlanningPokerViewController.h; sourceTree = "<group>"; };
@@ -85,6 +85,10 @@
 		A06BEB3F18F30873007810AE /* RepoDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepoDetailTableViewController.m; sourceTree = "<group>"; };
 		A06BEB4418F30CA8007810AE /* FeedTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedTableViewController.h; sourceTree = "<group>"; };
 		A06BEB4518F30CA8007810AE /* FeedTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedTableViewController.m; sourceTree = "<group>"; };
+		A0BA8A3218F444470077E094 /* PlanningPokerCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlanningPokerCardViewController.h; sourceTree = "<group>"; };
+		A0BA8A3318F444470077E094 /* PlanningPokerCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlanningPokerCardViewController.m; sourceTree = "<group>"; };
+		A0BA8A3418F444470077E094 /* PlanningPokerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlanningPokerViewController.h; sourceTree = "<group>"; };
+		A0BA8A3518F444470077E094 /* PlanningPokerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlanningPokerViewController.m; sourceTree = "<group>"; };
 		A3C1FE5AAFE74CA8ADA25BFA /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5F2C2F2CA484458BAC13ACE /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -136,8 +140,6 @@
 		A059510B18EAF9D900E6BB44 = {
 			isa = PBXGroup;
 			children = (
-				81741A7418F43D7F000C4033 /* ConversationsTableViewCell.h */,
-				81741A7518F43D7F000C4033 /* ConversationsTableViewCell.m */,
 				A059511F18EAF9D900E6BB44 /* jeju */,
 				A059514518EAF9D900E6BB44 /* jejuTests */,
 				A059511618EAF9D900E6BB44 /* Frameworks */,
@@ -171,6 +173,8 @@
 		A059511F18EAF9D900E6BB44 /* jeju */ = {
 			isa = PBXGroup;
 			children = (
+				81741A7418F43D7F000C4033 /* ConversationsTableViewCell.h */,
+				81741A7518F43D7F000C4033 /* ConversationsTableViewCell.m */,
 				81741A7718F4770F000C4033 /* PlanningPokerCardViewController.h */,
 				81741A7818F4770F000C4033 /* PlanningPokerCardViewController.m */,
 				81741A7918F4770F000C4033 /* PlanningPokerViewController.h */,
@@ -186,6 +190,10 @@
 				A06BEB3F18F30873007810AE /* RepoDetailTableViewController.m */,
 				A059513118EAF9D900E6BB44 /* MasterViewController.h */,
 				A059513218EAF9D900E6BB44 /* MasterViewController.m */,
+				A0BA8A3218F444470077E094 /* PlanningPokerCardViewController.h */,
+				A0BA8A3318F444470077E094 /* PlanningPokerCardViewController.m */,
+				A0BA8A3418F444470077E094 /* PlanningPokerViewController.h */,
+				A0BA8A3518F444470077E094 /* PlanningPokerViewController.m */,
 				A059513718EAF9D900E6BB44 /* Images.xcassets */,
 				A059512E18EAF9D900E6BB44 /* jeju.xcdatamodeld */,
 				A059512018EAF9D900E6BB44 /* Supporting Files */,

@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Octokit.h"
+#import "OctoKit.h"
 #import "Bolts.h"
 
 @interface OctokitModel : NSObject
