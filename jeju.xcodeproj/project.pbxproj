@@ -162,6 +162,10 @@
 				A059512818EAF9D900E6BB44 /* AppDelegate.h */,
 				A059512918EAF9D900E6BB44 /* AppDelegate.m */,
 				A059512B18EAF9D900E6BB44 /* Main.storyboard */,
+				835A51FD18F420B000AC83C7 /* PlanningPokerCardViewController.h */,
+				835A51FE18F420B000AC83C7 /* PlanningPokerCardViewController.m */,
+				835A51FA18F3E14A00AC83C7 /* PlanningPokerViewController.h */,
+				835A51FB18F3E14A00AC83C7 /* PlanningPokerViewController.m */,
 				A06BEB3E18F30873007810AE /* RepoDetailTableViewController.h */,
 				A06BEB3F18F30873007810AE /* RepoDetailTableViewController.m */,
 				A059513118EAF9D900E6BB44 /* MasterViewController.h */,
@@ -340,6 +344,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A059513318EAF9D900E6BB44 /* MasterViewController.m in Sources */,
+				835A51FF18F420B000AC83C7 /* PlanningPokerCardViewController.m in Sources */,
 				A06BEB4018F30873007810AE /* RepoDetailTableViewController.m in Sources */,
 				A02E50FC18ED7BAE00CF81EB /* LoginViewController.m in Sources */,
 				A059513018EAF9D900E6BB44 /* jeju.xcdatamodeld in Sources */,
