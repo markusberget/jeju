@@ -50,7 +50,7 @@
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Whoops!"
                                                             message:@"Something went wrong."
                                                            delegate:nil
-                                                  cancelButtonTitle:nil
+                                                  cancelButtonTitle:@"Ok"
                                                   otherButtonTitles:nil];
             [alert show];
             [self presentViewController:self.loginViewController animated:YES completion:NULL];

@@ -10,6 +10,8 @@
 		22A31B9418EDDC0600ADB7FB /* octocat_gems.png in Resources */ = {isa = PBXBuildFile; fileRef = 22A31B9318EDDC0600ADB7FB /* octocat_gems.png */; };
 		3DC80690CA5244C7A6D79B31 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A3C1FE5AAFE74CA8ADA25BFA /* libPods.a */; };
 		635DD8EE18F3EDFE009D7590 /* OctokitModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 635DD8ED18F3EDFE009D7590 /* OctokitModel.m */; };
+		81741A7318F43932000C4033 /* ConversationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81741A7218F43932000C4033 /* ConversationTableViewController.m */; };
+		81741A7618F43D7F000C4033 /* ConversationsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 81741A7518F43D7F000C4033 /* ConversationsTableViewCell.m */; };
 		A02E50FC18ED7BAE00CF81EB /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A02E50FB18ED7BAE00CF81EB /* LoginViewController.m */; };
 		A059511818EAF9D900E6BB44 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A059511718EAF9D900E6BB44 /* Foundation.framework */; };
 		A059511A18EAF9D900E6BB44 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A059511918EAF9D900E6BB44 /* CoreGraphics.framework */; };
@@ -46,6 +48,10 @@
 		22A31B9318EDDC0600ADB7FB /* octocat_gems.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = octocat_gems.png; sourceTree = "<group>"; };
 		635DD8EC18F3EDFE009D7590 /* OctokitModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OctokitModel.h; path = Models/OctokitModel.h; sourceTree = "<group>"; };
 		635DD8ED18F3EDFE009D7590 /* OctokitModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OctokitModel.m; path = Models/OctokitModel.m; sourceTree = "<group>"; };
+		81741A7118F43932000C4033 /* ConversationTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConversationTableViewController.h; sourceTree = "<group>"; };
+		81741A7218F43932000C4033 /* ConversationTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConversationTableViewController.m; sourceTree = "<group>"; };
+		81741A7418F43D7F000C4033 /* ConversationsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConversationsTableViewCell.h; path = jeju/ConversationsTableViewCell.h; sourceTree = "<group>"; };
+		81741A7518F43D7F000C4033 /* ConversationsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ConversationsTableViewCell.m; path = jeju/ConversationsTableViewCell.m; sourceTree = "<group>"; };
 		A02E50FA18ED7BAE00CF81EB /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		A02E50FB18ED7BAE00CF81EB /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		A059511418EAF9D900E6BB44 /* jeju.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = jeju.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -124,6 +130,8 @@
 		A059510B18EAF9D900E6BB44 = {
 			isa = PBXGroup;
 			children = (
+				81741A7418F43D7F000C4033 /* ConversationsTableViewCell.h */,
+				81741A7518F43D7F000C4033 /* ConversationsTableViewCell.m */,
 				A059511F18EAF9D900E6BB44 /* jeju */,
 				A059514518EAF9D900E6BB44 /* jejuTests */,
 				A059511618EAF9D900E6BB44 /* Frameworks */,
@@ -162,6 +170,8 @@
 				A059512818EAF9D900E6BB44 /* AppDelegate.h */,
 				A059512918EAF9D900E6BB44 /* AppDelegate.m */,
 				A059512B18EAF9D900E6BB44 /* Main.storyboard */,
+				81741A7118F43932000C4033 /* ConversationTableViewController.h */,
+				81741A7218F43932000C4033 /* ConversationTableViewController.m */,
 				A06BEB3E18F30873007810AE /* RepoDetailTableViewController.h */,
 				A06BEB3F18F30873007810AE /* RepoDetailTableViewController.m */,
 				A059513118EAF9D900E6BB44 /* MasterViewController.h */,
@@ -339,6 +349,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81741A7618F43D7F000C4033 /* ConversationsTableViewCell.m in Sources */,
 				A059513318EAF9D900E6BB44 /* MasterViewController.m in Sources */,
 				A06BEB4018F30873007810AE /* RepoDetailTableViewController.m in Sources */,
 				A02E50FC18ED7BAE00CF81EB /* LoginViewController.m in Sources */,
@@ -347,6 +358,7 @@
 				A059512618EAF9D900E6BB44 /* main.m in Sources */,
 				A06BEB4618F30CA8007810AE /* FeedTableViewController.m in Sources */,
 				635DD8EE18F3EDFE009D7590 /* OctokitModel.m in Sources */,
+				81741A7318F43932000C4033 /* ConversationTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

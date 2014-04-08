@@ -55,4 +55,10 @@
  */
 -(BFTask *) getBranches:(NSString *) repo
                        withOwner:(NSString *) owner;
+
+/**
+ *Fetches all issues
+ **/
+-(BFTask *) getIssues:(NSURL *) issueURL;
+
 @end

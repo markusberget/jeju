@@ -96,4 +96,14 @@
 
     return source.task;
 }
+
+-(BFTask *) getIssues:(NSURL *) issueURL
+{
+    BFTaskCompletionSource * source = [BFTaskCompletionSource taskCompletionSource];
+    
+  
+    
+    return nil;
+
+}
 @end

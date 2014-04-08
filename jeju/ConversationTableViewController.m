@@ -1,18 +1,18 @@
 //
-//  RepoDetailTableViewController.m
+//  ConversationTableViewController.m
 //  jeju
 //
-//  Created by Markus Berget on 2014-04-07.
+//  Created by Joel Lundell on 4/8/14.
 //  Copyright (c) 2014 Markus Berget. All rights reserved.
 //
 
-#import "RepoDetailTableViewController.h"
+#import "ConversationTableViewController.h"
 
-@interface RepoDetailTableViewController ()
+@interface ConversationTableViewController ()
 
 @end
 
-@implementation RepoDetailTableViewController
+@implementation ConversationTableViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -36,9 +36,41 @@
 - (void)configureView
 {
     // Update the user interface for the detail item.
-    
     if (self.repo) {
-        self.navigationItem.title = self.repo.name;
+        
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        
+        self.octokitModel = [[OctokitModel alloc] initWithToken:[defaults objectForKey:@"token"]
+                                                    andUserName:[defaults objectForKey:@"user"]];
+//        // we get the repositories
+//        [[self.octokitModel getIssues:<#(NSURL *)#>] continueWithBlock:^id(BFTask *task) {
+//            
+//            if (task.error) {
+//                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Whoops!"
+//                                                                message:@"Something went wrong."
+//                                                               delegate:nil
+//                                                      cancelButtonTitle:@"Ok"
+//                                                      otherButtonTitles:nil];
+//                [alert show];
+//                [self presentViewController:self.loginViewController animated:YES completion:NULL];
+//                
+//            } else {
+//                self.repos = task.result;
+//                [self.tableView reloadData];
+//            }
+//        
+//            return nil;
+//        }];
+//
+        
+        
+        NSString *satring = self.repo.issuesHTMLURL.absoluteString;
+        NSLog(satring);
+//        NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+//        
+//        OctokitModel * model = [[OctokitModel alloc] initWithToken:[defaults objectForKey:@"token"] andUserName:[defaults objectForKey:@"user"]];
+//        
+//        self.navigationItem.title = self.repo.name;
     }
 }
 
@@ -46,9 +78,11 @@
 {
     [super viewDidLoad];
     
-    self.items = [[NSArray alloc] initWithObjects:@"Feed", @"Conversations", nil];
+    // Uncomment the following line to preserve selection between presentations.
+    // self.clearsSelectionOnViewWillAppear = NO;
     
-    [self configureView];
+    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)didReceiveMemoryWarning
@@ -61,28 +95,28 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+#warning Potentially incomplete method implementation.
     // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return self.items.count;
+    return self.conversations.count;
 }
 
-
+/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
     
-    NSString *identifier = [self.items objectAtIndex:indexPath.row];
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
-    
-    cell.textLabel.text = identifier;
     // Configure the cell...
     
     return cell;
 }
+*/
 
 /*
 // Override to support conditional editing of the table view.
@@ -122,19 +156,15 @@
 }
 */
 
-
+/*
 #pragma mark - Navigation
 
-//In a storyboard-based application, you will often want to do a little preparation before navigation
+// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    
-    if ([[segue identifier] isEqualToString:@"showFeed"] || [[segue identifier] isEqualToString:@"showConversations"]) {
-        [[segue destinationViewController] setRepo:self.repo];
-    }
 }
-
+*/
 
 @end
