@@ -11,6 +11,8 @@
 
 @interface LoginViewController ()
 
+
+
 @end
 
 @implementation LoginViewController
@@ -19,7 +21,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        
     }
     return self;
 }
@@ -34,7 +36,21 @@
 
 -(void)login
 {
-    [[OCTClient signInToServerUsingWebBrowser:OCTServer.dotComServer scopes:OCTClientAuthorizationScopesRepository | OCTClientAuthorizationScopesUser ] subscribeNext:^(OCTClient *authenticatedClient) {
+    OCTClientAuthorizationScopes scopes = OCTClientAuthorizationScopesRepository | OCTClientAuthorizationScopesUser;
+    
+    [[OctokitModel authenticateWithScopes:scopes] continueWithBlock:^id(BFTask *task) {
+        OctokitModel * model = task.result;
+
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setObject:model.userName forKey:@"user"];
+        [defaults setObject:model.token forKey:@"token"];
+        
+        [self dismissViewControllerAnimated:YES completion:^{
+        }];
+        return nil;
+    }];
+    
+    /*[[OCTClient signInToServerUsingWebBrowser:OCTServer.dotComServer scopes:OCTClientAuthorizationScopesRepository | OCTClientAuthorizationScopesUser ] subscribeNext:^(OCTClient *authenticatedClient) {
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         [defaults setObject:[authenticatedClient user].rawLogin forKey:@"user"];
         [defaults setObject:[authenticatedClient token] forKey:@"token"];
@@ -43,7 +59,7 @@
         NSLog(@"Success!");
     } error:^(NSError *error) {
         
-    }];
+    }];*/
 }
 
 -(void)styleButtons

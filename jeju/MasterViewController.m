@@ -9,7 +9,7 @@
 #import "MasterViewController.h"
 
 #import "RepoDetailTableViewController.h"
-
+#import "Models/OctokitModel.h"
 #import "Octokit.h"
 
 @interface MasterViewController ()
@@ -32,33 +32,30 @@
 }
 
 - (void)fetchData {
-    NSLog(@"Fetching data");
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    OctokitModel* model = [[OctokitModel alloc] initWithToken:[defaults objectForKey:@"token"]
+                                                  andUserName:[defaults objectForKey:@"user"]];
+    // we get the repositories
+    [[model getRepositories] continueWithBlock:^id(BFTask *task) {
+        
+        if (task.error) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Whoops!"
+                                                            message:@"Something went wrong."
+                                                           delegate:nil
+                                                  cancelButtonTitle:nil
+                                                  otherButtonTitles:nil];
+            [alert show];
+            [self presentViewController:self.loginViewController animated:YES completion:NULL];
 
-    self.user = [OCTUser userWithRawLogin:[defaults objectForKey:@"user"] server:OCTServer.dotComServer];
-    self.client = [OCTClient authenticatedClientWithUser:self.user token:[defaults objectForKey:@"token"]];
-    
-    RACSignal *request = [self.client fetchUserRepositories];
-
-    
-    NSMutableArray *newRepos = [[NSMutableArray alloc] init];
-    
-    [[request deliverOn:RACScheduler.mainThreadScheduler] subscribeNext:^(OCTRepository *repository) {
-        [newRepos addObject:repository];
-    } error:^(NSError *error) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Whoops!"
-                                                        message:@"Something went wrong."
-                                                       delegate:nil
-                                              cancelButtonTitle:nil
-                                              otherButtonTitles:nil];
-        [alert show];
-        [self presentViewController:self.loginViewController animated:YES completion:NULL];
-    } completed:^{
-        self.repos = newRepos;
-        [self.tableView reloadData];
+        } else {
+            self.repos = task.result;
+            [self.tableView reloadData];
+        }
+        
+        return nil;
     }];
 }
-
 
 - (void)viewDidLoad
 {
