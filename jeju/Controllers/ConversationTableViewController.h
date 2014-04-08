@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 #import "OctoKit.h"
-#import "Models/OctokitModel.h"
+#import "OctokitModel.h"
 
 
 @interface ConversationTableViewController : UITableViewController

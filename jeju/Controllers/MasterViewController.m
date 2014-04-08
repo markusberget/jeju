@@ -9,7 +9,7 @@
 #import "MasterViewController.h"
 
 #import "RepoDetailTableViewController.h"
-#import "Models/OctokitModel.h"
+#import "OctokitModel.h"
 
 @interface MasterViewController ()
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;

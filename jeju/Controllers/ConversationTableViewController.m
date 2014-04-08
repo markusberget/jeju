@@ -1,19 +1,18 @@
 //
-//  FeedTableViewController.m
+//  ConversationTableViewController.m
 //  jeju
 //
-//  Created by Markus Berget on 2014-04-07.
+//  Created by Joel Lundell on 4/8/14.
 //  Copyright (c) 2014 Markus Berget. All rights reserved.
 //
 
-#import "FeedTableViewController.h"
-#import "Models/OctokitModel.h"
+#import "ConversationTableViewController.h"
 
-@interface FeedTableViewController ()
+@interface ConversationTableViewController ()
 
 @end
 
-@implementation FeedTableViewController
+@implementation ConversationTableViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -22,6 +21,47 @@
         // Custom initialization
     }
     return self;
+}
+
+- (void)setRepo:(OCTRepository *) newRepo
+{
+    if (_repo != newRepo) {
+        _repo = newRepo;
+        
+        // Update the view.
+        [self configureView];
+    }
+}
+
+- (void)configureView
+{
+    // Update the user interface for the detail item.
+    if (self.repo) {        
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        
+        self.octokitModel = [[OctokitModel alloc] initWithToken:[defaults objectForKey:@"token"]
+                                                    andUserName:[defaults objectForKey:@"user"]];
+        // we get the repositories
+        [[self.octokitModel getIssues] continueWithBlock:^id(BFTask *task) {
+            
+            if (task.error) {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Whoops!"
+                                                                message:@"Something went wrong."
+                                                               delegate:nil
+                                                      cancelButtonTitle:@"Ok"
+                                                      otherButtonTitles:nil];
+                [alert show];
+            } else {
+                NSMutableArray *results = [[NSMutableArray alloc] init];
+                for(OCTResponse *object in task.result) {
+                    [results addObject: [object parsedResult]];
+                }
+                self.conversations = results;
+                [self.tableView reloadData];
+            }
+            return nil;
+        }];
+    }
 }
 
 - (void)viewDidLoad
@@ -35,31 +75,6 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
-- (void)setRepo:(OCTRepository *) newRepo
-{
-    if (_repo != newRepo) {
-        _repo = newRepo;
-        
-        
-        
-        // Update the view.
-        [self configureView];
-    }
-}
-
-- (void)configureView
-{
-    // Update the user interface for the detail item.
-    
-    if (self.repo) {
-        NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
-        
-        OctokitModel * model = [[OctokitModel alloc] initWithToken:[defaults objectForKey:@"token"] andUserName:[defaults objectForKey:@"user"]];
-    
-        self.navigationItem.title = self.repo.name;
-    }
-}
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -70,28 +85,29 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return self.conversations.count;
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"conversationCell" forIndexPath:indexPath];
+    
+    OCTIssue *issue = [self.conversations objectAtIndex:indexPath.row];
+    
+    cell.textLabel.text = issue.title;
     
     // Configure the cell...
     
     return cell;
 }
-*/
 
 /*
 // Override to support conditional editing of the table view.
