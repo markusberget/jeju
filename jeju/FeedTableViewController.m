@@ -7,6 +7,7 @@
 //
 
 #import "FeedTableViewController.h"
+#import "Models/OctokitModel.h"
 
 @interface FeedTableViewController ()
 
@@ -39,6 +40,8 @@
     if (_repo != newRepo) {
         _repo = newRepo;
         
+        
+        
         // Update the view.
         [self configureView];
     }
@@ -49,6 +52,10 @@
     // Update the user interface for the detail item.
     
     if (self.repo) {
+        NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+        
+        OctokitModel * model = [[OctokitModel alloc] initWithToken:[defaults objectForKey:@"token"] andUserName:[defaults objectForKey:@"user"]];
+    
         self.navigationItem.title = self.repo.name;
     }
 }

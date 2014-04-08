@@ -22,20 +22,15 @@
     // Override point for customization after application launch.
     UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
     MasterViewController *controller = (MasterViewController *)navigationController.topViewController;
-    controller.managedObjectContext = self.managedObjectContext;
+    controller.managedObjectContext = self.managedObjectContext;    
     
-    //Loading clientID and clientSecret from jeju-info.plist
-    NSString *clientID = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"Github.clientID"];
-    NSString *clientSecret = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"Github.clientSecret"];
-    
-    [OCTClient setClientID:clientID clientSecret:clientSecret];
-
     return YES;
 }
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
     if ([url.host isEqual:@"hellomamma"]) {
+        // Why iOS, why
         [OCTClient completeSignInWithCallbackURL:url];
         NSLog(@"successful login");
         return YES;
