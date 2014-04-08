@@ -32,9 +32,6 @@
     
     
     //Setting username for profile button
-    
-    NSLog(@"%@", self.octokitModel.userName);
-    
     self.navigationItem.rightBarButtonItem.title = self.octokitModel.userName ? self.octokitModel.userName : NSLocalizedString(@"Profile", nil);
 }
 

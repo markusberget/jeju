@@ -137,6 +137,209 @@
             </objects>
             <point key="canvasLocation" x="890" y="-637"/>
         </scene>
+        <!--Planning Poker View Controller-->
+        <scene sceneID="AFe-Xz-vWp">
+            <objects>
+                <viewController id="Jlt-r1-DQU" customClass="PlanningPokerViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Vgk-KQ-bFP"/>
+                        <viewControllerLayoutGuide type="bottom" id="0J3-fK-YnP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="4Pq-pW-J5S">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CtZ-M8-wKb">
+                                <rect key="frame" x="220" y="428" width="80" height="96"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <state key="normal" title="?">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="touchPlanningPokerCardButton:" destination="Jlt-r1-DQU" eventType="touchUpInside" id="gGu-Rj-h6r"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wHN-4r-2W4">
+                                <rect key="frame" x="20" y="428" width="80" height="96"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <state key="normal" title="40">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="touchPlanningPokerCardButton:" destination="Jlt-r1-DQU" eventType="touchUpInside" id="mIV-jn-x02"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nK0-mT-LfA">
+                                <rect key="frame" x="120" y="428" width="80" height="96"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <state key="normal" title="100">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="touchPlanningPokerCardButton:" destination="Jlt-r1-DQU" eventType="touchUpInside" id="teF-bF-iMp"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wn0-DD-sKo">
+                                <rect key="frame" x="220" y="312" width="80" height="96"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <state key="normal" title="20">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="touchPlanningPokerCardButton:" destination="Jlt-r1-DQU" eventType="touchUpInside" id="csP-Pf-DzL"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sdg-EL-dqH">
+                                <rect key="frame" x="20" y="312" width="80" height="96"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <state key="normal" title="8">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="touchPlanningPokerCardButton:" destination="Jlt-r1-DQU" eventType="touchUpInside" id="G7s-5q-ryj"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ejn-xV-NPK">
+                                <rect key="frame" x="120" y="312" width="80" height="96"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <state key="normal" title="13">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="touchPlanningPokerCardButton:" destination="Jlt-r1-DQU" eventType="touchUpInside" id="Op4-YN-b52"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fMl-9Q-nZk">
+                                <rect key="frame" x="220" y="196" width="80" height="96"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <state key="normal" title="5">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="touchPlanningPokerCardButton:" destination="Jlt-r1-DQU" eventType="touchUpInside" id="HdI-bo-Wx2"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L7K-Vm-0pF">
+                                <rect key="frame" x="20" y="196" width="80" height="96"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <state key="normal" title="2">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="touchPlanningPokerCardButton:" destination="Jlt-r1-DQU" eventType="touchUpInside" id="hlS-kJ-P79"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bx5-K8-46l">
+                                <rect key="frame" x="120" y="196" width="80" height="96"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <state key="normal" title="3">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="touchPlanningPokerCardButton:" destination="Jlt-r1-DQU" eventType="touchUpInside" id="5cp-wm-oGj"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nCC-tf-eYa">
+                                <rect key="frame" x="220" y="80" width="80" height="96"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <state key="normal" title="1">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="touchPlanningPokerCardButton:" destination="Jlt-r1-DQU" eventType="touchUpInside" id="BvH-UC-G8X"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JyV-5g-z9C">
+                                <rect key="frame" x="20" y="80" width="80" height="96"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <state key="normal" title="0">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="touchPlanningPokerCardButton:" destination="Jlt-r1-DQU" eventType="touchUpInside" id="ccn-Ys-ue9"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Ks-qY-Jgd">
+                                <rect key="frame" x="120" y="80" width="80" height="96"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <state key="normal" title="1/2">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="touchPlanningPokerCardButton:" destination="Jlt-r1-DQU" eventType="touchUpInside" id="hAp-yC-4eG"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="poT-vO-Rke"/>
+                    <connections>
+                        <outletCollection property="planningPokerCards" destination="JyV-5g-z9C" id="s8K-qj-i3q"/>
+                        <outletCollection property="planningPokerCards" destination="4Ks-qY-Jgd" id="MrQ-GV-VC6"/>
+                        <outletCollection property="planningPokerCards" destination="nCC-tf-eYa" id="dw4-8j-qH8"/>
+                        <outletCollection property="planningPokerCards" destination="L7K-Vm-0pF" id="6Fr-MH-THh"/>
+                        <outletCollection property="planningPokerCards" destination="Bx5-K8-46l" id="5A4-Hy-aoJ"/>
+                        <outletCollection property="planningPokerCards" destination="fMl-9Q-nZk" id="xcS-Hd-sZL"/>
+                        <outletCollection property="planningPokerCards" destination="Sdg-EL-dqH" id="U8J-ZB-7zy"/>
+                        <outletCollection property="planningPokerCards" destination="ejn-xV-NPK" id="lIX-Ne-ImV"/>
+                        <outletCollection property="planningPokerCards" destination="wn0-DD-sKo" id="ixy-dz-3es"/>
+                        <outletCollection property="planningPokerCards" destination="wHN-4r-2W4" id="XaJ-d5-axl"/>
+                        <outletCollection property="planningPokerCards" destination="nK0-mT-LfA" id="YOE-Rq-Fzx"/>
+                        <outletCollection property="planningPokerCards" destination="CtZ-M8-wKb" id="iYw-qF-WFG"/>
+                        <segue destination="gSp-bi-ga3" kind="push" identifier="Planning Poker Card" id="JTG-h0-zYE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pFK-nv-iO5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1582" y="933"/>
+        </scene>
+        <!--Planning Poker Card View Controller-->
+        <scene sceneID="4wf-nq-9cW">
+            <objects>
+                <viewController id="gSp-bi-ga3" customClass="PlanningPokerCardViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="NcF-k9-h79"/>
+                        <viewControllerLayoutGuide type="bottom" id="PQC-Ue-c4Q"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="wdJ-fi-7aQ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KCz-LS-3UU">
+                                <rect key="frame" x="40" y="147" width="240" height="288"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="80"/>
+                                <state key="normal" backgroundImage="cardback">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="touchPlanningPokerCardButton:" destination="gSp-bi-ga3" eventType="touchUpInside" id="f6U-rt-pP4"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="sXb-k7-K3U"/>
+                    <connections>
+                        <outlet property="planningPokerCardButton" destination="KCz-LS-3UU" id="YLY-wV-FB1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="r6G-Bo-4XN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2082" y="933"/>
+        </scene>
         <!--Repo Detail Table View Controller-->
         <scene sceneID="9W9-V4-yKV">
             <objects>
@@ -190,6 +393,26 @@
                                     <segue destination="QMR-KE-uIe" kind="push" identifier="showConversations" id="NM8-rn-ayA"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Planning Poker" textLabel="PTp-jf-MR2" style="IBUITableViewCellStyleDefault" id="zG2-hS-rxW">
+                                <rect key="frame" x="0.0" y="174" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zG2-hS-rxW" id="i6N-wf-B5e">
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PTp-jf-MR2">
+                                            <rect key="frame" x="15" y="0.0" width="270" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="Jlt-r1-DQU" kind="push" identifier="showPlanningPoker" id="jcX-dm-GHY"/>
+                                </connections>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="Pqc-hk-enc" id="bbA-JD-NTi"/>
@@ -229,7 +452,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kPv-w0-SDq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1568" y="472"/>
+            <point key="canvasLocation" x="1582" y="168"/>
         </scene>
         <!--Feed Table View Controller-->
         <scene sceneID="Wck-mN-iW8">
@@ -258,10 +481,11 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eTp-0W-v0g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1568" y="-308"/>
+            <point key="canvasLocation" x="1582" y="-612"/>
         </scene>
     </scenes>
     <resources>
+        <image name="cardback" width="240" height="288"/>
         <image name="octocat_gems.png" width="512" height="512"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

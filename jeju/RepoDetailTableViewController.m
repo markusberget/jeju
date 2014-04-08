@@ -7,6 +7,7 @@
 //
 
 #import "RepoDetailTableViewController.h"
+#import "PlanningPokerViewController.h"
 
 @interface RepoDetailTableViewController ()
 
@@ -45,8 +46,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.items = [[NSArray alloc] initWithObjects:@"Feed", @"Conversations", nil];
+
+    self.items = [[NSArray alloc] initWithObjects:@"Feed", @"Conversations", @"Planning Poker", nil];
     
     [self configureView];
 }
@@ -74,7 +75,9 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+
+    NSLog(@"%ld", (long)indexPath.row);
+ 
     NSString *identifier = [self.items objectAtIndex:indexPath.row];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
     
@@ -131,8 +134,13 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     
-    if ([[segue identifier] isEqualToString:@"showFeed"] || [segue identifier] isEqualToString:@"<#string#>") {
+    if ([[segue identifier] isEqualToString:@"showFeed"] || [[segue identifier] isEqualToString:@"showConversations"]) {
         [[segue destinationViewController] setRepo:self.repo];
+    } else if ([[segue identifier] isEqualToString:@"showPlanningPoker"]) {
+        if ([segue.destinationViewController isKindOfClass:[PlanningPokerViewController class]]) {
+            PlanningPokerViewController *ppvc = (PlanningPokerViewController *)segue.destinationViewController;
+            ppvc.title = @"Planning Poker";
+        }
     }
 }
 

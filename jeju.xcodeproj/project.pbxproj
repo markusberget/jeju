@@ -12,6 +12,8 @@
 		635DD8EE18F3EDFE009D7590 /* OctokitModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 635DD8ED18F3EDFE009D7590 /* OctokitModel.m */; };
 		81741A7318F43932000C4033 /* ConversationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81741A7218F43932000C4033 /* ConversationTableViewController.m */; };
 		81741A7618F43D7F000C4033 /* ConversationsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 81741A7518F43D7F000C4033 /* ConversationsTableViewCell.m */; };
+		81741A7B18F4770F000C4033 /* PlanningPokerCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81741A7818F4770F000C4033 /* PlanningPokerCardViewController.m */; };
+		81741A7C18F4770F000C4033 /* PlanningPokerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81741A7A18F4770F000C4033 /* PlanningPokerViewController.m */; };
 		A02E50FC18ED7BAE00CF81EB /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A02E50FB18ED7BAE00CF81EB /* LoginViewController.m */; };
 		A059511818EAF9D900E6BB44 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A059511718EAF9D900E6BB44 /* Foundation.framework */; };
 		A059511A18EAF9D900E6BB44 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A059511918EAF9D900E6BB44 /* CoreGraphics.framework */; };
@@ -52,6 +54,10 @@
 		81741A7218F43932000C4033 /* ConversationTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConversationTableViewController.m; sourceTree = "<group>"; };
 		81741A7418F43D7F000C4033 /* ConversationsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConversationsTableViewCell.h; path = jeju/ConversationsTableViewCell.h; sourceTree = "<group>"; };
 		81741A7518F43D7F000C4033 /* ConversationsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ConversationsTableViewCell.m; path = jeju/ConversationsTableViewCell.m; sourceTree = "<group>"; };
+		81741A7718F4770F000C4033 /* PlanningPokerCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlanningPokerCardViewController.h; sourceTree = "<group>"; };
+		81741A7818F4770F000C4033 /* PlanningPokerCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlanningPokerCardViewController.m; sourceTree = "<group>"; };
+		81741A7918F4770F000C4033 /* PlanningPokerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlanningPokerViewController.h; sourceTree = "<group>"; };
+		81741A7A18F4770F000C4033 /* PlanningPokerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlanningPokerViewController.m; sourceTree = "<group>"; };
 		A02E50FA18ED7BAE00CF81EB /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		A02E50FB18ED7BAE00CF81EB /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		A059511418EAF9D900E6BB44 /* jeju.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = jeju.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -165,6 +171,10 @@
 		A059511F18EAF9D900E6BB44 /* jeju */ = {
 			isa = PBXGroup;
 			children = (
+				81741A7718F4770F000C4033 /* PlanningPokerCardViewController.h */,
+				81741A7818F4770F000C4033 /* PlanningPokerCardViewController.m */,
+				81741A7918F4770F000C4033 /* PlanningPokerViewController.h */,
+				81741A7A18F4770F000C4033 /* PlanningPokerViewController.m */,
 				635DD8EB18F3ED91009D7590 /* Models */,
 				22A31B9518EDDC1A00ADB7FB /* Assets */,
 				A059512818EAF9D900E6BB44 /* AppDelegate.h */,
@@ -359,6 +369,8 @@
 				A06BEB4618F30CA8007810AE /* FeedTableViewController.m in Sources */,
 				635DD8EE18F3EDFE009D7590 /* OctokitModel.m in Sources */,
 				81741A7318F43932000C4033 /* ConversationTableViewController.m in Sources */,
+				81741A7B18F4770F000C4033 /* PlanningPokerCardViewController.m in Sources */,
+				81741A7C18F4770F000C4033 /* PlanningPokerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
