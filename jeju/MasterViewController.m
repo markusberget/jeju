@@ -32,7 +32,6 @@
 }
 
 - (void)fetchData {
-    NSLog(@"Fetching data");
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 
     self.user = [OCTUser userWithRawLogin:[defaults objectForKey:@"user"] server:OCTServer.dotComServer];
@@ -63,9 +62,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    NSLog(@"ViewDidLoad");
-
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 
     self.loginViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
@@ -135,6 +131,7 @@
 {
     OCTRepository *repo = [self.repos objectAtIndex:indexPath.row];
     cell.textLabel.text = repo.name;
+    cell.detailTextLabel.text = repo.isPrivate ? @"Private" : @"Public";
 }
 
 @end

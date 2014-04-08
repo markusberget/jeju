@@ -24,8 +24,11 @@
     MasterViewController *controller = (MasterViewController *)navigationController.topViewController;
     controller.managedObjectContext = self.managedObjectContext;
     
-    //TODO: Need to change it to use IOS keychain
-    [OCTClient setClientID:@"0c9b68d809228a3a32ee" clientSecret:@"9c3a30ef75902e96b20e903f37c3ae952580040a"];
+    //Loading clientID and clientSecret from jeju-info.plist
+    NSString *clientID = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"Github.clientID"];
+    NSString *clientSecret = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"Github.clientSecret"];
+    
+    [OCTClient setClientID:clientID clientSecret:clientSecret];
 
     return YES;
 }
