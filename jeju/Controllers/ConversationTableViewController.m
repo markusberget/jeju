@@ -74,6 +74,8 @@
 {
     [super viewDidLoad];
     
+    [self.tableView registerNib:[UINib nibWithNibName:@"ConversationTableViewCell" bundle:nil] forCellReuseIdentifier:@"ConversationTableViewCell"];
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -104,14 +106,19 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ConversationsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"conversationCell" forIndexPath:indexPath];
+    ConversationsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ConversationTableViewCell" forIndexPath:indexPath];
+    
+    if (cell == nil)
+    {
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ConversationTableViewCell" owner:self options:nil];
+        cell = [nib objectAtIndex:0];
+    }
     
     OCTIssue *conversation = [self.conversations objectAtIndex:indexPath.row];
     
-    NSLog([conversation valueForKey:@"body"]);
-    cell.titleLabel.text = conversation.title;
-    cell.bodyLabel.text = [conversation valueForKey:@"body"];
-
+    cell.titleLabel.text = @"isssuee maddafaka";
+    cell.bodyLabel.text = @"octokit är seeeemst";
+    cell.lastActivityLabel.text = @"jooooooooooooel";
     
     // Configure the cell...
     
