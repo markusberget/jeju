@@ -38,11 +38,11 @@
 {
     // Update the user interface for the detail item.
     if (self.repo) {        
-        [self fetchMessages];
+        [self fetchConversations];
     }
 }
 //Fetching issues from Github with message as label
-- (void)fetchMessages
+- (void)fetchConversations
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
@@ -168,10 +168,10 @@
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([[segue identifier] isEqualToString:@"messageCell"]) {
+    if ([[segue identifier] isEqualToString:@"showMessages"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         OCTIssue *conversation = [self.conversations objectAtIndex:indexPath.row];
-        //[[segue destinationViewController] setConversation:conversation];
+        [[segue destinationViewController] setConversation:conversation andRepo: self.repo];
     }
     
 }
