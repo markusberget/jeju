@@ -126,7 +126,7 @@
                                     return nil;
                                 }];
                             }
-                            [self.tableView reloadData];
+// MIght want to reload here if you want to load last comment of each conversation before the images has loaded                            [self.tableView reloadData];
                         }
                     }
                     return nil;
