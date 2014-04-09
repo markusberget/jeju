@@ -7,6 +7,7 @@
 //
 
 #import "ConversationTableViewController.h"
+#import "ConversationsTableViewCell.h"
 
 @interface ConversationTableViewController ()
 
@@ -103,11 +104,14 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"conversationCell" forIndexPath:indexPath];
+    ConversationsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"conversationCell" forIndexPath:indexPath];
     
-    OCTIssue *issue = [self.conversations objectAtIndex:indexPath.row];
+    OCTIssue *conversation = [self.conversations objectAtIndex:indexPath.row];
     
-    cell.textLabel.text = issue.title;
+    NSLog([conversation valueForKey:@"body"]);
+    cell.titleLabel.text = conversation.title;
+    cell.bodyLabel.text = [conversation valueForKey:@"body"];
+
     
     // Configure the cell...
     
