@@ -113,7 +113,17 @@
 {
     NSString *path = [[NSString alloc] initWithFormat:@"repos/%@/%@/issues/%@/comments", repo.ownerLogin, repo.name, conversation.objectID];
     
+    
     return [self getDataForPath:path andParameters:nil returnClass:OCTIssueComment.class];
+}
+
+-(BFTask *) getLastMessageForRepo:(OCTRepository *)repo forConversation:(OCTIssue *)conversation
+{
+    NSString *path = [[NSString alloc] initWithFormat:@"repos/%@/%@/issues/%@/comments", repo.ownerLogin, repo.name, conversation.objectID];
+    
+    NSDictionary *parameters = [[NSDictionary alloc] initWithObjectsAndKeys:@"sort", @"updated", nil];
+    
+    return [self getDataForPath:path andParameters:parameters returnClass:OCTIssueComment.class];
 }
 
 

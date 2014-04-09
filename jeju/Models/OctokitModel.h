@@ -63,4 +63,7 @@
 
 -(BFTask *) getMessages:(OCTRepository *) repo forConversation: (OCTIssue *) conversation;
 
+-(BFTask *) getLastMessageForRepo:(OCTRepository *)repo forConversation:(OCTIssue *) conversation;
+
+
 @end

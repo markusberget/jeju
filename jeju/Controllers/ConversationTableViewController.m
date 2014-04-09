@@ -8,6 +8,8 @@
 
 #import "ConversationTableViewController.h"
 #import "ConversationsTableViewCell.h"
+#import "MessagesTableViewController.h"
+#import "DateUtil.h"
 
 @interface ConversationTableViewController ()
 
@@ -46,9 +48,12 @@
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
+    //initialize array for last message per conversation
+    self.lastMessages = [[NSMutableArray alloc] init];
+    
     self.octokitModel = [[OctokitModel alloc] initWithToken:[defaults objectForKey:@"token"]
                                                 andUserName:[defaults objectForKey:@"user"]];
-    // we get the repositories
+    // fetch the conversations
     [[self.octokitModel getConversations:self.repo] continueWithBlock:^id(BFTask *task) {
         
         if (task.error) {
@@ -64,11 +69,39 @@
                 [results addObject: [object parsedResult]];
             }
             self.conversations = results;
-            [self.tableView reloadData];
+            
+            //fetch the last message in each conversation
+            for (int i = 0; i < self.conversations.count; i++) {
+                OCTIssue *conversation = [self.conversations objectAtIndex:i];
+                
+                [[self.octokitModel getLastMessageForRepo:self.repo forConversation:conversation] continueWithBlock:^id(BFTask *task) {
+                    
+                    if (task.error) {
+                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Whoops!"
+                                                                        message:@"Something went wrong."
+                                                                       delegate:nil
+                                                              cancelButtonTitle:@"Ok"
+                                                              otherButtonTitles:nil];
+                        [alert show];
+                    } else {
+                        
+                        OCTResponse *object = [task.result objectAtIndex:0];
+                        OCTIssueComment *asd = [object parsedResult];
+                        
+                        [self.lastMessages addObject:asd];
+                        if (self.lastMessages.count == self.conversations.count) {
+                            [self.tableView reloadData];
+                        }
+                    }
+                    return nil;
+                }];
+            }
+
         }
         return nil;
     }];
-}
+    
+    }
 
 - (void)viewDidLoad
 {
@@ -115,12 +148,17 @@
     }
     
     OCTIssue *conversation = [self.conversations objectAtIndex:indexPath.row];
+
     
-    cell.titleLabel.text = @"isssuee maddafaka";
-    cell.bodyLabel.text = @"octokit är seeeemst";
-    cell.lastActivityLabel.text = @"jooooooooooooel";
+    cell.titleLabel.text = conversation.title;
+    cell.bodyLabel.text = @"";
+    cell.lastActivityLabel.text = @"";
     
-    // Configure the cell...
+    if (self.lastMessages.count > indexPath.row) {
+        OCTIssueComment *lastMessage = [self.lastMessages objectAtIndex:indexPath.row];
+        cell.bodyLabel.text = lastMessage.body;
+        cell.lastActivityLabel.text = [DateUtil formatDate:lastMessage.updatedDate WithFormat:@"yyyy-MM-dd hh:mm"];
+    }
     
     return cell;
 }
