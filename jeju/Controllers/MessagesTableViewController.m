@@ -23,10 +23,11 @@
     return self;
 }
 
-- (void)setConversation:(OCTIssue *)newConversation
+- (void)setConversation:(OCTIssue *)newConversation andRepo:(OCTRepository *)newRepo
 {
-    if (_conversation != newConversation) {
+    if (_conversation != newConversation || _repo != newRepo) {
         _conversation = newConversation;
+        _repo = newRepo;
         
         // Update the view.
         [self configureView];
@@ -36,7 +37,38 @@
 
 - (void)configureView
 {
+    // Update the user interface for the detail item.
+    if (self.conversation) {
+        [self fetchMessages];
+    }
+}
+
+- (void)fetchMessages
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
+    self.octokitModel = [[OctokitModel alloc] initWithToken:[defaults objectForKey:@"token"]
+                                                andUserName:[defaults objectForKey:@"user"]];
+    // we get the repositories
+    [[self.octokitModel getMessages:self.repo forConversation:self.conversation] continueWithBlock:^id(BFTask *task) {
+        
+        if (task.error) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Whoops!"
+                                                            message:@"Something went wrong."
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"Ok"
+                                                  otherButtonTitles:nil];
+            [alert show];
+        } else {
+            NSMutableArray *results = [[NSMutableArray alloc] init];
+            for(OCTResponse *object in task.result) {
+                [results addObject: [object parsedResult]];
+            }
+            self.messages = results;
+            [self.tableView reloadData];
+        }
+        return nil;
+    }];
 }
 
 - (void)viewDidLoad
@@ -60,28 +92,29 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return self.messages.count;
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"messageCell" forIndexPath:indexPath];
     
-    // Configure the cell...
+    OCTIssueComment *message = [self.messages objectAtIndex:indexPath.row];
+    
+    // Configure the cell..
+    
+    cell.textLabel.text = message.body;
     
     return cell;
 }
-*/
 
 /*
 // Override to support conditional editing of the table view.
