@@ -37,31 +37,36 @@
 {
     // Update the user interface for the detail item.
     if (self.repo) {        
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        
-        self.octokitModel = [[OctokitModel alloc] initWithToken:[defaults objectForKey:@"token"]
-                                                    andUserName:[defaults objectForKey:@"user"]];
-        // we get the repositories
-        [[self.octokitModel getIssues] continueWithBlock:^id(BFTask *task) {
-            
-            if (task.error) {
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Whoops!"
-                                                                message:@"Something went wrong."
-                                                               delegate:nil
-                                                      cancelButtonTitle:@"Ok"
-                                                      otherButtonTitles:nil];
-                [alert show];
-            } else {
-                NSMutableArray *results = [[NSMutableArray alloc] init];
-                for(OCTResponse *object in task.result) {
-                    [results addObject: [object parsedResult]];
-                }
-                self.conversations = results;
-                [self.tableView reloadData];
-            }
-            return nil;
-        }];
+        [self fetchMessages];
     }
+}
+//Fetching issues from Github with message as label
+- (void)fetchMessages
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    self.octokitModel = [[OctokitModel alloc] initWithToken:[defaults objectForKey:@"token"]
+                                                andUserName:[defaults objectForKey:@"user"]];
+    // we get the repositories
+    [[self.octokitModel getIssues] continueWithBlock:^id(BFTask *task) {
+        
+        if (task.error) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Whoops!"
+                                                            message:@"Something went wrong."
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"Ok"
+                                                  otherButtonTitles:nil];
+            [alert show];
+        } else {
+            NSMutableArray *results = [[NSMutableArray alloc] init];
+            for(OCTResponse *object in task.result) {
+                [results addObject: [object parsedResult]];
+            }
+            self.conversations = results;
+            [self.tableView reloadData];
+        }
+        return nil;
+    }];
 }
 
 - (void)viewDidLoad
