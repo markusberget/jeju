@@ -1,18 +1,18 @@
 //
-//  ConversationTableViewController.m
+//  MessagesTableViewController.m
 //  jeju
 //
-//  Created by Joel Lundell on 4/8/14.
+//  Created by Markus Berget on 2014-04-09.
 //  Copyright (c) 2014 Markus Berget. All rights reserved.
 //
 
-#import "ConversationTableViewController.h"
+#import "MessagesTableViewController.h"
 
-@interface ConversationTableViewController ()
+@interface MessagesTableViewController ()
 
 @end
 
-@implementation ConversationTableViewController
+@implementation MessagesTableViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -23,50 +23,20 @@
     return self;
 }
 
-- (void)setRepo:(OCTRepository *) newRepo
+- (void)setConversation:(OCTIssue *)newConversation
 {
-    if (_repo != newRepo) {
-        _repo = newRepo;
+    if (_conversation != newConversation) {
+        _conversation = newConversation;
         
         // Update the view.
         [self configureView];
     }
 }
 
+
 - (void)configureView
 {
-    // Update the user interface for the detail item.
-    if (self.repo) {        
-        [self fetchMessages];
-    }
-}
-//Fetching issues from Github with message as label
-- (void)fetchMessages
-{
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
-    self.octokitModel = [[OctokitModel alloc] initWithToken:[defaults objectForKey:@"token"]
-                                                andUserName:[defaults objectForKey:@"user"]];
-    // we get the repositories
-    [[self.octokitModel getConversations:self.repo] continueWithBlock:^id(BFTask *task) {
-        
-        if (task.error) {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Whoops!"
-                                                            message:@"Something went wrong."
-                                                           delegate:nil
-                                                  cancelButtonTitle:@"Ok"
-                                                  otherButtonTitles:nil];
-            [alert show];
-        } else {
-            NSMutableArray *results = [[NSMutableArray alloc] init];
-            for(OCTResponse *object in task.result) {
-                [results addObject: [object parsedResult]];
-            }
-            self.conversations = results;
-            [self.tableView reloadData];
-        }
-        return nil;
-    }];
 }
 
 - (void)viewDidLoad
@@ -90,29 +60,28 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 1;
+    return 0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return self.conversations.count;
+    return 0;
 }
 
-
+/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"conversationCell" forIndexPath:indexPath];
-    
-    OCTIssue *issue = [self.conversations objectAtIndex:indexPath.row];
-    
-    cell.textLabel.text = issue.title;
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
     
     // Configure the cell...
     
     return cell;
 }
+*/
 
 /*
 // Override to support conditional editing of the table view.
@@ -152,17 +121,15 @@
 }
 */
 
+/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([[segue identifier] isEqualToString:@"messageCell"]) {
-        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        OCTIssue *conversation = [self.conversations objectAtIndex:indexPath.row];
-        //[[segue destinationViewController] setConversation:conversation];
-    }
-    
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
 }
+*/
 
 @end
