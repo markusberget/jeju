@@ -10,6 +10,8 @@
 		22A31B9418EDDC0600ADB7FB /* octocat_gems.png in Resources */ = {isa = PBXBuildFile; fileRef = 22A31B9318EDDC0600ADB7FB /* octocat_gems.png */; };
 		3DC80690CA5244C7A6D79B31 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A3C1FE5AAFE74CA8ADA25BFA /* libPods.a */; };
 		635DD8EE18F3EDFE009D7590 /* OctokitModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 635DD8ED18F3EDFE009D7590 /* OctokitModel.m */; };
+		81741A8018F524C5000C4033 /* ConversationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81741A7F18F524C5000C4033 /* ConversationTableViewCell.xib */; };
+		81741A8318F527DD000C4033 /* ConversationsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 81741A8218F527DD000C4033 /* ConversationsTableViewCell.m */; };
 		A059511818EAF9D900E6BB44 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A059511718EAF9D900E6BB44 /* Foundation.framework */; };
 		A059511A18EAF9D900E6BB44 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A059511918EAF9D900E6BB44 /* CoreGraphics.framework */; };
 		A059511C18EAF9D900E6BB44 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A059511B18EAF9D900E6BB44 /* UIKit.framework */; };
@@ -33,7 +35,6 @@
 		A0F46C8D18F483E600C16AB1 /* PlanningPokerCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0F46C8418F483E600C16AB1 /* PlanningPokerCardViewController.m */; };
 		A0F46C8E18F483E600C16AB1 /* PlanningPokerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0F46C8618F483E600C16AB1 /* PlanningPokerViewController.m */; };
 		A0F46C8F18F483E600C16AB1 /* RepoDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0F46C8818F483E600C16AB1 /* RepoDetailTableViewController.m */; };
-		A0F46C9318F4869300C16AB1 /* ConversationsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A0F46C9218F4869300C16AB1 /* ConversationsTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,9 @@
 		22A31B9318EDDC0600ADB7FB /* octocat_gems.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = octocat_gems.png; sourceTree = "<group>"; };
 		635DD8EC18F3EDFE009D7590 /* OctokitModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OctokitModel.h; path = Models/OctokitModel.h; sourceTree = "<group>"; };
 		635DD8ED18F3EDFE009D7590 /* OctokitModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OctokitModel.m; path = Models/OctokitModel.m; sourceTree = "<group>"; };
+		81741A7F18F524C5000C4033 /* ConversationTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConversationTableViewCell.xib; sourceTree = "<group>"; };
+		81741A8118F527DD000C4033 /* ConversationsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConversationsTableViewCell.h; sourceTree = "<group>"; };
+		81741A8218F527DD000C4033 /* ConversationsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConversationsTableViewCell.m; sourceTree = "<group>"; };
 		A059511418EAF9D900E6BB44 /* jeju.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = jeju.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A059511718EAF9D900E6BB44 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A059511918EAF9D900E6BB44 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -83,8 +87,6 @@
 		A0F46C8618F483E600C16AB1 /* PlanningPokerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlanningPokerViewController.m; sourceTree = "<group>"; };
 		A0F46C8718F483E600C16AB1 /* RepoDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepoDetailTableViewController.h; sourceTree = "<group>"; };
 		A0F46C8818F483E600C16AB1 /* RepoDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepoDetailTableViewController.m; sourceTree = "<group>"; };
-		A0F46C9118F4869300C16AB1 /* ConversationsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConversationsTableViewCell.h; sourceTree = "<group>"; };
-		A0F46C9218F4869300C16AB1 /* ConversationsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConversationsTableViewCell.m; sourceTree = "<group>"; };
 		A3C1FE5AAFE74CA8ADA25BFA /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5F2C2F2CA484458BAC13ACE /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -236,8 +238,9 @@
 		A0F46C9018F4869300C16AB1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				A0F46C9118F4869300C16AB1 /* ConversationsTableViewCell.h */,
-				A0F46C9218F4869300C16AB1 /* ConversationsTableViewCell.m */,
+				81741A7F18F524C5000C4033 /* ConversationTableViewCell.xib */,
+				81741A8118F527DD000C4033 /* ConversationsTableViewCell.h */,
+				81741A8218F527DD000C4033 /* ConversationsTableViewCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -320,6 +323,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81741A8018F524C5000C4033 /* ConversationTableViewCell.xib in Resources */,
 				A059513818EAF9D900E6BB44 /* Images.xcassets in Resources */,
 				A059512418EAF9D900E6BB44 /* InfoPlist.strings in Resources */,
 				A059512D18EAF9D900E6BB44 /* Main.storyboard in Resources */,
@@ -379,11 +383,11 @@
 				A0F46C8D18F483E600C16AB1 /* PlanningPokerCardViewController.m in Sources */,
 				A059513018EAF9D900E6BB44 /* jeju.xcdatamodeld in Sources */,
 				A0F46C8918F483E600C16AB1 /* ConversationTableViewController.m in Sources */,
-				A0F46C9318F4869300C16AB1 /* ConversationsTableViewCell.m in Sources */,
 				A0F46C8A18F483E600C16AB1 /* FeedTableViewController.m in Sources */,
 				A0F46C8F18F483E600C16AB1 /* RepoDetailTableViewController.m in Sources */,
 				A059512A18EAF9D900E6BB44 /* AppDelegate.m in Sources */,
 				A059512618EAF9D900E6BB44 /* main.m in Sources */,
+				81741A8318F527DD000C4033 /* ConversationsTableViewCell.m in Sources */,
 				A0F46C8E18F483E600C16AB1 /* PlanningPokerViewController.m in Sources */,
 				A0F46C8C18F483E600C16AB1 /* MasterViewController.m in Sources */,
 				635DD8EE18F3EDFE009D7590 /* OctokitModel.m in Sources */,

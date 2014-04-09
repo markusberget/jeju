@@ -2,13 +2,19 @@
 //  ConversationsTableViewCell.m
 //  jeju
 //
-//  Created by Joel Lundell on 4/8/14.
+//  Created by Joel Lundell on 4/9/14.
 //  Copyright (c) 2014 Markus Berget. All rights reserved.
 //
 
 #import "ConversationsTableViewCell.h"
 
 @implementation ConversationsTableViewCell
+
+@synthesize titleLabel = _titleLabel;
+@synthesize bodyLabel = _bodyLabel;
+@synthesize lastActivityLabel = _lastActivityLabel;
+@synthesize thumbnailImageView = _thumbnailImageView;
+
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
