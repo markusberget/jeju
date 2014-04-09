@@ -81,23 +81,59 @@
     return source.task;
 }
 
--(BFTask *) getIssues
+-(BFTask *) getDataForPath: (NSString *) path andParameters: (NSDictionary *) params returnClass: (Class) resultClass
 {
     BFTaskCompletionSource *source = [BFTaskCompletionSource taskCompletionSource];
+
+    NSMutableURLRequest *request = [[self getAuthenticatedClient] requestWithMethod:@"GET" path:path parameters:params];
     
-    NSMutableURLRequest *request = [[self getAuthenticatedClient] requestWithMethod:@"GET" path:@"issues" parameters:nil];
-    
-    RACSignal *signal = [[self getAuthenticatedClient] enqueueRequest:request resultClass:OCTIssue.class];
+    RACSignal *signal = [[self getAuthenticatedClient] enqueueRequest:request resultClass:resultClass];
     
     [[[signal deliverOn:[RACScheduler mainThreadScheduler]] collect] subscribeNext:^(NSArray *issues) {
         [source setResult:issues];
     }
-        error:^(NSError *error) {
-            [source setError:error];
+    error:^(NSError *error) {
+        [source setError:error];
     }];
     
     return source.task;
 }
+
+-(BFTask *) getConversations:(OCTRepository *)repo
+{
+    
+    NSString *path = [[NSString alloc] initWithFormat:@"repos/%@/%@/issues", repo.ownerLogin, repo.name];
+    
+    NSDictionary *parameters = [[NSDictionary alloc] initWithObjectsAndKeys:@"labels", @"message", nil];
+    
+    return [self getDataForPath:path andParameters:parameters returnClass:OCTIssue.class];
+}
+
+-(BFTask *) getMessages:(OCTRepository *)repo forConversation:(OCTIssue *)conversation
+{
+    NSString *path = [[NSString alloc] initWithFormat:@"repos/%@/%@/issues/%@/comments", repo.ownerLogin, repo.name, conversation.objectID];
+    
+    
+    return [self getDataForPath:path andParameters:nil returnClass:OCTIssueComment.class];
+}
+
+-(BFTask *) getLastMessageForRepo:(OCTRepository *)repo forConversation:(OCTIssue *)conversation
+{
+    NSString *path = [[NSString alloc] initWithFormat:@"repos/%@/%@/issues/%@/comments", repo.ownerLogin, repo.name, conversation.objectID];
+    
+    NSDictionary *parameters = [[NSDictionary alloc] initWithObjectsAndKeys:@"sort", @"updated", nil];
+    
+    return [self getDataForPath:path andParameters:parameters returnClass:OCTIssueComment.class];
+}
+
+-(BFTask *) getUserFromLoginName:(NSString *)loginName
+{
+    NSString *path = [[NSString alloc] initWithFormat:@"users/%@", loginName];
+    
+    return [self getDataForPath:path andParameters:nil returnClass:OCTUser.class];
+    
+}
+
 
 
 -(BFTask *) getBranches:(NSString *)repo withOwner:(NSString *)owner

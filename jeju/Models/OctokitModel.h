@@ -57,8 +57,16 @@
                        withOwner:(NSString *) owner;
 
 /**
- *Fetches all issues
+ *Fetches all issues with the label message
  **/
--(BFTask *) getIssues
+-(BFTask *) getConversations:(OCTRepository *) repo;
+
+-(BFTask *) getMessages:(OCTRepository *) repo forConversation: (OCTIssue *) conversation;
+
+-(BFTask *) getLastMessageForRepo:(OCTRepository *)repo forConversation:(OCTIssue *) conversation;
+
+-(BFTask *) getUserFromLoginName:(NSString *)loginName;
+
+
 
 @end
