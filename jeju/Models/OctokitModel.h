@@ -65,5 +65,8 @@
 
 -(BFTask *) getLastMessageForRepo:(OCTRepository *)repo forConversation:(OCTIssue *) conversation;
 
+-(BFTask *) getUserFromLoginName:(NSString *)loginName;
+
+
 
 @end

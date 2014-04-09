@@ -48,8 +48,9 @@
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
-    //initialize array for last message per conversation
+    //initialize arrays for last message per conversation
     self.lastMessages = [[NSMutableArray alloc] init];
+    self.lastMessagesUsers = [[NSMutableArray alloc] init];
     
     self.octokitModel = [[OctokitModel alloc] initWithToken:[defaults objectForKey:@"token"]
                                                 andUserName:[defaults objectForKey:@"user"]];
@@ -85,11 +86,46 @@
                         [alert show];
                     } else {
                         
-                        OCTResponse *object = [task.result objectAtIndex:0];
-                        OCTIssueComment *asd = [object parsedResult];
-                        
-                        [self.lastMessages addObject:asd];
+                        OCTIssueComment *lastComment = nil;
+                        for(OCTResponse *object in task.result) {
+                            OCTIssueComment *comment = [object parsedResult];
+                            if (lastComment == nil) {
+                                lastComment = comment;
+                            }
+                            if ([comment.updatedDate compare:lastComment.updatedDate] == NSOrderedDescending) {
+                                lastComment = comment;
+                            }
+                        }
+
+                        [self.lastMessages addObject:lastComment];
+                        //if all last comments are fetched
                         if (self.lastMessages.count == self.conversations.count) {
+                            
+                            //fetch the image of the last commenter for each conversation
+                            for (OCTIssueComment *comment in self.lastMessages) {
+                                
+                                [[self.octokitModel getUserFromLoginName:comment.commenterLogin] continueWithBlock:^id(BFTask *task) {
+                                    
+                                    if (task.error) {
+                                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Whoops!"
+                                                                                        message:@"Something went wrong."
+                                                                                       delegate:nil
+                                                                              cancelButtonTitle:@"Ok"
+                                                                              otherButtonTitles:nil];
+                                        [alert show];
+                                    } else {
+                                        
+                                        OCTUser *user = [[task.result objectAtIndex:0] parsedResult];
+                                        [self.lastMessagesUsers addObject:user];
+
+                                        //if all users are fetched reload table view
+                                        if (self.lastMessages.count == self.conversations.count) {
+                                            [self.tableView reloadData];
+                                        }
+                                    }
+                                    return nil;
+                                }];
+                            }
                             [self.tableView reloadData];
                         }
                     }
@@ -159,9 +195,23 @@
         cell.bodyLabel.text = lastMessage.body;
         cell.lastActivityLabel.text = [DateUtil formatDate:lastMessage.updatedDate WithFormat:@"yyyy-MM-dd hh:mm"];
     }
+    if (self.lastMessagesUsers.count > indexPath.row) {
+        NSURL *url = [[self.lastMessagesUsers objectAtIndex:indexPath.row] avatarURL];
+        NSData *data = [NSData dataWithContentsOfURL:url];
+        UIImage *image = [UIImage imageWithData:data];
+        cell.thumbnailImageView.image = image;
+        
+    }
     
     return cell;
 }
+
+
+- (void) tableView: (UITableView *) tableView didSelectRowAtIndexPath: (NSIndexPath *) indexPath
+{
+    [self performSegueWithIdentifier:@"showMessages" sender:self];
+}
+
 
 /*
 // Override to support conditional editing of the table view.

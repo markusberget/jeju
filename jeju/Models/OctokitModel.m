@@ -126,6 +126,13 @@
     return [self getDataForPath:path andParameters:parameters returnClass:OCTIssueComment.class];
 }
 
+-(BFTask *) getUserFromLoginName:(NSString *)loginName
+{
+    NSString *path = [[NSString alloc] initWithFormat:@"users/%@", loginName];
+    
+    return [self getDataForPath:path andParameters:nil returnClass:OCTUser.class];
+    
+}
 
 
 

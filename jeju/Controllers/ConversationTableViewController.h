@@ -19,6 +19,7 @@
 @property (strong, nonatomic) NSArray *conversations;
 
 @property (strong, nonatomic) NSMutableArray *lastMessages;
+@property (strong, nonatomic) NSMutableArray *lastMessagesUsers;
 
 @property (strong, nonatomic) OctokitModel *octokitModel;
 

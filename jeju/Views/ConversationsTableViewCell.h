@@ -13,6 +13,6 @@
 @property (nonatomic, weak) IBOutlet UILabel *titleLabel;
 @property (nonatomic, weak) IBOutlet UILabel *bodyLabel;
 @property (nonatomic, weak) IBOutlet UILabel *lastActivityLabel;
-@property (nonatomic, weak) IBOutlet UIImageView *thumbnailImageView;
+@property (nonatomic, strong) IBOutlet UIImageView *thumbnailImageView;
 
 @end
