@@ -178,4 +178,16 @@
     return source.task;
 }
 
+-(BFTask *) getCommit:(NSString *)sha fromRepo:(OCTRepository *)repo
+{
+    BFTaskCompletionSource * source = [BFTaskCompletionSource taskCompletionSource];
+    
+    RACSignal * signal = [[self getAuthenticatedClient] fetchCommitFromRepository:repo SHA:sha];
+    [[signal deliverOn:[RACScheduler mainThreadScheduler]] subscribeNext:^(OCTGitCommit * x) {
+        [source setResult:x];
+    }];
+    
+    return source.task;
+}
+
 @end

@@ -17,5 +17,7 @@
 @property (strong, nonatomic) NSTimer * pollTimer;
 @property (strong, nonatomic) NSString * lastEtag;
 @property (strong, nonatomic) OctokitModel * model;
+@property (weak, nonatomic) IBOutlet UIView *pollingView;
+- (IBAction)onDismissTouch:(id)sender;
 
 @end

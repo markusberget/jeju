@@ -72,5 +72,7 @@
              withOwner:(NSString *)owner
                  notMatchingEtag:(NSString *)etag;
 
+-(BFTask *) getCommit:(NSString *) sha
+             fromRepo:(OCTRepository *) repo;
 
 @end

@@ -8,7 +8,9 @@
 
 #import "FeedTableViewController.h"
 #import "OctokitModel.h"
+#import "CommitTableViewCell.h"
 #import "Octokit.h"
+#import "CommitViewController.h"
 
 @implementation FeedTableViewController
 
@@ -22,6 +24,12 @@
     if (self) {
     }
     return self;
+}
+
+-(void) viewDidLoad
+{
+    [self.tableView registerNib:[UINib nibWithNibName:@"CommitTableViewCell" bundle:nil] forCellReuseIdentifier:@"commitCell"];
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -109,6 +117,7 @@
                 [alert show];
             } else {
                 NSArray * response = task.result;
+                
                 [self handleNewCommits: response];
                 [self.tableView reloadData];
             }
@@ -129,13 +138,57 @@
 
 -(UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell * cell = [self.tableView dequeueReusableCellWithIdentifier:@"feedItem" forIndexPath:indexPath];
+    CommitTableViewCell * cell = [self.tableView dequeueReusableCellWithIdentifier:@"commitCell" forIndexPath:indexPath];
+    
+    if (cell == nil)
+    {
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"commitCell" owner:self options:nil];
+        cell = [nib objectAtIndex:0];
+    }
     
     if (self.commits) {
         OCTGitCommit * commit = [self.commits objectAtIndex:indexPath.row];
-        cell.textLabel.text = commit.message;
+        [cell setCommit:commit];
     }
     
     return cell;
+}
+
+-(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    OCTGitCommit * commit = [self.commits objectAtIndex:indexPath.row];
+    
+    [[self.model getCommit:commit.SHA fromRepo:self.repo] continueWithBlock:^id(BFTask *task) {
+        [self performSegueWithIdentifier:@"showCommitDetail" sender: task.result];
+        return nil;
+    }];
+}
+
+#pragma mark Navigation
+
+
+-(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    CommitViewController * ctrl = [segue destinationViewController];
+    [ctrl setCommit:sender];
+}
+
+
+- (IBAction)onDismissTouch:(id)sender {
+    if (!self.pollingView.hidden) {
+        self.pollingView.hidden = YES;
+        int height = 62;
+        /**http://stackoverflow.com/questions/8542506/how-to-show-hide-a-uiview-with-animation-in-ios */
+        CGRect fz = CGRectMake(self.view.frame.origin.x,
+                                 self.view.frame.origin.y - height,
+                                 self.view.frame.size.width,
+                                 self.view.frame.size.height + height);
+
+        [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationDuration: 0.300];
+        self.view.frame = fz;
+        [UIView commitAnimations];
+        
+    }
 }
 @end
