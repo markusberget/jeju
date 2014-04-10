@@ -36,7 +36,7 @@
 		A0F46C8D18F483E600C16AB1 /* PlanningPokerCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0F46C8418F483E600C16AB1 /* PlanningPokerCardViewController.m */; };
 		A0F46C8E18F483E600C16AB1 /* PlanningPokerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0F46C8618F483E600C16AB1 /* PlanningPokerViewController.m */; };
 		A0F46C8F18F483E600C16AB1 /* RepoDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0F46C8818F483E600C16AB1 /* RepoDetailTableViewController.m */; };
-		A0F46C9618F5256700C16AB1 /* MessagesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0F46C9518F5256700C16AB1 /* MessagesTableViewController.m */; };
+		A0F46C9618F5256700C16AB1 /* MessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0F46C9518F5256700C16AB1 /* MessagesViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,8 +91,8 @@
 		A0F46C8618F483E600C16AB1 /* PlanningPokerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlanningPokerViewController.m; sourceTree = "<group>"; };
 		A0F46C8718F483E600C16AB1 /* RepoDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepoDetailTableViewController.h; sourceTree = "<group>"; };
 		A0F46C8818F483E600C16AB1 /* RepoDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepoDetailTableViewController.m; sourceTree = "<group>"; };
-		A0F46C9418F5256700C16AB1 /* MessagesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessagesTableViewController.h; sourceTree = "<group>"; };
-		A0F46C9518F5256700C16AB1 /* MessagesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessagesTableViewController.m; sourceTree = "<group>"; };
+		A0F46C9418F5256700C16AB1 /* MessagesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessagesViewController.h; sourceTree = "<group>"; };
+		A0F46C9518F5256700C16AB1 /* MessagesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessagesViewController.m; sourceTree = "<group>"; };
 		A3C1FE5AAFE74CA8ADA25BFA /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5F2C2F2CA484458BAC13ACE /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -239,8 +239,8 @@
 				A0F46C8618F483E600C16AB1 /* PlanningPokerViewController.m */,
 				A0F46C8718F483E600C16AB1 /* RepoDetailTableViewController.h */,
 				A0F46C8818F483E600C16AB1 /* RepoDetailTableViewController.m */,
-				A0F46C9418F5256700C16AB1 /* MessagesTableViewController.h */,
-				A0F46C9518F5256700C16AB1 /* MessagesTableViewController.m */,
+				A0F46C9418F5256700C16AB1 /* MessagesViewController.h */,
+				A0F46C9518F5256700C16AB1 /* MessagesViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -402,7 +402,7 @@
 				A0F46C8E18F483E600C16AB1 /* PlanningPokerViewController.m in Sources */,
 				A0F46C8C18F483E600C16AB1 /* MasterViewController.m in Sources */,
 				635DD8EE18F3EDFE009D7590 /* OctokitModel.m in Sources */,
-				A0F46C9618F5256700C16AB1 /* MessagesTableViewController.m in Sources */,
+				A0F46C9618F5256700C16AB1 /* MessagesViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

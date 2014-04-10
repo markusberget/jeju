@@ -10,13 +10,18 @@
 #import "OctoKit.h"
 #import "OctoKitModel.h"
 
-@interface MessagesTableViewController : UITableViewController
+@interface MessagesViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) OctokitModel *octokitModel;
 
 @property (nonatomic, strong) OCTIssue *conversation;
 @property (nonatomic, strong) NSArray *messages;
 @property (nonatomic, strong) OCTRepository *repo;
+
+@property (nonatomic, strong) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) IBOutlet UIView *writeMessageView;
+
+
 
 
 -(void) setConversation:(OCTIssue *)conversation andRepo:(OCTRepository *) newRepo;
