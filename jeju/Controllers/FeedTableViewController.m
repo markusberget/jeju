@@ -2,144 +2,140 @@
 //  FeedTableViewController.m
 //  jeju
 //
-//  Created by Markus Berget on 2014-04-07.
+//  Created by Davíð Arnarsson on 10/04/14.
 //  Copyright (c) 2014 Markus Berget. All rights reserved.
 //
 
 #import "FeedTableViewController.h"
 #import "OctokitModel.h"
-
-@interface FeedTableViewController ()
-
-@end
+#import "Octokit.h"
 
 @implementation FeedTableViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
+@synthesize repo = _repo;
+@synthesize model = _model;
+
+-(id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
+    
     if (self) {
-        // Custom initialization
     }
     return self;
 }
 
-- (void)viewDidLoad
+-(void)viewWillAppear:(BOOL)animated
 {
-    [super viewDidLoad];
+    SEL selector = @selector(fetchData);
+    NSMethodSignature *signature  = [self methodSignatureForSelector:selector];
+    NSInvocation * invocation = [NSInvocation invocationWithMethodSignature:signature];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    [invocation setTarget:self];
+    [invocation setSelector:selector];
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.pollTimer = [NSTimer timerWithTimeInterval:10 invocation:invocation repeats:YES];
+    [[NSRunLoop mainRunLoop] addTimer:self.pollTimer forMode:NSDefaultRunLoopMode];
+
 }
 
-- (void)setRepo:(OCTRepository *) newRepo
+
+-(void) viewWillDisappear:(BOOL)animated
 {
-    if (_repo != newRepo) {
-        _repo = newRepo;
-        
-        
-        
-        // Update the view.
-        [self configureView];
+    if (self.pollTimer) {
+        [self.pollTimer invalidate];
+        self.pollTimer = nil;
     }
 }
 
-- (void)configureView
+-(OctokitModel *)model
 {
-    // Update the user interface for the detail item.
-    
-    if (self.repo) {
+    if(!_model) {
         NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+        _model = [[OctokitModel alloc]
+                      initWithToken:[defaults objectForKey:@"token"]
+                      andUserName:@"user"];
+    }
+   
+    return _model;
+}
+
+-(void) setRepo:(OCTRepository *)repo
+{
+    if(_repo != repo) {
+        _repo = repo;
         
-        OctokitModel * model = [[OctokitModel alloc] initWithToken:[defaults objectForKey:@"token"] andUserName:[defaults objectForKey:@"user"]];
-    
-        self.navigationItem.title = self.repo.name;
+        [self fetchData];
     }
 }
 
-- (void)didReceiveMemoryWarning
+-(OCTRepository *)repo
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    return _repo;
 }
 
-#pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
-}
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
-}
-
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+-(void) handleNewCommits:(NSArray *) newCommits {
+    if (!self.commits) {
+        self.commits = [[NSMutableArray alloc] init];
+    }
     
-    // Configure the cell...
+    if(newCommits.count) {
+        // add new commits to the front of the list
+        for(int i = newCommits.count-1; i >= 0 ; --i) {
+            OCTResponse * response = [newCommits objectAtIndex:i];
+            [self.commits insertObject:response.parsedResult atIndex:0];
+        }
+        
+        self.lastEtag = ((OCTResponse *)[newCommits firstObject]).etag;
+    }
+}
+
+-(void) fetchData
+{
+    if(self.repo) {
+        
+        [[self.model getCommits: self.repo.name
+                      withOwner:self.repo.ownerLogin
+                          notMatchingEtag:self.lastEtag]
+         
+              continueWithBlock:^id(BFTask *task) {
+            if (task.error) {
+                UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Whoops!"
+                                                                 message:@"I'm afraid I can't do that, Dave."
+                                                                delegate:nil
+                                                       cancelButtonTitle:nil
+                                                       otherButtonTitles:nil];
+                [alert show];
+            } else {
+                NSArray * response = task.result;
+                [self handleNewCommits: response];
+                [self.tableView reloadData];
+            }
+            return nil;
+        }];
+    }
+}
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.commits ? self.commits.count : 0;
+}
+
+-(UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell * cell = [self.tableView dequeueReusableCellWithIdentifier:@"feedItem" forIndexPath:indexPath];
+    
+    if (self.commits) {
+        OCTGitCommit * commit = [self.commits objectAtIndex:indexPath.row];
+        cell.textLabel.text = commit.message;
+    }
     
     return cell;
 }
-*/
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 @end

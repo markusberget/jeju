@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		22A31B9418EDDC0600ADB7FB /* octocat_gems.png in Resources */ = {isa = PBXBuildFile; fileRef = 22A31B9318EDDC0600ADB7FB /* octocat_gems.png */; };
 		3DC80690CA5244C7A6D79B31 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A3C1FE5AAFE74CA8ADA25BFA /* libPods.a */; };
+		633CB9B418F69B5A00FCA06D /* FeedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 633CB9B318F69B5A00FCA06D /* FeedTableViewController.m */; };
 		635DD8EE18F3EDFE009D7590 /* OctokitModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 635DD8ED18F3EDFE009D7590 /* OctokitModel.m */; };
 		81741A8018F524C5000C4033 /* ConversationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81741A7F18F524C5000C4033 /* ConversationTableViewCell.xib */; };
 		81741A8318F527DD000C4033 /* ConversationsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 81741A8218F527DD000C4033 /* ConversationsTableViewCell.m */; };
@@ -30,7 +31,7 @@
 		A059514A18EAF9D900E6BB44 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A059514818EAF9D900E6BB44 /* InfoPlist.strings */; };
 		A059514C18EAF9D900E6BB44 /* jejuTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A059514B18EAF9D900E6BB44 /* jejuTests.m */; };
 		A0F46C8918F483E600C16AB1 /* ConversationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0F46C7C18F483E600C16AB1 /* ConversationTableViewController.m */; };
-		A0F46C8A18F483E600C16AB1 /* FeedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0F46C7E18F483E600C16AB1 /* FeedTableViewController.m */; };
+		A0F46C8A18F483E600C16AB1 /* BranchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0F46C7E18F483E600C16AB1 /* BranchTableViewController.m */; };
 		A0F46C8B18F483E600C16AB1 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0F46C8018F483E600C16AB1 /* LoginViewController.m */; };
 		A0F46C8C18F483E600C16AB1 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0F46C8218F483E600C16AB1 /* MasterViewController.m */; };
 		A0F46C8D18F483E600C16AB1 /* PlanningPokerCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0F46C8418F483E600C16AB1 /* PlanningPokerCardViewController.m */; };
@@ -51,6 +52,8 @@
 
 /* Begin PBXFileReference section */
 		22A31B9318EDDC0600ADB7FB /* octocat_gems.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = octocat_gems.png; sourceTree = "<group>"; };
+		633CB9B218F69B5A00FCA06D /* FeedTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedTableViewController.h; sourceTree = "<group>"; };
+		633CB9B318F69B5A00FCA06D /* FeedTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedTableViewController.m; sourceTree = "<group>"; };
 		635DD8EC18F3EDFE009D7590 /* OctokitModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OctokitModel.h; path = Models/OctokitModel.h; sourceTree = "<group>"; };
 		635DD8ED18F3EDFE009D7590 /* OctokitModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OctokitModel.m; path = Models/OctokitModel.m; sourceTree = "<group>"; };
 		81741A7F18F524C5000C4033 /* ConversationTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConversationTableViewCell.xib; sourceTree = "<group>"; };
@@ -79,8 +82,8 @@
 		A059514B18EAF9D900E6BB44 /* jejuTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = jejuTests.m; sourceTree = "<group>"; };
 		A0F46C7B18F483E600C16AB1 /* ConversationTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConversationTableViewController.h; sourceTree = "<group>"; };
 		A0F46C7C18F483E600C16AB1 /* ConversationTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConversationTableViewController.m; sourceTree = "<group>"; };
-		A0F46C7D18F483E600C16AB1 /* FeedTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedTableViewController.h; sourceTree = "<group>"; };
-		A0F46C7E18F483E600C16AB1 /* FeedTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedTableViewController.m; sourceTree = "<group>"; };
+		A0F46C7D18F483E600C16AB1 /* BranchTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BranchTableViewController.h; sourceTree = "<group>"; };
+		A0F46C7E18F483E600C16AB1 /* BranchTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BranchTableViewController.m; sourceTree = "<group>"; };
 		A0F46C7F18F483E600C16AB1 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		A0F46C8018F483E600C16AB1 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		A0F46C8118F483E600C16AB1 /* MasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
@@ -227,8 +230,8 @@
 			children = (
 				A0F46C7B18F483E600C16AB1 /* ConversationTableViewController.h */,
 				A0F46C7C18F483E600C16AB1 /* ConversationTableViewController.m */,
-				A0F46C7D18F483E600C16AB1 /* FeedTableViewController.h */,
-				A0F46C7E18F483E600C16AB1 /* FeedTableViewController.m */,
+				A0F46C7D18F483E600C16AB1 /* BranchTableViewController.h */,
+				A0F46C7E18F483E600C16AB1 /* BranchTableViewController.m */,
 				A0F46C7F18F483E600C16AB1 /* LoginViewController.h */,
 				A0F46C8018F483E600C16AB1 /* LoginViewController.m */,
 				A0F46C8118F483E600C16AB1 /* MasterViewController.h */,
@@ -241,6 +244,8 @@
 				A0F46C8818F483E600C16AB1 /* RepoDetailTableViewController.m */,
 				A0F46C9418F5256700C16AB1 /* MessagesViewController.h */,
 				A0F46C9518F5256700C16AB1 /* MessagesViewController.m */,
+				633CB9B218F69B5A00FCA06D /* FeedTableViewController.h */,
+				633CB9B318F69B5A00FCA06D /* FeedTableViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -394,7 +399,8 @@
 				A059513018EAF9D900E6BB44 /* jeju.xcdatamodeld in Sources */,
 				81741A8618F54AF1000C4033 /* DateUtil.m in Sources */,
 				A0F46C8918F483E600C16AB1 /* ConversationTableViewController.m in Sources */,
-				A0F46C8A18F483E600C16AB1 /* FeedTableViewController.m in Sources */,
+				633CB9B418F69B5A00FCA06D /* FeedTableViewController.m in Sources */,
+				A0F46C8A18F483E600C16AB1 /* BranchTableViewController.m in Sources */,
 				A0F46C8F18F483E600C16AB1 /* RepoDetailTableViewController.m in Sources */,
 				A059512A18EAF9D900E6BB44 /* AppDelegate.m in Sources */,
 				A059512618EAF9D900E6BB44 /* main.m in Sources */,

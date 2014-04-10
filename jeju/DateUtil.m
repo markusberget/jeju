@@ -21,4 +21,8 @@
     return stringFromDate;
 }
 
++(NSString *)getISODate:(NSDate *) date
+{
+    return [DateUtil formatDate:date WithFormat:@"yyyy-MM-dd'T'HH:mm:ssZ"];
+}
 @end

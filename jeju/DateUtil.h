@@ -13,4 +13,5 @@
 
 +(NSString *) formatDate:(NSDate *) date WithFormat:(NSString *)format;
 
++(NSString *) getISODate:(NSDate *) date;
 @end

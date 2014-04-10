@@ -370,7 +370,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="iEY-Ra-MQo" kind="push" identifier="showFeed" id="rWJ-9Q-OP1"/>
+                                    <segue destination="1Yz-wA-rv7" kind="push" identifier="showFeed" id="L3F-UN-hZ7"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Conversations" textLabel="DBo-qD-AKB" style="IBUITableViewCellStyleDefault" id="S1F-dH-tTB">
@@ -537,34 +537,43 @@
             </objects>
             <point key="canvasLocation" x="2127" y="152"/>
         </scene>
-        <!--Feed Table View Controller-->
-        <scene sceneID="Wck-mN-iW8">
+        <!--Feed Table View Controller - Feed-->
+        <scene sceneID="D27-x2-Mh3">
             <objects>
-                <tableViewController id="iEY-Ra-MQo" customClass="FeedTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="thf-gw-fdU">
+                <tableViewController storyboardIdentifier="feedView" id="1Yz-wA-rv7" customClass="FeedTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="D5z-mo-Wyd">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="feedItem" id="vzZ-3H-ba8">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="feedItem" textLabel="H1m-ep-WmC" style="IBUITableViewCellStyleDefault" id="KxR-Bw-yxv">
                                 <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vzZ-3H-ba8" id="hR6-Gp-HAR">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KxR-Bw-yxv" id="nKR-vC-1PC">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="H1m-ep-WmC">
+                                            <rect key="frame" x="15" y="0.0" width="290" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="iEY-Ra-MQo" id="HkQ-fN-gm9"/>
-                            <outlet property="delegate" destination="iEY-Ra-MQo" id="dWA-QA-X59"/>
+                            <outlet property="dataSource" destination="1Yz-wA-rv7" id="pfA-RP-ojV"/>
+                            <outlet property="delegate" destination="1Yz-wA-rv7" id="Pkb-hM-sjz"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="R9W-Zz-240"/>
+                    <navigationItem key="navigationItem" title="Feed" id="yNs-bs-ddO"/>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="eTp-0W-v0g" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PDv-Hv-HY8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1582" y="-612"/>
+            <point key="canvasLocation" x="1598" y="-647"/>
         </scene>
     </scenes>
     <resources>
