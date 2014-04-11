@@ -8,7 +8,7 @@
 
 #import "ConversationTableViewController.h"
 #import "ConversationsTableViewCell.h"
-#import "MessagesTableViewController.h"
+#import "MessagesViewController.h"
 #import "DateUtil.h"
 
 @interface ConversationTableViewController ()

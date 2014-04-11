@@ -8,6 +8,7 @@
 
 #import "OctokitModel.h"
 #import "OCTUser.h"
+#import "DateUtil.h"
 
 @implementation OctokitModel
 
@@ -83,18 +84,23 @@
 
 -(BFTask *) getDataForPath: (NSString *) path andParameters: (NSDictionary *) params returnClass: (Class) resultClass
 {
-    BFTaskCompletionSource *source = [BFTaskCompletionSource taskCompletionSource];
+    return [self getDataForPath:path andParameters:params returnClass:resultClass notMatching:nil];
+}
 
-    NSMutableURLRequest *request = [[self getAuthenticatedClient] requestWithMethod:@"GET" path:path parameters:params];
+-(BFTask *) getDataForPath: (NSString *) path andParameters: (NSDictionary *) params returnClass: (Class) resultClass notMatching:(NSString *) etag
+{
+    BFTaskCompletionSource *source = [BFTaskCompletionSource taskCompletionSource];
     
+    NSMutableURLRequest *request = [[self getAuthenticatedClient] requestWithMethod:@"GET" path:path parameters:params notMatchingEtag:etag ];
+
     RACSignal *signal = [[self getAuthenticatedClient] enqueueRequest:request resultClass:resultClass];
     
     [[[signal deliverOn:[RACScheduler mainThreadScheduler]] collect] subscribeNext:^(NSArray *issues) {
         [source setResult:issues];
     }
-    error:^(NSError *error) {
-        [source setError:error];
-    }];
+     error:^(NSError *error) {
+         [source setError:error];
+     }];
     
     return source.task;
 }
@@ -134,15 +140,13 @@
     
 }
 
-
-
 -(BFTask *) getBranches:(NSString *)repo withOwner:(NSString *)owner
 {
     BFTaskCompletionSource * source = [BFTaskCompletionSource taskCompletionSource];
     
     RACSignal * request = [[self getAuthenticatedClient] fetchBranchesForRepositoryWithName:repo owner:owner];
     
-    [[request collect] subscribeNext:^(NSArray * x) {
+    [[[request deliverOn:[RACScheduler  mainThreadScheduler]] collect] subscribeNext:^(NSArray * x) {
         [source setResult:x];
     }
     error:^(NSError *error) {
@@ -151,4 +155,39 @@
 
     return source.task;
 }
+
+-(BFTask *) getCommits:(NSString *)forRepo withOwner:(NSString *)owner notMatchingEtag:(NSString *) etag
+{
+    BFTaskCompletionSource * source = [BFTaskCompletionSource taskCompletionSource];
+    
+    NSString * path = [[NSString alloc] initWithFormat:@"/repos/%@/%@/commits", owner, forRepo];
+    
+    NSMutableArray * results = [[NSMutableArray alloc] init];
+    OCTClient * client = [self getAuthenticatedClient];
+    
+    NSMutableURLRequest * request = [client requestWithMethod:@"GET" path:path parameters:nil notMatchingEtag:etag ];
+
+    RACSignal * signal = [client enqueueRequest:request resultClass:OCTGitCommit.class];
+
+    [[signal deliverOn:[RACScheduler mainThreadScheduler]] subscribeNext:^(id x) {
+        [results addObject:(OCTResponse*) x];
+    } completed:^{
+        [source setResult:results];
+    }];
+    
+    return source.task;
+}
+
+-(BFTask *) getCommit:(NSString *)sha fromRepo:(OCTRepository *)repo
+{
+    BFTaskCompletionSource * source = [BFTaskCompletionSource taskCompletionSource];
+    
+    RACSignal * signal = [[self getAuthenticatedClient] fetchCommitFromRepository:repo SHA:sha];
+    [[signal deliverOn:[RACScheduler mainThreadScheduler]] subscribeNext:^(OCTGitCommit * x) {
+        [source setResult:x];
+    }];
+    
+    return source.task;
+}
+
 @end

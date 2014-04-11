@@ -6,22 +6,22 @@
 //  Copyright (c) 2014 Markus Berget. All rights reserved.
 //
 
-#import "MessagesTableViewController.h"
+#import "MessagesViewController.h"
 
-@interface MessagesTableViewController ()
+@interface MessagesViewController ()
 
 @end
 
-@implementation MessagesTableViewController
+@implementation MessagesViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
+//- (id)initWithStyle:(UITableViewStyle)style
+//{
+//    self = [super initWithStyle:style];
+//    if (self) {
+//        // Custom initialization
+//    }
+//    return self;
+//}
 
 - (void)setConversation:(OCTIssue *)newConversation andRepo:(OCTRepository *)newRepo
 {
@@ -75,6 +75,13 @@
 {
     [super viewDidLoad];
     
+    //Adding top border to writeMessageView
+    CALayer *topBorder = [CALayer layer];
+    topBorder.frame = CGRectMake(0.0f, 0.0f, self.writeMessageView.frame.size.width, 0.5f);
+    topBorder.backgroundColor = [[UIColor alloc] initWithRed:0 green:0 blue:0 alpha:.3].CGColor;
+    [self.writeMessageView.layer addSublayer:topBorder];
+    
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -112,6 +119,7 @@
     // Configure the cell..
     
     cell.textLabel.text = message.body;
+    cell.detailTextLabel.text = message.commenterLogin;
     
     return cell;
 }

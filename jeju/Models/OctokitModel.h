@@ -68,5 +68,11 @@
 -(BFTask *) getUserFromLoginName:(NSString *)loginName;
 
 
+-(BFTask *) getCommits:(NSString *)forRepo
+             withOwner:(NSString *)owner
+                 notMatchingEtag:(NSString *)etag;
+
+-(BFTask *) getCommit:(NSString *) sha
+             fromRepo:(OCTRepository *) repo;
 
 @end
