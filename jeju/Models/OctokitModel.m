@@ -156,7 +156,7 @@
     return source.task;
 }
 
--(BFTask *) getCommits:(NSString *)forRepo withOwner:(NSString *)owner notMatchingEtag:(NSString *) etag
+-(BFTask *) getCommits:(NSString *)forRepo withOwner:(NSString *)owner notMatchingEtag:(NSString *) etag since:(NSDate *)date
 {
     BFTaskCompletionSource * source = [BFTaskCompletionSource taskCompletionSource];
     
@@ -165,7 +165,14 @@
     NSMutableArray * results = [[NSMutableArray alloc] init];
     OCTClient * client = [self getAuthenticatedClient];
     
-    NSMutableURLRequest * request = [client requestWithMethod:@"GET" path:path parameters:nil notMatchingEtag:etag ];
+    
+    NSDictionary * params = nil;
+    
+    if(date) {
+        params = @{@"since": date};
+    }
+    
+    NSMutableURLRequest * request = [client requestWithMethod:@"GET" path:path parameters:params notMatchingEtag:etag ];
 
     RACSignal * signal = [client enqueueRequest:request resultClass:OCTGitCommit.class];
 

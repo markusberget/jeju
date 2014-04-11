@@ -17,5 +17,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *commitNumber;
 @property (weak, nonatomic) IBOutlet UILabel *message;
 @property (weak, nonatomic) IBOutlet UILabel *timestamp;
-
+@property (weak, nonatomic) OCTRepository * repo;
 @end

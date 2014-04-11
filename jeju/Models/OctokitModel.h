@@ -70,7 +70,8 @@
 
 -(BFTask *) getCommits:(NSString *)forRepo
              withOwner:(NSString *)owner
-                 notMatchingEtag:(NSString *)etag;
+                 notMatchingEtag:(NSString *)etag
+                 since:(NSDate *) date;
 
 -(BFTask *) getCommit:(NSString *) sha
              fromRepo:(OCTRepository *) repo;

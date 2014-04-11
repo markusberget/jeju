@@ -22,11 +22,25 @@
     }
 }
 
+
+
+- (IBAction)onOpenTouch:(id)sender
+{
+    NSString * url = [NSString stringWithFormat:@"https://github.com/%@/%@/commit/%@", self.repo.ownerLogin, self.repo.name, _commit.SHA];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
+}
+
 -(void) configureView
 {
-    [self.image setImageWithURL:_commit.committer.avatarURL];
     
-    self.author.text = _commit.committerName;
+    if (_commit.committer) {
+         [self.image setImageWithURL:_commit.committer.avatarURL];
+    } else {
+        [self.image setImage:[UIImage imageNamed:@"noAvatar"]];
+    }
+    
+    self.author.text = _commit.committer ? _commit.committer.name : _commit.committerName;
+
     self.commitNumber.text = _commit.SHA;
     self.timestamp.text = [DateUtil formatDate:_commit.commitDate WithFormat:@"HH:mm:ss dd.MMM YYYY"];
     self.message.text = _commit.message;

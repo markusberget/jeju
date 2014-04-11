@@ -96,6 +96,7 @@
         }
         
         self.lastEtag = ((OCTResponse *)[newCommits firstObject]).etag;
+        self.lastPollDate = [NSDate date];
     }
 }
 
@@ -105,7 +106,8 @@
         
         [[self.model getCommits: self.repo.name
                       withOwner:self.repo.ownerLogin
-                          notMatchingEtag:self.lastEtag]
+                          notMatchingEtag:self.lastEtag
+                          since:self.lastPollDate]
          
               continueWithBlock:^id(BFTask *task) {
             if (task.error) {
@@ -149,6 +151,8 @@
     if (self.commits) {
         OCTGitCommit * commit = [self.commits objectAtIndex:indexPath.row];
         [cell setCommit:commit];
+        
+        cell.repo = self.repo;
     }
     
     return cell;
