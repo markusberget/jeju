@@ -41,7 +41,7 @@
     [invocation setTarget:self];
     [invocation setSelector:selector];
     
-    self.pollTimer = [NSTimer timerWithTimeInterval:10 invocation:invocation repeats:YES];
+    self.pollTimer = [NSTimer timerWithTimeInterval:2 invocation:invocation repeats:YES];
     [[NSRunLoop mainRunLoop] addTimer:self.pollTimer forMode:NSDefaultRunLoopMode];
 
 }
@@ -94,6 +94,8 @@
             OCTResponse * response = [newCommits objectAtIndex:i];
             [self.commits insertObject:response.parsedResult atIndex:0];
         }
+        
+        NSLog(@"%d remaining requests",((OCTResponse *)[newCommits firstObject]).remainingRequests);
         
         self.lastEtag = ((OCTResponse *)[newCommits firstObject]).etag;
         self.lastPollDate = [NSDate date];
