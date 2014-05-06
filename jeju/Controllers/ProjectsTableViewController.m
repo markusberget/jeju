@@ -61,6 +61,11 @@
         [self presentViewController:self.pivotalTrackerLoginViewController animated:YES completion:nil];
     }
     
+    NSArray *projects = [[self pivotalTrackerRepository] getProjects:[defaults objectForKey:@"pttoken"]];
+    
+    for (ProjectModel *project in projects) {
+        NSLog(@"%@", project.name);
+    }
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     

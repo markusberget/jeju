@@ -8,8 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "PivotalTrackerUser.h"
+#import "ProjectModel.h"
 
 @interface PivotalTrackerRepository : NSObject
 
 - (PivotalTrackerUser *)getUserFrom:(NSString *)name And:(NSString *)password;
+
+- (NSMutableArray *)getProjects:(NSString *)token;
+
 @end

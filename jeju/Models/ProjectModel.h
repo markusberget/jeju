@@ -10,4 +10,7 @@
 
 @interface ProjectModel : NSObject
 
+@property (strong, nonatomic) NSString *name;
+@property (strong, nonatomic) NSNumber *id;
+
 @end
