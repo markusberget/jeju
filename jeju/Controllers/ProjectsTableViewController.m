@@ -12,6 +12,8 @@
 @interface ProjectsTableViewController ()
 
 @property (strong, nonatomic) PivotalTrackerRepository *pivotalTrackerRepository;
+@property (strong, nonatomic) NSArray *projects;
+@property (strong, nonatomic) PivotalTrackerLoginViewController *pivotalTrackerLoginViewController;
 
 @end
 
@@ -35,11 +37,6 @@
     return _pivotalTrackerRepository;
 }
 
-- (void) fetchData {
-//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-//    NSUR
-}
-
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -61,11 +58,10 @@
         [self presentViewController:self.pivotalTrackerLoginViewController animated:YES completion:nil];
     }
     
-    NSArray *projects = [[self pivotalTrackerRepository] getProjects:[defaults objectForKey:@"pttoken"]];
+    self.projects = [[self pivotalTrackerRepository] getProjects:[defaults objectForKey:@"pttoken"]];
     
-    for (ProjectModel *project in projects) {
-        NSLog(@"%@", project.name);
-    }
+    [self.tableView reloadData];
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -83,37 +79,39 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+    return self.projects.count;
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     
-    // Configure the cell...
+    [self configureCell:cell atIndexPath:indexPath];
     
     return cell;
 }
-*/
 
-/*
+- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
+{
+    ProjectModel *project = [self.projects objectAtIndex:indexPath.row];
+    cell.textLabel.text = project.name;
+}
+
+
+
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the specified item to be editable.
-    return YES;
+    return NO;
 }
-*/
+
 
 /*
 // Override to support editing the table view.
@@ -135,14 +133,14 @@
 }
 */
 
-/*
+
 // Override to support conditional rearranging of the table view.
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the item to be re-orderable.
-    return YES;
+    return NO;
 }
-*/
+
 
 /*
 #pragma mark - Navigation

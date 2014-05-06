@@ -11,9 +11,7 @@
 
 @interface ProjectsTableViewController : UITableViewController
 
-@property (strong, nonatomic) NSArray *projects;
 
-@property (strong, nonatomic) PivotalTrackerLoginViewController *pivotalTrackerLoginViewController;
 
 
 
