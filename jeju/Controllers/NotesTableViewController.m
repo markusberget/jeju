@@ -1,19 +1,18 @@
 //
-//  RepoDetailTableViewController.m
+//  NotesTableViewController.m
 //  jeju
 //
-//  Created by Markus Berget on 2014-04-07.
+//  Created by Viktor Ansund on 11/04/14.
 //  Copyright (c) 2014 Markus Berget. All rights reserved.
 //
 
-#import "RepoDetailTableViewController.h"
-#import "PlanningPokerViewController.h"
+#import "NotesTableViewController.h"
 
-@interface RepoDetailTableViewController ()
+@interface NotesTableViewController ()
 
 @end
 
-@implementation RepoDetailTableViewController
+@implementation NotesTableViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -24,32 +23,21 @@
     return self;
 }
 
-- (void)setRepo:(OCTRepository *) newRepo
-{
-    if (_repo != newRepo) {
-        _repo = newRepo;
-        
-        // Update the view.
-        [self configureView];
-    }
-}
-
-- (void)configureView
-{
-    // Update the user interface for the detail item.
-    
-    if (self.repo) {
-        self.navigationItem.title = self.repo.name;
-    }
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 
-    self.items = [[NSArray alloc] initWithObjects:@"Feed", @"Conversations", @"Planning Poker", @"Notes", nil];
+    _notesTable.dataSource = self;
+    _notesTable.delegate = self;
+    self.items = [[NSArray alloc] initWithObjects:@"Create new class", @"Note about notes", nil];
     
-    [self configureView];
+    // Uncomment the following line to preserve selection between presentations.
+    // self.clearsSelectionOnViewWillAppear = NO;
+    
+    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+     self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -60,43 +48,40 @@
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    // Return the number of sections.
-    return 1;
-}
+//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+//{
+//    return 1;
+//}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
-    return self.items.count;
+    return [self.items count];
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
-    NSLog(@"%ld", (long)indexPath.row);
- 
-    NSString *identifier = [self.items objectAtIndex:indexPath.row];
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
+    static NSString *tabelIdentifier = @"NoteCell";
+    //UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
     
-    cell.textLabel.text = identifier;
     // Configure the cell...
-    
-    return cell;
+    UITableViewCell *thisCell = [tableView dequeueReusableCellWithIdentifier:tabelIdentifier];
+    if(thisCell==nil){
+        thisCell = [[UITableViewCell alloc ] initWithStyle:(UITableViewCellStyleDefault) reuseIdentifier:tabelIdentifier];
+    }
+    thisCell.textLabel.text = [self.items objectAtIndex:indexPath.row];
+    return thisCell;
 }
 
-/*
+///////////
+
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the specified item to be editable.
     return YES;
 }
-*/
 
-/*
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -105,9 +90,9 @@
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+    }
 }
-*/
+
 
 /*
 // Override to support rearranging the table view.
@@ -125,24 +110,15 @@
 }
 */
 
-
+/*
 #pragma mark - Navigation
 
-//In a storyboard-based application, you will often want to do a little preparation before navigation
+// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    
-    if ([[segue identifier] isEqualToString:@"showFeed"] || [[segue identifier] isEqualToString:@"showConversations"]) {
-        [[segue destinationViewController] setRepo:self.repo];
-    } else if ([[segue identifier] isEqualToString:@"showPlanningPoker"]) {
-        if ([segue.destinationViewController isKindOfClass:[PlanningPokerViewController class]]) {
-            PlanningPokerViewController *ppvc = (PlanningPokerViewController *)segue.destinationViewController;
-            ppvc.title = @"Planning Poker";
-        }
-    }
 }
-
+*/
 
 @end
