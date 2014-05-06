@@ -7,8 +7,13 @@
 //
 
 #import "PivotalTrackerLoginViewController.h"
+#import "PivotalTrackerRepository.h"
+#import "PivotalTrackerUser.h"
 
 @interface PivotalTrackerLoginViewController ()
+@property (weak, nonatomic) IBOutlet UITextField *userNameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
+@property (strong, nonatomic) PivotalTrackerRepository *pivotalTrackerRepository;
 
 @end
 
@@ -23,6 +28,14 @@
     return self;
 }
 
+- (PivotalTrackerRepository *)pivotalTrackerRepository
+{
+    if (_pivotalTrackerRepository == nil) {
+        _pivotalTrackerRepository = [[PivotalTrackerRepository alloc] init];
+    }
+    return _pivotalTrackerRepository;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -33,6 +46,15 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+- (IBAction)LoginButtonPressed:(UIButton *)sender {
+    PivotalTrackerUser *user = [[self pivotalTrackerRepository] getUserFrom:self.userNameTextField.text And:self.passwordTextField.text];
+    NSLog(@"%@", user.token);
+    
+    [[NSUserDefaults standardUserDefaults] setObject:user.token forKey:@"pttoken"];
+    [self dismissViewControllerAnimated:YES completion:^{
+    }];
+    
 }
 
 /*

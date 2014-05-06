@@ -45,8 +45,7 @@
         [defaults setObject:model.userName forKey:@"user"];
         [defaults setObject:model.token forKey:@"token"];
         
-        [self dismissViewControllerAnimated:YES completion:^{
-        }];
+        	
         return nil;
     }];
     

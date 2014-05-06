@@ -7,8 +7,11 @@
 //
 
 #import "ProjectsTableViewController.h"
+#import "PivotalTrackerRepository.h"
 
 @interface ProjectsTableViewController ()
+
+@property (strong, nonatomic) PivotalTrackerRepository *pivotalTrackerRepository;
 
 @end
 
@@ -20,20 +23,16 @@
 //    if ([defaults objectForKey:@"pttoken"] != nil) {
 //        [self fetchData];
 //    }
-    NSLog(@"get here");
-    NSURL *url = [NSURL URLWithString: [NSString stringWithFormat:@"https://%@:%@@www.pivotaltracker.com/services/v5/me", @"mathiasdose", @"CHANGE_ME"]];
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-    [request setURL:url];
-    [request setHTTPMethod:@"GET"];
-    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+
     
-    NSError *error;
-    NSURLResponse *response;
-    NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-    
-    NSString* newStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    
-    NSLog(@"%@", newStr);
+}
+
+- (PivotalTrackerRepository *)pivotalTrackerRepository
+{
+    if (_pivotalTrackerRepository == nil) {
+        _pivotalTrackerRepository = [[PivotalTrackerRepository alloc] init];
+    }
+    return _pivotalTrackerRepository;
 }
 
 - (void) fetchData {
@@ -55,6 +54,12 @@
     [super viewDidLoad];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
+    self.pivotalTrackerLoginViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PivotalTrackerLoginViewController"];
+    
+    
+    if ([defaults objectForKey:@"pttoken"] == nil) {
+        [self presentViewController:self.pivotalTrackerLoginViewController animated:YES completion:nil];
+    }
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;

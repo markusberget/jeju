@@ -21,6 +21,9 @@
 		81741A8618F54AF1000C4033 /* DateUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 81741A8518F54AF1000C4033 /* DateUtil.m */; };
 		8396C4EA1918F85B00F11FBE /* ProjectsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8396C4E91918F85B00F11FBE /* ProjectsTableViewController.m */; };
 		8396C4EE19192F3900F11FBE /* PivotalTrackerLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8396C4ED19192F3900F11FBE /* PivotalTrackerLoginViewController.m */; };
+		8396C4F11919374800F11FBE /* PivotalTrackerRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = 8396C4F01919374800F11FBE /* PivotalTrackerRepository.m */; };
+		8396C4F4191938F900F11FBE /* PivotalTrackerUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8396C4F3191938F900F11FBE /* PivotalTrackerUser.m */; };
+		8396C4F71919452000F11FBE /* ProjectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8396C4F61919452000F11FBE /* ProjectModel.m */; };
 		A059511818EAF9D900E6BB44 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A059511718EAF9D900E6BB44 /* Foundation.framework */; };
 		A059511A18EAF9D900E6BB44 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A059511918EAF9D900E6BB44 /* CoreGraphics.framework */; };
 		A059511C18EAF9D900E6BB44 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A059511B18EAF9D900E6BB44 /* UIKit.framework */; };
@@ -79,6 +82,12 @@
 		8396C4E91918F85B00F11FBE /* ProjectsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectsTableViewController.m; sourceTree = "<group>"; };
 		8396C4EC19192F3900F11FBE /* PivotalTrackerLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PivotalTrackerLoginViewController.h; sourceTree = "<group>"; };
 		8396C4ED19192F3900F11FBE /* PivotalTrackerLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PivotalTrackerLoginViewController.m; sourceTree = "<group>"; };
+		8396C4EF1919374800F11FBE /* PivotalTrackerRepository.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PivotalTrackerRepository.h; path = DAL/PivotalTrackerRepository.h; sourceTree = "<group>"; };
+		8396C4F01919374800F11FBE /* PivotalTrackerRepository.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PivotalTrackerRepository.m; path = DAL/PivotalTrackerRepository.m; sourceTree = "<group>"; };
+		8396C4F2191938F900F11FBE /* PivotalTrackerUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PivotalTrackerUser.h; path = Models/PivotalTrackerUser.h; sourceTree = "<group>"; };
+		8396C4F3191938F900F11FBE /* PivotalTrackerUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PivotalTrackerUser.m; path = Models/PivotalTrackerUser.m; sourceTree = "<group>"; };
+		8396C4F51919452000F11FBE /* ProjectModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProjectModel.h; path = Models/ProjectModel.h; sourceTree = "<group>"; };
+		8396C4F61919452000F11FBE /* ProjectModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProjectModel.m; path = Models/ProjectModel.m; sourceTree = "<group>"; };
 		A059511418EAF9D900E6BB44 /* jeju.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = jeju.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A059511718EAF9D900E6BB44 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A059511918EAF9D900E6BB44 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -157,6 +166,10 @@
 			children = (
 				635DD8EC18F3EDFE009D7590 /* OctokitModel.h */,
 				635DD8ED18F3EDFE009D7590 /* OctokitModel.m */,
+				8396C4F2191938F900F11FBE /* PivotalTrackerUser.h */,
+				8396C4F3191938F900F11FBE /* PivotalTrackerUser.m */,
+				8396C4F51919452000F11FBE /* ProjectModel.h */,
+				8396C4F61919452000F11FBE /* ProjectModel.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -164,6 +177,8 @@
 		8396C4EB1919060600F11FBE /* DAL */ = {
 			isa = PBXGroup;
 			children = (
+				8396C4EF1919374800F11FBE /* PivotalTrackerRepository.h */,
+				8396C4F01919374800F11FBE /* PivotalTrackerRepository.m */,
 			);
 			name = DAL;
 			sourceTree = "<group>";
@@ -431,6 +446,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8396C4F71919452000F11FBE /* ProjectModel.m in Sources */,
 				A0F46C8B18F483E600C16AB1 /* LoginViewController.m in Sources */,
 				8396C4EE19192F3900F11FBE /* PivotalTrackerLoginViewController.m in Sources */,
 				A0F46C8D18F483E600C16AB1 /* PlanningPokerCardViewController.m in Sources */,
@@ -446,11 +462,13 @@
 				A059512618EAF9D900E6BB44 /* main.m in Sources */,
 				81741A8318F527DD000C4033 /* ConversationsTableViewCell.m in Sources */,
 				A0F46C8E18F483E600C16AB1 /* PlanningPokerViewController.m in Sources */,
+				8396C4F4191938F900F11FBE /* PivotalTrackerUser.m in Sources */,
 				633CB9BC18F6D5FC00FCA06D /* CommitTableViewCell.m in Sources */,
 				A0F46C8C18F483E600C16AB1 /* MasterViewController.m in Sources */,
 				635DD8EE18F3EDFE009D7590 /* OctokitModel.m in Sources */,
 				A0F46C9618F5256700C16AB1 /* MessagesViewController.m in Sources */,
 				633CB9C018F701F400FCA06D /* CommitViewController.m in Sources */,
+				8396C4F11919374800F11FBE /* PivotalTrackerRepository.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

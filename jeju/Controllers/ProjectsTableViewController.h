@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PivotalTrackerLoginViewController.h"
 
 @interface ProjectsTableViewController : UITableViewController
 
 @property (strong, nonatomic) NSArray *projects;
+
+@property (strong, nonatomic) PivotalTrackerLoginViewController *pivotalTrackerLoginViewController;
 
 
 
