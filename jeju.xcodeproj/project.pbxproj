@@ -19,6 +19,8 @@
 		81741A8018F524C5000C4033 /* ConversationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81741A7F18F524C5000C4033 /* ConversationTableViewCell.xib */; };
 		81741A8318F527DD000C4033 /* ConversationsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 81741A8218F527DD000C4033 /* ConversationsTableViewCell.m */; };
 		81741A8618F54AF1000C4033 /* DateUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 81741A8518F54AF1000C4033 /* DateUtil.m */; };
+		8396C4EA1918F85B00F11FBE /* ProjectsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8396C4E91918F85B00F11FBE /* ProjectsTableViewController.m */; };
+		8396C4EE19192F3900F11FBE /* PivotalTrackerLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8396C4ED19192F3900F11FBE /* PivotalTrackerLoginViewController.m */; };
 		A059511818EAF9D900E6BB44 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A059511718EAF9D900E6BB44 /* Foundation.framework */; };
 		A059511A18EAF9D900E6BB44 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A059511918EAF9D900E6BB44 /* CoreGraphics.framework */; };
 		A059511C18EAF9D900E6BB44 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A059511B18EAF9D900E6BB44 /* UIKit.framework */; };
@@ -73,6 +75,10 @@
 		81741A8218F527DD000C4033 /* ConversationsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConversationsTableViewCell.m; sourceTree = "<group>"; };
 		81741A8418F54AF1000C4033 /* DateUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateUtil.h; sourceTree = "<group>"; };
 		81741A8518F54AF1000C4033 /* DateUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateUtil.m; sourceTree = "<group>"; };
+		8396C4E81918F85B00F11FBE /* ProjectsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectsTableViewController.h; sourceTree = "<group>"; };
+		8396C4E91918F85B00F11FBE /* ProjectsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectsTableViewController.m; sourceTree = "<group>"; };
+		8396C4EC19192F3900F11FBE /* PivotalTrackerLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PivotalTrackerLoginViewController.h; sourceTree = "<group>"; };
+		8396C4ED19192F3900F11FBE /* PivotalTrackerLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PivotalTrackerLoginViewController.m; sourceTree = "<group>"; };
 		A059511418EAF9D900E6BB44 /* jeju.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = jeju.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A059511718EAF9D900E6BB44 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A059511918EAF9D900E6BB44 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -155,6 +161,13 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
+		8396C4EB1919060600F11FBE /* DAL */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = DAL;
+			sourceTree = "<group>";
+		};
 		A059510B18EAF9D900E6BB44 = {
 			isa = PBXGroup;
 			children = (
@@ -191,6 +204,7 @@
 		A059511F18EAF9D900E6BB44 /* jeju */ = {
 			isa = PBXGroup;
 			children = (
+				8396C4EB1919060600F11FBE /* DAL */,
 				A0F46C9018F4869300C16AB1 /* Views */,
 				A0F46C7A18F483E600C16AB1 /* Controllers */,
 				635DD8EB18F3ED91009D7590 /* Models */,
@@ -240,6 +254,8 @@
 			isa = PBXGroup;
 			children = (
 				A0F46C7B18F483E600C16AB1 /* ConversationTableViewController.h */,
+				8396C4EC19192F3900F11FBE /* PivotalTrackerLoginViewController.h */,
+				8396C4ED19192F3900F11FBE /* PivotalTrackerLoginViewController.m */,
 				A0F46C7C18F483E600C16AB1 /* ConversationTableViewController.m */,
 				A0F46C7D18F483E600C16AB1 /* BranchTableViewController.h */,
 				A0F46C7E18F483E600C16AB1 /* BranchTableViewController.m */,
@@ -247,6 +263,8 @@
 				A0F46C8018F483E600C16AB1 /* LoginViewController.m */,
 				A0F46C8118F483E600C16AB1 /* MasterViewController.h */,
 				A0F46C8218F483E600C16AB1 /* MasterViewController.m */,
+				8396C4E81918F85B00F11FBE /* ProjectsTableViewController.h */,
+				8396C4E91918F85B00F11FBE /* ProjectsTableViewController.m */,
 				A0F46C8318F483E600C16AB1 /* PlanningPokerCardViewController.h */,
 				A0F46C8418F483E600C16AB1 /* PlanningPokerCardViewController.m */,
 				A0F46C8518F483E600C16AB1 /* PlanningPokerViewController.h */,
@@ -414,6 +432,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A0F46C8B18F483E600C16AB1 /* LoginViewController.m in Sources */,
+				8396C4EE19192F3900F11FBE /* PivotalTrackerLoginViewController.m in Sources */,
 				A0F46C8D18F483E600C16AB1 /* PlanningPokerCardViewController.m in Sources */,
 				A059513018EAF9D900E6BB44 /* jeju.xcdatamodeld in Sources */,
 				633CB9C318F70AFE00FCA06D /* FileTableView.m in Sources */,
@@ -423,6 +442,7 @@
 				A0F46C8A18F483E600C16AB1 /* BranchTableViewController.m in Sources */,
 				A0F46C8F18F483E600C16AB1 /* RepoDetailTableViewController.m in Sources */,
 				A059512A18EAF9D900E6BB44 /* AppDelegate.m in Sources */,
+				8396C4EA1918F85B00F11FBE /* ProjectsTableViewController.m in Sources */,
 				A059512618EAF9D900E6BB44 /* main.m in Sources */,
 				81741A8318F527DD000C4033 /* ConversationsTableViewCell.m in Sources */,
 				A0F46C8E18F483E600C16AB1 /* PlanningPokerViewController.m in Sources */,
