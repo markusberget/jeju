@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		22A31B9418EDDC0600ADB7FB /* octocat_gems.png in Resources */ = {isa = PBXBuildFile; fileRef = 22A31B9318EDDC0600ADB7FB /* octocat_gems.png */; };
 		3DC80690CA5244C7A6D79B31 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A3C1FE5AAFE74CA8ADA25BFA /* libPods.a */; };
+		6333C41A18F810E10039D324 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6333C41918F810E10039D324 /* Images.xcassets */; };
 		633CB9B418F69B5A00FCA06D /* FeedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 633CB9B318F69B5A00FCA06D /* FeedTableViewController.m */; };
 		633CB9BC18F6D5FC00FCA06D /* CommitTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 633CB9BA18F6D5FC00FCA06D /* CommitTableViewCell.m */; };
 		633CB9BD18F6D5FC00FCA06D /* CommitTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 633CB9BB18F6D5FC00FCA06D /* CommitTableViewCell.xib */; };
@@ -27,7 +28,6 @@
 		A059512A18EAF9D900E6BB44 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A059512918EAF9D900E6BB44 /* AppDelegate.m */; };
 		A059512D18EAF9D900E6BB44 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A059512B18EAF9D900E6BB44 /* Main.storyboard */; };
 		A059513018EAF9D900E6BB44 /* jeju.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A059512E18EAF9D900E6BB44 /* jeju.xcdatamodeld */; };
-		A059513818EAF9D900E6BB44 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A059513718EAF9D900E6BB44 /* Images.xcassets */; };
 		A059513F18EAF9D900E6BB44 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A059513E18EAF9D900E6BB44 /* XCTest.framework */; };
 		A059514018EAF9D900E6BB44 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A059511718EAF9D900E6BB44 /* Foundation.framework */; };
 		A059514118EAF9D900E6BB44 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A059511B18EAF9D900E6BB44 /* UIKit.framework */; };
@@ -56,6 +56,7 @@
 
 /* Begin PBXFileReference section */
 		22A31B9318EDDC0600ADB7FB /* octocat_gems.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = octocat_gems.png; sourceTree = "<group>"; };
+		6333C41918F810E10039D324 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		633CB9B218F69B5A00FCA06D /* FeedTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedTableViewController.h; sourceTree = "<group>"; };
 		633CB9B318F69B5A00FCA06D /* FeedTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedTableViewController.m; sourceTree = "<group>"; };
 		633CB9B918F6D5FC00FCA06D /* CommitTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommitTableViewCell.h; sourceTree = "<group>"; };
@@ -85,7 +86,6 @@
 		A059512918EAF9D900E6BB44 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		A059512C18EAF9D900E6BB44 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A059512F18EAF9D900E6BB44 /* jeju.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = jeju.xcdatamodel; sourceTree = "<group>"; };
-		A059513718EAF9D900E6BB44 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		A059513D18EAF9D900E6BB44 /* jejuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = jejuTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A059513E18EAF9D900E6BB44 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		A059514718EAF9D900E6BB44 /* jejuTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "jejuTests-Info.plist"; sourceTree = "<group>"; };
@@ -206,9 +206,9 @@
 		A059512018EAF9D900E6BB44 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				6333C41918F810E10039D324 /* Images.xcassets */,
 				A059512818EAF9D900E6BB44 /* AppDelegate.h */,
 				A059512918EAF9D900E6BB44 /* AppDelegate.m */,
-				A059513718EAF9D900E6BB44 /* Images.xcassets */,
 				A059512E18EAF9D900E6BB44 /* jeju.xcdatamodeld */,
 				A059512118EAF9D900E6BB44 /* jeju-Info.plist */,
 				A059512218EAF9D900E6BB44 /* InfoPlist.strings */,
@@ -358,8 +358,8 @@
 			files = (
 				633CB9BD18F6D5FC00FCA06D /* CommitTableViewCell.xib in Resources */,
 				81741A8018F524C5000C4033 /* ConversationTableViewCell.xib in Resources */,
-				A059513818EAF9D900E6BB44 /* Images.xcassets in Resources */,
 				A059512418EAF9D900E6BB44 /* InfoPlist.strings in Resources */,
+				6333C41A18F810E10039D324 /* Images.xcassets in Resources */,
 				A059512D18EAF9D900E6BB44 /* Main.storyboard in Resources */,
 				22A31B9418EDDC0600ADB7FB /* octocat_gems.png in Resources */,
 			);

@@ -33,8 +33,15 @@
     self.deleted.text = [NSString stringWithFormat:@"-%d", _commit.countOfDeletions];
     
     self.date.text = [DateUtil formatDate:_commit.commitDate WithFormat:@"HH:mm:ss dd.MMM YYYY"];
-    self.author.text = [NSString stringWithFormat:@"%@", _commit.author.name];
-    [self.avatar setImageWithURL:_commit.author.avatarURL];
+    
+    
+    if (_commit.committer) {
+        [self.avatar setImageWithURL:_commit.committer.avatarURL];
+    } else {
+        [self.avatar setImage:[UIImage imageNamed:@"noAvatar"]];
+    }
+    
+    self.author.text = _commit.committer ? _commit.committer.name : _commit.committerName;
     self.message.text = _commit.message;
     
     [self.fileTable setFiles:_commit.files];

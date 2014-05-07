@@ -41,7 +41,7 @@
     [invocation setTarget:self];
     [invocation setSelector:selector];
     
-    self.pollTimer = [NSTimer timerWithTimeInterval:10 invocation:invocation repeats:YES];
+    self.pollTimer = [NSTimer timerWithTimeInterval:2 invocation:invocation repeats:YES];
     [[NSRunLoop mainRunLoop] addTimer:self.pollTimer forMode:NSDefaultRunLoopMode];
 
 }
@@ -95,7 +95,10 @@
             [self.commits insertObject:response.parsedResult atIndex:0];
         }
         
+        NSLog(@"%d remaining requests",((OCTResponse *)[newCommits firstObject]).remainingRequests);
+        
         self.lastEtag = ((OCTResponse *)[newCommits firstObject]).etag;
+        self.lastPollDate = [NSDate date];
     }
 }
 
@@ -105,7 +108,8 @@
         
         [[self.model getCommits: self.repo.name
                       withOwner:self.repo.ownerLogin
-                          notMatchingEtag:self.lastEtag]
+                          notMatchingEtag:self.lastEtag
+                          since:self.lastPollDate]
          
               continueWithBlock:^id(BFTask *task) {
             if (task.error) {
@@ -149,6 +153,8 @@
     if (self.commits) {
         OCTGitCommit * commit = [self.commits objectAtIndex:indexPath.row];
         [cell setCommit:commit];
+        
+        cell.repo = self.repo;
     }
     
     return cell;
