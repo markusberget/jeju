@@ -1,0 +1,161 @@
+//
+//  RepoPoller.m
+//  jeju
+//
+//  Created by Davíð Arnarsson on 07/05/14.
+//  Copyright (c) 2014 Markus Berget. All rights reserved.
+//
+
+
+#import "CommitPoller.h"
+
+@implementation CommitPoller
+
+static CommitPoller * _poller = nil;
+NSMutableDictionary * commits;
+NSMutableDictionary * observers;
+static NSMutableDictionary * commitDetails;
+
+
+@synthesize model = _model;
+
+-(OctokitModel *) model {
+    //TODO: Make better.
+    if(!_model) {
+        NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+        _model = [[OctokitModel alloc]
+                  initWithToken:[defaults objectForKey:@"token"]
+                  andUserName:@"user"];
+    }
+    
+    return _model;
+}
+
++(instancetype)instance
+{
+    @synchronized(self) {
+        if (!_poller) {
+            _poller = [[CommitPoller alloc] initWithBranch:nil];
+        }
+        
+        return _poller;
+    }
+}
+
+- (instancetype)initWithBranch:(NSString *) branch
+{
+    self = [super init];
+    if (self) {
+        self.branch = branch;
+    }
+    return self;
+}
+
+
+-(void)stopPolling
+{
+    [self.pollTimer invalidate];
+}
+
+
+-(void)startPollingRepo:(OCTRepository *) repo
+{
+    if(!commitDetails) {
+        commitDetails = [[NSMutableDictionary alloc] init];
+    }
+    if (self.repo != repo) {
+        self.repo = repo;
+        
+        observers = [[NSMutableDictionary alloc] init];
+
+        self.commits = [[NSMutableArray alloc] init];
+        self.lastEtag = nil;
+        self.lastPollDate = nil;
+        
+        SEL selector = @selector(fetchData);
+        NSMethodSignature *signature  = [self methodSignatureForSelector:selector];
+        NSInvocation * invocation = [NSInvocation invocationWithMethodSignature:signature];
+        
+        [invocation setTarget:self];
+        [invocation setSelector:selector];
+        
+        self.pollTimer = [NSTimer timerWithTimeInterval:2 invocation:invocation repeats:YES];
+        [[NSRunLoop mainRunLoop] addTimer:self.pollTimer forMode:NSDefaultRunLoopMode];
+    }
+}
+
+-(void) handleNewCommits:(NSArray *) newCommits {
+     if (!self.commits) {
+         self.commits = [[NSMutableArray alloc] init];
+     }
+     
+     if(newCommits.count) {
+         // add new commits to the front of the list
+         for(int i = newCommits.count-1; i >= 0 ; --i) {
+             OCTResponse * response = [newCommits objectAtIndex:i];
+             [self.commits insertObject:response.parsedResult atIndex:0];
+         }
+         
+         self.lastEtag = ((OCTResponse *)[newCommits firstObject]).etag;
+         self.lastPollDate = [NSDate date];
+         
+         for(id key in observers) {
+             HandlingBlock block = [observers objectForKey:key];
+             
+             block(newCommits, newCommits.count);
+         }
+     }
+}
+
+-(void) fetchData
+    {
+        if(self.repo) {
+            [[self.model getCommits: self.repo.name
+                          withOwner:self.repo.ownerLogin
+                    notMatchingEtag:self.lastEtag
+                              since:self.lastPollDate
+                        fromBranch:self.branch]
+             
+             continueWithBlock:^id(BFTask *task) {
+                 [self handleNewCommits: task.result];
+
+                 return nil;
+             }];
+        }
+    }
+
+-(NSString *) addObserver:(HandlingBlock)block
+{
+    NSString * key = [NSString stringWithFormat:@"%d", ++self.ids];
+    [observers setObject:block forKey:key];
+    return key;
+}
+
+-(void)removeObserver:(NSString *)observer
+{
+    [observers removeObjectForKey:observer];
+}
+
+-(void) getDetailsForCommitAtIndex:(NSUInteger)index withContinuation:(ReturnBlock)block
+{
+    if (!self.commits || self.commits.count < index) {
+        block(nil);
+    }
+    else {
+        OCTGitCommit * commit = (OCTGitCommit *)[self.commits objectAtIndex:index];
+        OCTGitCommit * details = [commitDetails objectForKey:commit.SHA];
+        if (details) {
+            block(details);
+        } else {
+            [[self.model getCommit:commit.SHA fromRepo:self.repo] continueWithBlock:^id(BFTask *task) {
+                [commitDetails setObject:task.result forKey:commit.SHA];
+                block(task.result);
+                return nil;
+            }];
+        }
+    }
+    
+}
+     
+
+@end
