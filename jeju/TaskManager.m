@@ -10,4 +10,27 @@
 
 @implementation TaskManager
 
+static TaskManager *  _instance = nil;
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        
+    }
+    return self;
+}
+
+
++(instancetype) instance
+{
+    @synchronized(self) {
+        if (!_instance) {
+            _instance = [[TaskManager alloc] init];
+        }
+        
+        return _instance;
+    }
+}
+
 @end

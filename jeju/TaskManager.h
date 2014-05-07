@@ -10,4 +10,12 @@
 
 @interface TaskManager : NSObject
 
+@property (nonatomic, strong) NSMutableArray* watchedFiles;
+
+-(instancetype) init;
+
++(instancetype) instance;
+
+
+
 @end

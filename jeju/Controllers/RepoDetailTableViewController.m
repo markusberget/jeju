@@ -8,12 +8,14 @@
 
 #import "RepoDetailTableViewController.h"
 #import "PlanningPokerViewController.h"
+#import "CommitPoller.h"
 
 @interface RepoDetailTableViewController ()
-
+@property (strong, nonatomic) NSMutableArray * watchedFiles;
 @end
 
 @implementation RepoDetailTableViewController
+
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -28,10 +30,61 @@
 {
     if (_repo != newRepo) {
         _repo = newRepo;
+        self.watchedFiles = [[NSMutableArray alloc] init];
+
+        CommitPoller * masterPoller = [[CommitPoller alloc] initWithBranch:@"master"];
+        [masterPoller startPollingRepo:_repo];
+        [masterPoller addObserver:^(id a, int b) {
+            [self displayAlert:@"The master branch was changed!" :@"Yep, it was changed!"];
+        }];
+        
+        
+        [[CommitPoller instance] startPollingRepo:_repo];
+        [[CommitPoller instance] addObserver:^(NSArray * commits, int count) {
+            NSMutableArray * toNotify = [[NSMutableArray alloc] init];
+            if (count) {
+                
+                for (int i = 0; i < count; ++i) {
+                    OCTGitCommit * commit = [commits objectAtIndex:i];
+
+                    [[CommitPoller instance] getDetailsForCommitAtIndex:i withContinuation:^(OCTGitCommit * cmt) {
+                        for (NSString * file in cmt.files) {
+                            if ([self.watchedFiles containsObject:file]) {
+                                [toNotify addObject:file];
+                            }
+                        }
+                        
+                        
+                        if (i == count - 1) {
+                            NSMutableString * body = [[NSMutableString alloc] init];
+                            for(NSString * file in toNotify) {
+                                [body appendFormat:@"%@, ", file];
+                            }
+                            [self displayAlert:@"Your files were changed!" :[body substringToIndex:body.length - 1]];
+                        }
+                    }];
+                }
+            }
+        }];
         
         // Update the view.
         [self configureView];
     }
+}
+
+-(void) displayAlert:(NSString *) title  :(NSString *) body {
+    UILocalNotification* localNotification = [[UILocalNotification alloc] init];
+    localNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow:0];
+    localNotification.alertBody = body;
+    localNotification.alertAction = title;
+    localNotification.timeZone = [NSTimeZone defaultTimeZone];
+    localNotification.applicationIconBadgeNumber = [[UIApplication sharedApplication] applicationIconBadgeNumber] + 1;
+    
+    [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+    
+    // Request to reload table view data
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadData" object:self];
+
 }
 
 - (void)configureView

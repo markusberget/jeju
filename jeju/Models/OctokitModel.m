@@ -156,20 +156,24 @@
     return source.task;
 }
 
--(BFTask *) getCommits:(NSString *)forRepo withOwner:(NSString *)owner notMatchingEtag:(NSString *) etag since:(NSDate *)date
+-(BFTask *) getCommits:(NSString *)forRepo withOwner:(NSString *)owner notMatchingEtag:(NSString *) etag since:(NSDate *)date fromBranch:(NSString *) branch
 {
     BFTaskCompletionSource * source = [BFTaskCompletionSource taskCompletionSource];
     
-    NSString * path = [[NSString alloc] initWithFormat:@"/repos/%@/%@/commits", owner, forRepo];
-    
+    NSMutableString * path = [[NSMutableString alloc] initWithFormat:@"/repos/%@/%@/commits", owner, forRepo];
+
     NSMutableArray * results = [[NSMutableArray alloc] init];
     OCTClient * client = [self getAuthenticatedClient];
     
     
-    NSDictionary * params = nil;
+    NSMutableDictionary * params = [[NSMutableDictionary alloc] init];
     
     if(date) {
-        params = @{@"since": date};
+        [params setObject:date forKey:@"since"];
+    }
+    
+    if(branch) {
+        [params setObject:branch forKey:@"sha"];
     }
     
     NSMutableURLRequest * request = [client requestWithMethod:@"GET" path:path parameters:params notMatchingEtag:etag ];
