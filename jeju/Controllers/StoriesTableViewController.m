@@ -9,6 +9,7 @@
 #import "StoriesTableViewController.h"
 #import "PivotalTrackerRepository.h"
 #import "StoryModel.h"
+#import "StoryTableViewCell.h"
 
 @interface StoriesTableViewController ()
 @property (strong, nonatomic) PivotalTrackerRepository *pivotalTrackerRepository;
@@ -59,6 +60,8 @@
 {
     [super viewDidLoad];
     
+    [self.tableView registerNib:[UINib nibWithNibName:@"StoryTableViewCell" bundle:nil] forCellReuseIdentifier:@"StoryTableViewCell"];
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -70,11 +73,8 @@
     
     self.stories = stories;
     
-    for (StoryModel *story in stories) {
-        NSLog(@"%@", story.name);
-    }
-    
     [self.tableView reloadData];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -98,20 +98,32 @@
 }
 
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (StoryTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    StoryTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"StoryTableViewCell" forIndexPath:indexPath];
     
-    [self configureCell:cell atIndexPath:indexPath];
+    if (cell == nil)
+    {
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"StoryTableViewCell" owner:self options:nil];
+        cell = [nib objectAtIndex:0];
+    }
+    
+    StoryModel *story = [self.stories objectAtIndex:indexPath.row];
+    //cell.storyNameLabel.text = story.name;
+    [cell.storyNameLabel setText:@"derp"];
+    [cell.ownerLabel setText:@"derp"];
+    //[self configureCell:cell atIndexPath:indexPath];
     
     return cell;
 }
 
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
+- (void)configureCell:(StoryTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
     StoryModel *story = [self.stories objectAtIndex:indexPath.row];
-    cell.textLabel.text = story.name;
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", story.estimate];
+    cell.storyNameLabel.text = story.name;
+    NSLog(@"Story name and namelabel:");
+    NSLog(@"%@", story.name);
+    NSLog(@"%@", cell.storyNameLabel.text);
 }
 
 
