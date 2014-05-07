@@ -136,11 +136,15 @@
     
     if ([[segue identifier] isEqualToString:@"showFeed"] || [[segue identifier] isEqualToString:@"showConversations"]) {
         [[segue destinationViewController] setRepo:self.repo];
-    } else if ([[segue identifier] isEqualToString:@"showPlanningPoker"]) {
+    }
+    else if ([[segue identifier] isEqualToString:@"showPlanningPoker"]) {
         if ([segue.destinationViewController isKindOfClass:[PlanningPokerViewController class]]) {
             PlanningPokerViewController *ppvc = (PlanningPokerViewController *)segue.destinationViewController;
             ppvc.title = @"Planning Poker";
         }
+    }
+    else if ([[segue identifier] isEqualToString:@"showNotes"]) {
+        [[segue destinationViewController] setManagedObjectContext: self.managedObjectContext];
     }
 }
 

@@ -116,6 +116,7 @@
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         OCTRepository *repo = [self.repos objectAtIndex:indexPath.row];
         [[segue destinationViewController] setRepo:repo];
+        [[segue destinationViewController] setManagedObjectContext:self.managedObjectContext];
     }
 }
 

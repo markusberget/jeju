@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NotesTableViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource>
+@interface NotesTableViewController : UITableViewController <NSFetchedResultsControllerDelegate>
 
-@property (strong, nonatomic) NSArray *items;
-@property (strong, nonatomic) IBOutlet UITableView *notesTable;
+@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
 @end
