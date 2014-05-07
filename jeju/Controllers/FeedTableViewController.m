@@ -11,6 +11,8 @@
 #import "CommitTableViewCell.h"
 #import "Octokit.h"
 #import "CommitViewController.h"
+#import <AudioToolbox/AudioServices.h>
+
 
 @implementation FeedTableViewController
 
@@ -29,21 +31,11 @@
 -(void) viewDidLoad
 {
     [self.tableView registerNib:[UINib nibWithNibName:@"CommitTableViewCell" bundle:nil] forCellReuseIdentifier:@"commitCell"];
-    
-}
 
--(void)viewWillAppear:(BOOL)animated
-{
-    SEL selector = @selector(fetchData);
-    NSMethodSignature *signature  = [self methodSignatureForSelector:selector];
-    NSInvocation * invocation = [NSInvocation invocationWithMethodSignature:signature];
-    
-    [invocation setTarget:self];
-    [invocation setSelector:selector];
-    
-    self.pollTimer = [NSTimer timerWithTimeInterval:2 invocation:invocation repeats:YES];
-    [[NSRunLoop mainRunLoop] addTimer:self.pollTimer forMode:NSDefaultRunLoopMode];
-
+    UIActivityIndicatorView * activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    UIBarButtonItem * barButton = [[UIBarButtonItem alloc] initWithCustomView:activityIndicator];
+    [self navigationItem].rightBarButtonItem = barButton;
+    [activityIndicator startAnimating];
 }
 
 
@@ -81,8 +73,6 @@
     return _repo;
 }
 
-
-
 -(void) handleNewCommits:(NSArray *) newCommits {
     if (!self.commits) {
         self.commits = [[NSMutableArray alloc] init];
@@ -94,7 +84,7 @@
             OCTResponse * response = [newCommits objectAtIndex:i];
             [self.commits insertObject:response.parsedResult atIndex:0];
         }
-        
+
         NSLog(@"%d remaining requests",((OCTResponse *)[newCommits firstObject]).remainingRequests);
         
         self.lastEtag = ((OCTResponse *)[newCommits firstObject]).etag;
@@ -179,22 +169,24 @@
     [ctrl setCommit:sender];
 }
 
+-(void) viewWillAppear:(BOOL)animated
+{
+    
+    SEL selector = @selector(fetchData);
+    NSMethodSignature *signature  = [self methodSignatureForSelector:selector];
+    NSInvocation * invocation = [NSInvocation invocationWithMethodSignature:signature];
+    
+    [invocation setTarget:self];
+    [invocation setSelector:selector];
+    
+    self.pollTimer = [NSTimer timerWithTimeInterval:2 invocation:invocation repeats:YES];
+    [[NSRunLoop mainRunLoop] addTimer:self.pollTimer forMode:NSDefaultRunLoopMode];
+    
+    [super viewWillAppear:animated];
+}
 
 - (IBAction)onDismissTouch:(id)sender {
-    if (!self.pollingView.hidden) {
-        self.pollingView.hidden = YES;
-        int height = 62;
-        /**http://stackoverflow.com/questions/8542506/how-to-show-hide-a-uiview-with-animation-in-ios */
-        CGRect fz = CGRectMake(self.view.frame.origin.x,
-                                 self.view.frame.origin.y - height,
-                                 self.view.frame.size.width,
-                                 self.view.frame.size.height + height);
-
-        [UIView beginAnimations:nil context:NULL];
-        [UIView setAnimationDuration: 0.300];
-        self.view.frame = fz;
-        [UIView commitAnimations];
-        
-    }
+    
 }
+
 @end
