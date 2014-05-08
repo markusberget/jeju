@@ -5,34 +5,34 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>54CDEC57-906D-405B-998B-A7CAFCF96FD4</string>
+	<string>879E6DB5-4DB2-445B-8454-3DF38078C118</string>
 	<key>IDESourceControlProjectName</key>
 	<string>jeju</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>3BC6F2DB-459E-4D5D-8137-CA0E2BD0EBAF</key>
-		<string>https://github.com/markusberget/jeju.git</string>
+		<key>9C528E9E-929D-461D-BD9E-FCDE8DBE79D7</key>
+		<string>https://github.com/markusberget/jeju</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>jeju.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>3BC6F2DB-459E-4D5D-8137-CA0E2BD0EBAF</key>
+		<key>9C528E9E-929D-461D-BD9E-FCDE8DBE79D7</key>
 		<string>..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/markusberget/jeju.git</string>
+	<string>https://github.com/markusberget/jeju</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>3BC6F2DB-459E-4D5D-8137-CA0E2BD0EBAF</string>
+	<string>9C528E9E-929D-461D-BD9E-FCDE8DBE79D7</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>3BC6F2DB-459E-4D5D-8137-CA0E2BD0EBAF</string>
+			<string>9C528E9E-929D-461D-BD9E-FCDE8DBE79D7</string>
 			<key>IDESourceControlWCCName</key>
 			<string>jeju</string>
 		</dict>
