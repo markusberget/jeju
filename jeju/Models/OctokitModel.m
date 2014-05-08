@@ -173,7 +173,7 @@
     }
     
     if(branch) {
-        [params setObject:branch forKey:@"sha"];
+        [path appendFormat:@"/%@", branch];
     }
     
     NSMutableURLRequest * request = [client requestWithMethod:@"GET" path:path parameters:params notMatchingEtag:etag ];

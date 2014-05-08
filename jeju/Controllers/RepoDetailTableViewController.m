@@ -31,12 +31,7 @@
     if (_repo != newRepo) {
         _repo = newRepo;
         self.watchedFiles = [[NSMutableArray alloc] init];
-
-        CommitPoller * masterPoller = [[CommitPoller alloc] initWithBranch:@"master"];
-        [masterPoller startPollingRepo:_repo];
-        [masterPoller addObserver:^(id a, int b) {
-            [self displayAlert:@"The master branch was changed!" :@"Yep, it was changed!"];
-        }];
+        
         
         
         [[CommitPoller instance] startPollingRepo:_repo];
@@ -70,6 +65,17 @@
         // Update the view.
         [self configureView];
     }
+}
+
+-(void) startMasterNotificationPoller
+{
+    CommitPoller * poller = [[CommitPoller alloc] initWithBranch:@"master"];
+
+    [poller addObserver:^(NSArray * commits, int count) {
+
+    }];
+    
+    [poller startPollingRepo:self.repo];
 }
 
 -(void) displayAlert:(NSString *) title  :(NSString *) body {
