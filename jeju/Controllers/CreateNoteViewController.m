@@ -24,8 +24,8 @@
 }
 
 - (void)viewDidLoad
-{
-    [self fetchFilePaths];
+{    
+    [self fetchData];
     [super viewDidLoad];
 
 }
@@ -37,19 +37,20 @@
 
 -(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
-    return [self.files count];
+    return [self.octTree.entries count];
 }
 
 -(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-    OCTContent *content = [self.files objectAtIndex:row];
+    OCTTreeEntry *content = [self.octTree.entries objectAtIndex:row];
     return content.path;
 }
 
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row
       inComponent:(NSInteger)component
 {
-    self.filePath = [self.files objectAtIndex:row];
+    self.octTreeEntry = [self.octTree.entries objectAtIndex:row];
+    self.selectedLabel.text = self.octTreeEntry.path;
 }
 
 - (NSFetchedResultsController *)fetchedResultsController
@@ -113,7 +114,7 @@
     //Testing to set an attribute
     [newManagedObject setValue:self.note.text forKey:@"note"];
 
-    [newManagedObject setValue:self.filePath.path forKey:@"filePath"];
+    [newManagedObject setValue:self.octTreeEntry.path forKey:@"filePath"];
     
     // Save the context.
     NSError *error = nil;
@@ -137,14 +138,15 @@
 }
 */
 
-- (void)fetchFilePaths
-{
+//Fetching the latest commit, then using that sha to fetch all files in repo
+- (void) fetchData {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
     self.octokitModel = [[OctokitModel alloc] initWithToken:[defaults objectForKey:@"token"]
                                                 andUserName:[defaults objectForKey:@"user"]];
     // we get the repositories
-    [[self.octokitModel getFilePaths:self.repo] continueWithBlock:^id(BFTask *task) {
+    
+    [[self.octokitModel getHeadOfMaster:self.repo] continueWithBlock:^id(BFTask *task) {
         
         if (task.error) {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Whoops!"
@@ -154,15 +156,43 @@
                                                   otherButtonTitles:nil];
             [alert show];
         } else {
-            NSMutableArray *results = [[NSMutableArray alloc] init];
             for(OCTResponse *object in task.result) {
-                [results addObject: [object parsedResult]];
+                OCTRef *ref = [object parsedResult];
+                self.SHA = ref.SHA;
             }
-            self.files = results;
-            self.filePath = [self.files firstObject];
+            [self fetchTree];
+        }
+        return nil;
+    }];
+}
+
+- (void)fetchTree
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    self.octokitModel = [[OctokitModel alloc] initWithToken:[defaults objectForKey:@"token"]
+                                                andUserName:[defaults objectForKey:@"user"]];
+    // we get the repositories
+    
+    [[self.octokitModel getTree:self.repo sha:self.SHA] continueWithBlock:^id(BFTask *task) {
+        
+        if (task.error) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Whoops!"
+                                                            message:task.error.description //@"Something went wrong."
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"Ok"
+                                                  otherButtonTitles:nil];
+            [alert show];
+        } else {
+            for(OCTResponse *object in task.result) {
+                self.octTree = [object parsedResult];
+            }
+            self.octTreeEntry = [self.octTree.entries firstObject];
+            self.selectedLabel.text = self.octTreeEntry.path;
             [self.filePicker reloadAllComponents];
         }
         return nil;
     }];
 }
+
 @end
