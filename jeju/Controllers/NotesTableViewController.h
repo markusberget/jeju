@@ -7,10 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "OctoKitModel.h"
 
 @interface NotesTableViewController : UITableViewController <NSFetchedResultsControllerDelegate>
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+
+@property (nonatomic, strong) OCTRepository *repo;
+
 
 @end

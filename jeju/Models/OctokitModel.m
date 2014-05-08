@@ -190,9 +190,11 @@
     return source.task;
 }
 
-//-(BFTask *) getFilePaths:(OCTRepository *) repo
-//{
-//    
-//}
+-(BFTask *) getFilePaths:(OCTRepository *) repo
+{
+    NSString *path = [[NSString alloc] initWithFormat:@"repos/%@/%@/contents", repo.ownerLogin, repo.name];
+    return [self getDataForPath:path andParameters:nil returnClass:OCTContent.class];
+
+}
 
 @end

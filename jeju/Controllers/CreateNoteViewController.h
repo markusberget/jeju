@@ -7,17 +7,27 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "OctoKitModel.h"
 
 @interface CreateNoteViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate>
 
 
 @property (strong, nonatomic)  NSArray  *files;
-@property (strong, nonatomic)  NSString *filePath;
+@property (strong, nonatomic)  OCTContent *filePath;
 
-@property (strong, nonatomic) IBOutlet UITextView *note;
+@property (strong, nonatomic) IBOutlet UITextField *note;
 @property (strong, nonatomic) IBOutlet UIPickerView *filePicker;
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+
+@property (nonatomic, strong) OctokitModel *octokitModel;
+@property (nonatomic, strong) OCTRepository *repo;
+@property (nonatomic, strong) OCTIssue *conversation;
+@property (nonatomic, strong) NSArray *messages;
+
+
+
+
 
 -(IBAction)dismissModal:(id)sender;
 -(IBAction)saveNote:(id)sender;

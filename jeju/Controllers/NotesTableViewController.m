@@ -119,6 +119,7 @@
     }
     else if ([[segue identifier] isEqualToString:@"showNew"]){
         [[segue destinationViewController] setManagedObjectContext:self.managedObjectContext];
+        [[segue destinationViewController] setRepo:self.repo];
     }
 }
 
@@ -228,5 +229,6 @@
     cell.textLabel.text = [object valueForKey:@"note"];
     cell.detailTextLabel.text = [[object valueForKey:@"filePath"] description];
 }
+
 
 @end
