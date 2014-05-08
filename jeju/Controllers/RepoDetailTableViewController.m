@@ -204,6 +204,7 @@
     }
     else if ([[segue identifier] isEqualToString:@"showNotes"]) {
         [[segue destinationViewController] setManagedObjectContext: self.managedObjectContext];
+        [[segue destinationViewController] setRepo:self.repo];
     }
 }
 

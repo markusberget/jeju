@@ -25,9 +25,9 @@
 
 - (void)viewDidLoad
 {
-    self.files = [NSArray arrayWithObjects: @"1", @"2", @"3", nil];
-    self.filePath = [self.files firstObject];
+    [self fetchFilePaths];
     [super viewDidLoad];
+
 }
 
 -(NSInteger)numberOfComponentsInPickerView:(UIPickerView  *)pickerView
@@ -42,7 +42,8 @@
 
 -(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-    return [self.files objectAtIndex:row];
+    OCTContent *content = [self.files objectAtIndex:row];
+    return content.path;
 }
 
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row
@@ -112,8 +113,7 @@
     //Testing to set an attribute
     [newManagedObject setValue:self.note.text forKey:@"note"];
 
-    [newManagedObject setValue:self.filePath forKey:@"filePath"];
-    NSLog(@"%@",self.filePath);
+    [newManagedObject setValue:self.filePath.path forKey:@"filePath"];
     
     // Save the context.
     NSError *error = nil;
@@ -137,4 +137,32 @@
 }
 */
 
+- (void)fetchFilePaths
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    self.octokitModel = [[OctokitModel alloc] initWithToken:[defaults objectForKey:@"token"]
+                                                andUserName:[defaults objectForKey:@"user"]];
+    // we get the repositories
+    [[self.octokitModel getFilePaths:self.repo] continueWithBlock:^id(BFTask *task) {
+        
+        if (task.error) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Whoops!"
+                                                            message:task.error.description //@"Something went wrong."
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"Ok"
+                                                  otherButtonTitles:nil];
+            [alert show];
+        } else {
+            NSMutableArray *results = [[NSMutableArray alloc] init];
+            for(OCTResponse *object in task.result) {
+                [results addObject: [object parsedResult]];
+            }
+            self.files = results;
+            self.filePath = [self.files firstObject];
+            [self.filePicker reloadAllComponents];
+        }
+        return nil;
+    }];
+}
 @end
