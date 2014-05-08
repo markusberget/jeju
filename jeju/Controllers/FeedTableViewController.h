@@ -10,15 +10,10 @@
 #import "OctokitModel.h"
 #import "Octokit.h"
 
-@interface FeedTableViewController : UITableViewController
+@interface FeedTableViewController : UITableViewController <NSCopying>
 
 @property (strong, nonatomic) OCTRepository * repo;
-@property (strong, nonatomic) NSMutableArray * commits;
-@property (strong, nonatomic) NSTimer * pollTimer;
-@property (strong, nonatomic) NSString * lastEtag;
-@property (strong, nonatomic) NSDate  * lastPollDate;
-@property (strong, nonatomic) OctokitModel * model;
 @property (weak, nonatomic) IBOutlet UIView *pollingView;
-- (IBAction)onDismissTouch:(id)sender;
+
 
 @end
