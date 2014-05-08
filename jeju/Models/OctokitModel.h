@@ -79,4 +79,8 @@
 
 -(BFTask *) getFilePaths:(OCTRepository *) repo;
 
+-(BFTask *) getTree: (OCTRepository *) repo sha: (NSString *) sha;
+
+-(BFTask *) getHeadOfMaster: (OCTRepository *) repo;
+
 @end

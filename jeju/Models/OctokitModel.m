@@ -208,4 +208,21 @@
 
 }
 
+-(BFTask *) getTree:(OCTRepository *) repo sha:(NSString *) sha
+{
+    //Get the latest commit
+    
+    NSString *path = [[NSString alloc] initWithFormat:@"repos/%@/%@/git/trees/%@?recursive=1", repo.ownerLogin, repo.name, sha];
+    
+    return [self getDataForPath:path andParameters:nil returnClass:OCTTree.class];
+}
+
+-(BFTask *) getHeadOfMaster: (OCTRepository *) repo {
+    
+    NSString *path = [[NSString alloc] initWithFormat:@"repos/%@/%@/git/refs/heads/master", repo.ownerLogin, repo.name];
+    
+    return [self getDataForPath:path andParameters:nil returnClass:OCTRef.class];
+}
+
+
 @end
