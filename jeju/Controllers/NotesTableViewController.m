@@ -226,7 +226,7 @@
     NSManagedObject *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
     cell.textLabel.text = [object valueForKey:@"note"];
-    cell.detailTextLabel.text = [[object valueForKey:@"timeStamp"] description];
+    cell.detailTextLabel.text = [[object valueForKey:@"filePath"] description];
 }
 
 @end

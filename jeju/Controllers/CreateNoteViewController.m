@@ -25,10 +25,31 @@
 
 - (void)viewDidLoad
 {
+    self.files = [NSArray arrayWithObjects: @"1", @"2", @"3", nil];
+    self.filePath = [self.files firstObject];
     [super viewDidLoad];
-    
 }
 
+-(NSInteger)numberOfComponentsInPickerView:(UIPickerView  *)pickerView
+{
+    return 1;
+}
+
+-(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    return [self.files count];
+}
+
+-(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    return [self.files objectAtIndex:row];
+}
+
+-(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row
+      inComponent:(NSInteger)component
+{
+    self.filePath = [self.files objectAtIndex:row];
+}
 
 - (NSFetchedResultsController *)fetchedResultsController
 {
@@ -67,7 +88,6 @@
     return _fetchedResultsController;
 }
 
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -91,6 +111,9 @@
     
     //Testing to set an attribute
     [newManagedObject setValue:self.note.text forKey:@"note"];
+
+    [newManagedObject setValue:self.filePath forKey:@"filePath"];
+    NSLog(@"%@",self.filePath);
     
     // Save the context.
     NSError *error = nil;

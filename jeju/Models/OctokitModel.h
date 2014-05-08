@@ -77,4 +77,6 @@
 -(BFTask *) getCommit:(NSString *) sha
              fromRepo:(OCTRepository *) repo;
 
+-(BFTask *) getFilePaths:(OCTRepository *) repo;
+
 @end
