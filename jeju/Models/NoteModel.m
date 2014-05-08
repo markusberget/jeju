@@ -27,19 +27,8 @@
     
     [request setEntity:description];
     
-    NSMutableString * filePaths = [[NSMutableString alloc] init];
     
-    for (int i = 0; i < files.count; ++i) {
-        NSString * file = files[i];
-        
-        [filePaths appendFormat:@"'%@'", file];
-        
-        if (i < files.count - 1) {
-            [filePaths appendString:@","];
-        }
-    }
-    
-    NSPredicate * predicate = [NSPredicate predicateWithFormat:@"filePath IN (%@)", filePaths];
+    NSPredicate * predicate = [NSPredicate  predicateWithFormat:@"ANY %K IN %@", @"filePath", files];
     [request setPredicate:predicate];
     NSError * error;
     NSArray * results = [self.context executeFetchRequest:request error:&error];

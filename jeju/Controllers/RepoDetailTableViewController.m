@@ -9,6 +9,7 @@
 #import "RepoDetailTableViewController.h"
 #import "PlanningPokerViewController.h"
 #import "CommitPoller.h"
+#import "NoteModel.h"
 
 @interface RepoDetailTableViewController ()
 @property (strong, nonatomic) NSMutableArray * watchedFiles;
@@ -32,8 +33,6 @@
         _repo = newRepo;
         self.watchedFiles = [[NSMutableArray alloc] init];
         
-        
-        
         [[CommitPoller instance] startPollingRepo:_repo];
         [[CommitPoller instance] addObserver:^(NSArray * commits, int count) {
             NSMutableArray * toNotify = [[NSMutableArray alloc] init];
@@ -42,20 +41,26 @@
                 for (int i = 0; i < count; ++i) {
                     OCTGitCommit * commit = [commits objectAtIndex:i];
 
-                    [[CommitPoller instance] getDetailsForCommitAtIndex:i withContinuation:^(OCTGitCommit * cmt) {
-                        for (NSString * file in cmt.files) {
-                            if ([self.watchedFiles containsObject:file]) {
-                                [toNotify addObject:file];
+                    [[CommitPoller instance] getDetailsForCommitWithSHA:commit.SHA withContinuation:^(OCTGitCommit * cmt) {
+                        for (OCTGitCommitFile * file in cmt.files) {
+                            if (![toNotify containsObject:file.filename]) {
+                                [toNotify addObject:file.filename];
                             }
                         }
                         
                         
                         if (i == count - 1) {
-                            NSMutableString * body = [[NSMutableString alloc] init];
-                            for(NSString * file in toNotify) {
-                                [body appendFormat:@"%@, ", file];
+                            NoteModel * noteModel = [[NoteModel alloc] initWithContext:self.managedObjectContext];
+                            NSArray * containedFiles = [noteModel containsFiles:toNotify];
+
+                            if (containedFiles && containedFiles.count > 0) {
+                                NSMutableString * whatevs  = [[NSMutableString alloc] init];
+                                for (NSString * containedFile in containedFiles) {
+                                    [whatevs appendFormat:@"\n%@", containedFile];
+                                }
+                                [self displayAlert:@"Your files were changed!" : whatevs];
                             }
-                            [self displayAlert:@"Your files were changed!" :[body substringToIndex:body.length - 1]];
+                            
                         }
                     }];
                 }
