@@ -364,12 +364,12 @@
                         <viewControllerLayoutGuide type="top" id="Cbf-Es-jIc"/>
                         <viewControllerLayoutGuide type="bottom" id="Oyc-NV-oYe"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Ha7-d4-IuL">
+                    <view key="view" contentMode="scaleToFill" id="Ha7-d4-IuL" customClass="note">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZiD-3J-IhA">
-                                <rect key="frame" x="0.0" y="48" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="18" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="New Note" id="QMV-Bs-os3">
@@ -384,7 +384,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fHv-BS-tW3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2071" y="1672"/>
+            <point key="canvasLocation" x="2071" y="1677"/>
         </scene>
         <!--Planning Poker Card View Controller-->
         <scene sceneID="4wf-nq-9cW">
