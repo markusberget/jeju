@@ -88,12 +88,15 @@ static NSMutableDictionary * commitDetails;
      if (!self.commits) {
          self.commits = [[NSMutableArray alloc] init];
      }
-     
+    
+     NSMutableArray * newActualCommits = [[NSMutableArray alloc] init];
      if(newCommits.count) {
          // add new commits to the front of the list
          for(int i = newCommits.count-1; i >= 0 ; --i) {
              OCTResponse * response = [newCommits objectAtIndex:i];
-             [self.commits insertObject:response.parsedResult atIndex:0];
+             OCTGitCommit * commit = response.parsedResult;
+             [self.commits insertObject:commit atIndex:0];
+             [newActualCommits addObject:commit];
          }
          
          self.lastEtag = ((OCTResponse *)[newCommits firstObject]).etag;
@@ -102,7 +105,7 @@ static NSMutableDictionary * commitDetails;
          for(id key in observers) {
              HandlingBlock block = [observers objectForKey:key];
              
-             block(newCommits, newCommits.count);
+             block(newActualCommits, newActualCommits.count);
          }
      }
 }
@@ -147,15 +150,26 @@ static NSMutableDictionary * commitDetails;
         if (details) {
             block(details);
         } else {
-            [[self.model getCommit:commit.SHA fromRepo:self.repo] continueWithBlock:^id(BFTask *task) {
-                [commitDetails setObject:task.result forKey:commit.SHA];
-                block(task.result);
-                return nil;
-            }];
+            [self getDetailsForCommitWithSHA:commit.SHA withContinuation: block];
         }
     }
-    
 }
-     
+
+
+-(void) getDetailsForCommitWithSHA:(NSString *)sha withContinuation:(ReturnBlock)block
+{
+    OCTGitCommit * commit = [commitDetails objectForKey:sha];
+    
+    if(commit) {
+        block(commit);
+    } else {
+        [[self.model getCommit:sha fromRepo:self.repo] continueWithBlock:^id(BFTask *task) {
+            [commitDetails setObject:task.result forKey:sha];
+            block(task.result);
+            return nil;
+        }];
+    }
+}
+
 
 @end

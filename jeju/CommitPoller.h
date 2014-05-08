@@ -35,4 +35,5 @@ typedef void (^ HandlingBlock)(id, int);
 
 typedef void (^ ReturnBlock)(OCTGitCommit *);
 -(void) getDetailsForCommitAtIndex: (NSUInteger) index withContinuation: (ReturnBlock) block;
+-(void) getDetailsForCommitWithSHA: (NSString *) sha withContinuation: (ReturnBlock) block;
 @end
