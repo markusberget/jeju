@@ -16,6 +16,8 @@
 		633CB9C018F701F400FCA06D /* CommitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 633CB9BF18F701F400FCA06D /* CommitViewController.m */; };
 		633CB9C318F70AFE00FCA06D /* FileTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 633CB9C218F70AFE00FCA06D /* FileTableView.m */; };
 		635DD8EE18F3EDFE009D7590 /* OctokitModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 635DD8ED18F3EDFE009D7590 /* OctokitModel.m */; };
+		7750D6BA191A334000290A88 /* CreateNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7750D6B9191A334000290A88 /* CreateNoteViewController.m */; };
+		77A7B7D418F7EC7400CBD357 /* NotesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77A7B7D318F7EC7400CBD357 /* NotesTableViewController.m */; };
 		81741A8018F524C5000C4033 /* ConversationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81741A7F18F524C5000C4033 /* ConversationTableViewCell.xib */; };
 		81741A8318F527DD000C4033 /* ConversationsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 81741A8218F527DD000C4033 /* ConversationsTableViewCell.m */; };
 		81741A8618F54AF1000C4033 /* DateUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 81741A8518F54AF1000C4033 /* DateUtil.m */; };
@@ -68,6 +70,10 @@
 		633CB9C218F70AFE00FCA06D /* FileTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileTableView.m; sourceTree = "<group>"; };
 		635DD8EC18F3EDFE009D7590 /* OctokitModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OctokitModel.h; path = Models/OctokitModel.h; sourceTree = "<group>"; };
 		635DD8ED18F3EDFE009D7590 /* OctokitModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OctokitModel.m; path = Models/OctokitModel.m; sourceTree = "<group>"; };
+		7750D6B8191A334000290A88 /* CreateNoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateNoteViewController.h; sourceTree = "<group>"; };
+		7750D6B9191A334000290A88 /* CreateNoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateNoteViewController.m; sourceTree = "<group>"; };
+		77A7B7D218F7EC7400CBD357 /* NotesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotesTableViewController.h; sourceTree = "<group>"; };
+		77A7B7D318F7EC7400CBD357 /* NotesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotesTableViewController.m; sourceTree = "<group>"; };
 		81741A7F18F524C5000C4033 /* ConversationTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConversationTableViewCell.xib; sourceTree = "<group>"; };
 		81741A8118F527DD000C4033 /* ConversationsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConversationsTableViewCell.h; sourceTree = "<group>"; };
 		81741A8218F527DD000C4033 /* ConversationsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConversationsTableViewCell.m; sourceTree = "<group>"; };
@@ -259,6 +265,10 @@
 				633CB9B318F69B5A00FCA06D /* FeedTableViewController.m */,
 				633CB9BE18F701F400FCA06D /* CommitViewController.h */,
 				633CB9BF18F701F400FCA06D /* CommitViewController.m */,
+				7750D6B8191A334000290A88 /* CreateNoteViewController.h */,
+				7750D6B9191A334000290A88 /* CreateNoteViewController.m */,
+				77A7B7D218F7EC7400CBD357 /* NotesTableViewController.h */,
+				77A7B7D318F7EC7400CBD357 /* NotesTableViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -413,7 +423,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77A7B7D418F7EC7400CBD357 /* NotesTableViewController.m in Sources */,
 				A0F46C8B18F483E600C16AB1 /* LoginViewController.m in Sources */,
+				7750D6BA191A334000290A88 /* CreateNoteViewController.m in Sources */,
 				A0F46C8D18F483E600C16AB1 /* PlanningPokerCardViewController.m in Sources */,
 				A059513018EAF9D900E6BB44 /* jeju.xcdatamodeld in Sources */,
 				633CB9C318F70AFE00FCA06D /* FileTableView.m in Sources */,
