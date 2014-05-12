@@ -29,8 +29,19 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self setBordersForPlanningPokerCards];
+    
+    [self configureView];
     // Do any additional setup after loading the view.
+}
+
+- (void)configureView
+{
+    // Update the user interface for the detail item.
+    
+    if (self.story) {
+        self.navigationItem.title = self.story.name;
+    }
+    [self setBordersForPlanningPokerCards];
 }
 
 - (void)didReceiveMemoryWarning

@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "StoryModel.h"
 
 @interface PlanningPokerViewController : UIViewController
 
-//@property (nonatomic, strong) NSString *titleasd;
+@property (strong, nonatomic) StoryModel *story;
 
 @end

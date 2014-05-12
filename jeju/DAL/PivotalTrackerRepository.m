@@ -74,9 +74,9 @@
                   
 }
 
--(NSMutableArray *)getStoriesFrom:(NSNumber *)projectId With:(NSString *)token
+-(NSMutableArray *)getStoriesFrom:(NSNumber *)projectId With:(NSString *)token FilterOn:(NSString *)storyState
 {
-    NSURL *url = [NSURL URLWithString: [NSString stringWithFormat:@"https://www.pivotaltracker.com/services/v5/projects/%@/stories?date_format=millis", projectId]];
+    NSURL *url = [NSURL URLWithString: [NSString stringWithFormat:@"https://www.pivotaltracker.com/services/v5/projects/%@/stories?date_format=millis&with_state=%@", projectId, storyState]];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     [request setValue:token forHTTPHeaderField:@"X-TrackerToken"];
     [request setURL:url];
@@ -88,15 +88,19 @@
     NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
     
     NSString* newStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    
+//    NSLog(@"%@", newStr);
     NSError *jsonParseError;
     NSMutableArray *jsonArray = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error: &jsonParseError];
     
     NSMutableArray *storiesToReturn = [[NSMutableArray alloc] init];
     for (NSMutableDictionary *storyDictionary in jsonArray) {
         StoryModel *story = [[StoryModel alloc] init];
-        story.name = storyDictionary[@"name"];
+        story.name = storyDictionary[@"name"] != nil ? storyDictionary[@"name"] : @"N/A";
         story.estimate = storyDictionary[@"estimate"];
+        story.url = storyDictionary[@"url"];
+        story.state = storyDictionary[@"current_state"];
+        NSLog(@"%@", storyDictionary[@"url"]);
+        
         [storiesToReturn addObject:story];
     }
     

@@ -10,6 +10,7 @@
 #import "PivotalTrackerRepository.h"
 #import "StoryModel.h"
 #import "StoryTableViewCell.h"
+#import "PlanningPokerViewController.h"
 #import <QuartzCore/QuartzCore.h>
 
 
@@ -50,7 +51,7 @@
 - (void) viewDidAppear:(BOOL)animated
 {
     if (self.project != nil) {
-        self.stories = [self.pivotalTrackerRepository getStoriesFrom:self.project.id With:[[NSUserDefaults standardUserDefaults] objectForKey:@"pttoken"]];
+        self.stories = [self.pivotalTrackerRepository getStoriesFrom:self.project.id With:[[NSUserDefaults standardUserDefaults] objectForKey:@"pttoken"] FilterOn:@"started"];
         
         [self.tableView reloadData];
     }
@@ -71,7 +72,7 @@
     [self configureView];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 
-    NSMutableArray *stories = [[self pivotalTrackerRepository] getStoriesFrom:self.project.id With:[defaults objectForKey:@"pttoken"]];
+    NSMutableArray *stories = [[self pivotalTrackerRepository] getStoriesFrom:self.project.id With:[defaults objectForKey:@"pttoken"] FilterOn:@"started"];
     
     self.stories = stories;
     
@@ -126,6 +127,12 @@
     return cell;
 }
 
+-(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    StoryModel *story = [self.stories objectAtIndex:indexPath.row];
+    [self performSegueWithIdentifier:@"showPlanningPoker" sender:self];
+}
+
 - (void)configureCell:(StoryTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
     StoryModel *story = [self.stories objectAtIndex:indexPath.row];
@@ -174,15 +181,20 @@
 }
 
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([[segue identifier] isEqualToString:@"showPlanningPoker"]) {
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        StoryModel *story = [self.stories objectAtIndex:indexPath.row];
+        [[segue destinationViewController] setStory:story];
+        //        [[segue destinationViewController] setRepo:repo];
+    }
+
 }
-*/
+
 
 @end

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Gah-zu-uzU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Gah-zu-uzU">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -193,13 +193,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="StoryTableViewCell" rowHeight="82" id="Uqr-TI-kH3" customClass="StoryTableViewCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="StoryTableViewCell" rowHeight="82" id="Uqr-TI-kH3" customClass="StoryTableViewCell">
                                 <rect key="frame" x="0.0" y="86" width="320" height="82"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Uqr-TI-kH3" id="xTv-MG-GfX">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="82"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="82"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="Jlt-r1-DQU" kind="push" identifier="showPlanningPoker" id="Hcf-NF-cdm"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -434,7 +437,7 @@
                         <outletCollection property="planningPokerCards" destination="wHN-4r-2W4" id="XaJ-d5-axl"/>
                         <outletCollection property="planningPokerCards" destination="nK0-mT-LfA" id="YOE-Rq-Fzx"/>
                         <outletCollection property="planningPokerCards" destination="CtZ-M8-wKb" id="iYw-qF-WFG"/>
-                        <segue destination="gSp-bi-ga3" kind="push" identifier="Planning Poker Card" id="JTG-h0-zYE"/>
+                        <segue destination="gSp-bi-ga3" kind="push" identifier="Planning Poker Card" id="lvr-3U-QW2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pFK-nv-iO5" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -545,9 +548,6 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="Jlt-r1-DQU" kind="push" identifier="showPlanningPoker" id="jcX-dm-GHY"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

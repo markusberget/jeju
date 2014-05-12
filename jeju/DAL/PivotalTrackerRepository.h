@@ -16,6 +16,6 @@
 
 - (NSMutableArray *)getProjects:(NSString *)token;
 
--(NSMutableArray *)getStoriesFrom:(NSNumber *)projectId With:(NSString *)token;
+-(NSMutableArray *)getStoriesFrom:(NSNumber *)projectId With:(NSString *)token FilterOn:(NSString *)storyState;
 
 @end

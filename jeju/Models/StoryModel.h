@@ -12,5 +12,8 @@
 
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSNumber *estimate;
+@property (strong , nonatomic) NSString *url;
+@property (strong, nonatomic) NSString *state;
+
 
 @end
