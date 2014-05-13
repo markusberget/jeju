@@ -83,4 +83,6 @@
 
 -(BFTask *) getHeadOfMaster: (OCTRepository *) repo;
 
++(instancetype) instanceFromDefaults;
+
 @end

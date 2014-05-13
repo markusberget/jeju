@@ -33,6 +33,9 @@
 {
     if (_repo != newRepo) {
         _repo = newRepo;
+        
+        OctokitModel * model = [OctokitModel instanceFromDefaults];
+
         self.watchedFiles = [[NSMutableArray alloc] init];
         
         [[CommitPoller instance] startPollingRepo:_repo];
@@ -41,14 +44,17 @@
             if (count) {
                 for (int i = 0; i < count; ++i) {
                     OCTGitCommit * commit = [commits objectAtIndex:i];
-
+                    
+                    if ([[commit authorName] compare:[model userName]]) {
+                        continue;
+                    }
+                    
                     [[CommitPoller instance] getDetailsForCommitWithSHA:commit.SHA withContinuation:^(OCTGitCommit * cmt) {
                         for (OCTGitCommitFile * file in cmt.files) {
                             if (![toNotify containsObject:file.filename]) {
                                 [toNotify addObject:file.filename];
                             }
                         }
-                        
                         
                         if (i == count - 1) {
                             NoteModel * noteModel = [[NoteModel alloc] initWithContext:self.managedObjectContext];
@@ -61,7 +67,6 @@
                                 }
                                 [self displayAlert:@"See repository" : whatevs];
                             }
-                            
                         }
                     }];
                 }
@@ -72,20 +77,11 @@
         [self configureView];
     }
 }
-
--(void) startMasterNotificationPoller
-{
-    CommitPoller * poller = [[CommitPoller alloc] initWithBranch:@"master"];
-
-    [poller addObserver:^(NSArray * commits, int count) {
-
-    }];
     
-    [poller startPollingRepo:self.repo];
-}
-
 -(void) displayAlert:(NSString *) title  :(NSString *) body {
+    // shake it, baby
     AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+    
     UILocalNotification* localNotification = [[UILocalNotification alloc] init];
     localNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow:1];
     localNotification.alertBody = body;

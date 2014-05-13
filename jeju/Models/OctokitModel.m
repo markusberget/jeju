@@ -12,6 +12,14 @@
 
 @implementation OctokitModel
 
++(instancetype) instanceFromDefaults
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    return [[OctokitModel alloc] initWithToken:[defaults objectForKey:@"token"]
+                                   andUserName:[defaults objectForKey:@"user"]];
+}
+
 - (instancetype)initWithToken:(NSString *)token andUserName:(NSString *)userName
 {
     self = [super init];
