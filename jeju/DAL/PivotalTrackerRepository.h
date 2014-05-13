@@ -20,4 +20,5 @@
 
 -(PivotalTrackerUser *)getUserFrom:(NSNumber *)projectId :(NSNumber *)storyId :(NSString *)token;
 
+-(BOOL) uploadEstimate:(NSNumber *)estimate :(NSNumber *)projectId :(NSNumber *)storyId :(NSString *)token;
 @end

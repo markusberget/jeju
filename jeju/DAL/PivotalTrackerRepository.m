@@ -100,7 +100,8 @@
         story.state = storyDictionary[@"current_state"];
         story.owner = [self getUserFrom:projectId :storyDictionary[@"id"] :token];
         story.type = storyDictionary[@"story_type"];
-        
+        story.projectId = projectId;
+        story.storyId = storyDictionary[@"id"];
         [storiesToReturn addObject:story];
     }
     
@@ -137,7 +138,30 @@
     
 }
 
-
+- (BOOL)uploadEstimate:(NSNumber *)estimate :(NSNumber *)projectId :(NSNumber *)storyId :(NSString *)token
+{
+    NSString *post = [NSString stringWithFormat:@"{\"estimate\":%@}", estimate];
+    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+    
+    NSString *postLength = [NSString stringWithFormat:@"%lu", (unsigned long)[postData length]];
+    
+    NSURL *url = [NSURL URLWithString: [NSString stringWithFormat:@"https://www.pivotaltracker.com/services/v5/projects/%@/stories/%@", projectId, storyId]];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    [request setValue:token forHTTPHeaderField:@"X-TrackerToken"];
+    [request setURL:url];
+    [request setHTTPMethod:@"PUT"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setHTTPBody:postData];
+    
+    NSError *error;
+    NSURLResponse *response;
+    NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+    
+    NSString* newStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    NSLog(@"%@", newStr);
+    
+    return error == nil;
+}
 
 
 @end
