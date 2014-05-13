@@ -13,5 +13,6 @@
 @property (nonatomic, weak) NSString* token;
 @property (nonatomic, weak) NSString* userName;
 @property (nonatomic, weak) NSString* name;
+@property (nonatomic, weak) NSString* initials;
 
 @end

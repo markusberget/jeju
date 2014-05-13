@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "PivotalTrackerUser.h"
 
 @interface StoryModel : NSObject
 
@@ -14,6 +15,8 @@
 @property (strong, nonatomic) NSNumber *estimate;
 @property (strong , nonatomic) NSString *url;
 @property (strong, nonatomic) NSString *state;
+@property (strong, nonatomic) PivotalTrackerUser *owner;
+@property (strong, nonatomic) NSString *type;
 
 
 @end

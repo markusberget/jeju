@@ -18,4 +18,6 @@
 
 -(NSMutableArray *)getStoriesFrom:(NSNumber *)projectId With:(NSString *)token FilterOn:(NSString *)storyState;
 
+-(PivotalTrackerUser *)getUserFrom:(NSNumber *)projectId :(NSNumber *)storyId :(NSString *)token;
+
 @end

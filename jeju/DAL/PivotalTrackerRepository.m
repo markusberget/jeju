@@ -88,7 +88,7 @@
     NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
     
     NSString* newStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-//    NSLog(@"%@", newStr);
+    NSLog(@"%@", newStr);
     NSError *jsonParseError;
     NSMutableArray *jsonArray = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error: &jsonParseError];
     
@@ -97,9 +97,9 @@
         StoryModel *story = [[StoryModel alloc] init];
         story.name = storyDictionary[@"name"] != nil ? storyDictionary[@"name"] : @"N/A";
         story.estimate = storyDictionary[@"estimate"];
-        story.url = storyDictionary[@"url"];
         story.state = storyDictionary[@"current_state"];
-        NSLog(@"%@", storyDictionary[@"url"]);
+        story.owner = [self getUserFrom:projectId :storyDictionary[@"id"] :token];
+        story.type = storyDictionary[@"story_type"];
         
         [storiesToReturn addObject:story];
     }
@@ -107,6 +107,37 @@
     return storiesToReturn;
 
 }
+-(PivotalTrackerUser *)getUserFrom:(NSNumber *)projectId :(NSNumber *)storyId :(NSString *)token
+{
+    
+    NSURL *url = [NSURL URLWithString: [NSString stringWithFormat:@"https://www.pivotaltracker.com/services/v5/projects/%@/stories/%@/owners", projectId, storyId]];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    [request setValue:token forHTTPHeaderField:@"X-TrackerToken"];
+    [request setURL:url];
+    [request setHTTPMethod:@"GET"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    
+    NSError *error;
+    NSURLResponse *response;
+    NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+    
+    NSString* newStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    NSLog(@"%@", newStr);
+    
+    NSError *jsonParseError;
+    NSMutableArray *jsonArray = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error: &jsonParseError];
+    
+    NSMutableDictionary *userDictionary = jsonArray[0];
+    PivotalTrackerUser *user = [[PivotalTrackerUser alloc] init];
+    user.name = userDictionary[@"name"];
+    user.userName = userDictionary[@"username"];
+    user.initials = userDictionary[@"initials"];
+    
+    return user;
+    
+}
+
+
 
 
 @end
