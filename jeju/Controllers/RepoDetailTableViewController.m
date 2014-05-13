@@ -10,6 +10,8 @@
 #import "PlanningPokerViewController.h"
 #import "CommitPoller.h"
 #import "NoteModel.h"
+#import <AudioToolbox/AudioServices.h>
+
 
 @interface RepoDetailTableViewController ()
 @property (strong, nonatomic) NSMutableArray * watchedFiles;
@@ -37,7 +39,6 @@
         [[CommitPoller instance] addObserver:^(NSArray * commits, int count) {
             NSMutableArray * toNotify = [[NSMutableArray alloc] init];
             if (count) {
-                
                 for (int i = 0; i < count; ++i) {
                     OCTGitCommit * commit = [commits objectAtIndex:i];
 
@@ -55,17 +56,17 @@
 
                             if (containedFiles && containedFiles.count > 0) {
                                 NSMutableString * whatevs  = [[NSMutableString alloc] init];
-                                for (NSString * containedFile in containedFiles) {
-                                    [whatevs appendFormat:@"\n%@", containedFile];
+                                for (NSManagedObject * containedFile in containedFiles) {
+                                    [whatevs appendFormat:@"Your watched files were committed \n%@", [containedFile valueForKey:@"filePath"]];
                                 }
-                                [self displayAlert:@"Your files were changed!" : whatevs];
+                                [self displayAlert:@"See repository" : whatevs];
                             }
                             
                         }
                     }];
                 }
             }
-        }];
+        } shouldSkipFirst:true];
         
         // Update the view.
         [self configureView];
@@ -84,8 +85,9 @@
 }
 
 -(void) displayAlert:(NSString *) title  :(NSString *) body {
+    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
     UILocalNotification* localNotification = [[UILocalNotification alloc] init];
-    localNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow:0];
+    localNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow:1];
     localNotification.alertBody = body;
     localNotification.alertAction = title;
     localNotification.timeZone = [NSTimeZone defaultTimeZone];

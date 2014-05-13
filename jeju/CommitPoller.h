@@ -9,10 +9,12 @@
 #import <Foundation/Foundation.h>
 #import "Octokit.h" 
 #import "OctokitModel.h"
-
+#import "CommitBlock.h"
+#import "CommitObserver.h"
 
 @interface CommitPoller : NSObject
 
+@property (atomic) BOOL initialFetch;
 @property (nonatomic, strong) NSMutableArray * commits;
 @property (strong, nonatomic) NSTimer * pollTimer;
 @property (strong, nonatomic) NSString * lastEtag;
@@ -29,11 +31,12 @@
 -(instancetype) initWithBranch:(NSString *) branch;
 +(instancetype) instance;
 
-typedef void (^ HandlingBlock)(id, int);
+
 -(NSString *)addObserver:(HandlingBlock) block;
+-(NSString *) addObserver:(HandlingBlock)block shouldSkipFirst:(BOOL) skip;
 -(void)removeObserver:(NSString *) observerId;
 
-typedef void (^ ReturnBlock)(OCTGitCommit *);
+
 -(void) getDetailsForCommitAtIndex: (NSUInteger) index withContinuation: (ReturnBlock) block;
 -(void) getDetailsForCommitWithSHA: (NSString *) sha withContinuation: (ReturnBlock) block;
 @end

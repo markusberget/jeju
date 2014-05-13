@@ -37,7 +37,6 @@
         //DEALWITHIT.gif /--O^O/
     }
     
-    NSLog(results[0]);
     return results;
 }
 

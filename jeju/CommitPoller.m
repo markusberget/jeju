@@ -9,6 +9,7 @@
 
 #import "CommitPoller.h"
 
+
 @implementation CommitPoller
 
 static CommitPoller * _poller = nil;
@@ -47,6 +48,7 @@ static NSMutableDictionary * commitDetails;
     self = [super init];
     if (self) {
         self.branch = branch;
+        self.initialFetch = true;
     }
     return self;
 }
@@ -81,6 +83,7 @@ static NSMutableDictionary * commitDetails;
         
         self.pollTimer = [NSTimer timerWithTimeInterval:2 invocation:invocation repeats:YES];
         [[NSRunLoop mainRunLoop] addTimer:self.pollTimer forMode:NSDefaultRunLoopMode];
+        
     }
 }
 
@@ -103,10 +106,15 @@ static NSMutableDictionary * commitDetails;
          self.lastPollDate = [NSDate date];
          
          for(id key in observers) {
-             HandlingBlock block = [observers objectForKey:key];
+             CommitObserver * observer = [observers objectForKey:key];
              
-             block(newActualCommits, newActualCommits.count);
+             if (!observer.skipFirst || !self.initialFetch) {
+                 observer.block(newActualCommits, newActualCommits.count);
+             }
          }
+         
+         // this should only be true for the initial fetch.
+         self.initialFetch = false;
      }
 }
 
@@ -120,6 +128,7 @@ static NSMutableDictionary * commitDetails;
                         fromBranch:self.branch]
              
              continueWithBlock:^id(BFTask *task) {
+
                  [self handleNewCommits: task.result];
 
                  return nil;
@@ -129,9 +138,19 @@ static NSMutableDictionary * commitDetails;
 
 -(NSString *) addObserver:(HandlingBlock)block
 {
-    NSString * key = [NSString stringWithFormat:@"%d", ++self.ids];
-    [observers setObject:block forKey:key];
-    return key;
+    return [self addObserver:block shouldSkipFirst:false];
+}
+
+
+-(NSString *) addObserver:(HandlingBlock)block shouldSkipFirst:(BOOL) skip
+{
+    CommitObserver * obs = [[CommitObserver alloc] init];
+    obs.block = block;
+    obs.skipFirst = skip;
+    obs.key = [NSString stringWithFormat:@"%d", ++self.ids];
+    
+    [observers setObject:obs forKey:obs.key];
+    return obs.key;
 }
 
 -(void)removeObserver:(NSString *)observer
