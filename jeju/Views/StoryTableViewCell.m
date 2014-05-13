@@ -19,6 +19,7 @@
     return self;
 }
 
+
 /*-(void) setStory:(StoryModel *)story
 {
     if(_story != story)

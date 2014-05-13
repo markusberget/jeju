@@ -109,15 +109,6 @@
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"StoryTableViewCell" owner:self options:nil];
         cell = [nib objectAtIndex:0];
     }
-    //Cell Configuration
-    cell.bottomImage.layer.cornerRadius = 4.0f;
-    cell.middleImage.layer.cornerRadius = 4.0f;
-    cell.topImage.layer.cornerRadius = 4.0f;
-    cell.viewButton.layer.cornerRadius = 4.0f;
-    cell.bottomImage.clipsToBounds = YES;
-    cell.middleImage.clipsToBounds = YES;
-    cell.topImage.clipsToBounds = YES;
-    cell.topImage.clipsToBounds = YES;
     
     StoryModel *story = [self.stories objectAtIndex:indexPath.row];
     cell.storyNameLabel.text = story.name;
