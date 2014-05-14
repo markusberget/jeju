@@ -38,6 +38,8 @@
 {
     OCTClientAuthorizationScopes scopes = OCTClientAuthorizationScopesRepository | OCTClientAuthorizationScopesUser;
     
+    
+    
     [[OctokitModel authenticateWithScopes:scopes] continueWithBlock:^id(BFTask *task) {
         OctokitModel * model = task.result;
 
@@ -62,11 +64,48 @@
     }];*/
 }
 
+-(void)logout
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if ([self isLoggedIn]) {
+        [defaults setObject:nil forKey:@"user"];
+        [defaults setObject:nil forKey:@"token"];
+    }
+    [self styleButtons];
+}
+
+-(BOOL)isLoggedIn
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    return [defaults objectForKey:@"user"] != nil && [defaults objectForKey:@"token"] != nil;
+
+}
+
 -(void)styleButtons
 {
+    if ([self isLoggedIn]) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.loginButton.hidden = YES;
+        });
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.logoutButton.hidden = NO;
+        });
+    } else {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.loginButton.hidden = NO;
+        });
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.logoutButton.hidden = YES;
+        });
+
+    }
     [[self.loginButton layer] setBorderWidth:0.25f];
     [[self.loginButton layer] setBorderColor:[UIColor blackColor].CGColor];
     [[self.loginButton layer] setCornerRadius:6];
+    
+    [[self.logoutButton layer] setBorderWidth:0.25f];
+    [[self.logoutButton layer] setBorderColor:[UIColor blackColor].CGColor];
+    [[self.logoutButton layer] setCornerRadius:6];
     
     [[self.signUpButton layer] setBorderWidth:0.25f];
     [[self.signUpButton layer] setCornerRadius:6];

@@ -13,7 +13,10 @@
 
 @property (strong, nonatomic) IBOutlet UIButton *loginButton;
 @property (strong, nonatomic) IBOutlet UIButton *signUpButton;
+@property (strong, nonatomic) IBOutlet UIButton *logoutButton;
 
 -(IBAction)login;
+
+-(IBAction)logout;
 
 @end

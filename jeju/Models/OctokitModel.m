@@ -16,8 +16,19 @@
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
+    if (![OctokitModel isLoggedIn]) {
+        return nil;
+    }
+    
     return [[OctokitModel alloc] initWithToken:[defaults objectForKey:@"token"]
                                    andUserName:[defaults objectForKey:@"user"]];
+}
+
++(BOOL)isLoggedIn
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    return [defaults objectForKey:@"user"] != nil && [defaults objectForKey:@"token"] != nil;
+    
 }
 
 - (instancetype)initWithToken:(NSString *)token andUserName:(NSString *)userName
