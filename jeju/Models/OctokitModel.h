@@ -71,9 +71,18 @@
 -(BFTask *) getCommits:(NSString *)forRepo
              withOwner:(NSString *)owner
                  notMatchingEtag:(NSString *)etag
-                 since:(NSDate *) date;
+                 since:(NSDate *) date
+            fromBranch:(NSString *) branch;
 
 -(BFTask *) getCommit:(NSString *) sha
              fromRepo:(OCTRepository *) repo;
+
+-(BFTask *) getFilePaths:(OCTRepository *) repo;
+
+-(BFTask *) getTree: (OCTRepository *) repo sha: (NSString *) sha;
+
+-(BFTask *) getHeadOfMaster: (OCTRepository *) repo;
+
++(instancetype) instanceFromDefaults;
 
 @end

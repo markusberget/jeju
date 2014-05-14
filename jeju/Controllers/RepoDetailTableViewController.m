@@ -8,12 +8,17 @@
 
 #import "RepoDetailTableViewController.h"
 #import "PlanningPokerViewController.h"
+#import "CommitPoller.h"
+#import "NoteModel.h"
+#import <AudioToolbox/AudioServices.h>
+
 
 @interface RepoDetailTableViewController ()
-
+@property (strong, nonatomic) NSMutableArray * watchedFiles;
 @end
 
 @implementation RepoDetailTableViewController
+
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -29,9 +34,66 @@
     if (_repo != newRepo) {
         _repo = newRepo;
         
+        OctokitModel * model = [OctokitModel instanceFromDefaults];
+
+        self.watchedFiles = [[NSMutableArray alloc] init];
+        
+        [[CommitPoller instance] startPollingRepo:_repo];
+        [[CommitPoller instance] addObserver:^(NSArray * commits, int count) {
+            NSMutableArray * toNotify = [[NSMutableArray alloc] init];
+            if (count) {
+                for (int i = 0; i < count; ++i) {
+                    OCTGitCommit * commit = [commits objectAtIndex:i];
+                    
+                    if ([[commit authorName] compare:[model userName]]) {
+                        continue;
+                    }
+                    
+                    [[CommitPoller instance] getDetailsForCommitWithSHA:commit.SHA withContinuation:^(OCTGitCommit * cmt) {
+                        for (OCTGitCommitFile * file in cmt.files) {
+                            if (![toNotify containsObject:file.filename]) {
+                                [toNotify addObject:file.filename];
+                            }
+                        }
+                        
+                        if (i == count - 1) {
+                            NoteModel * noteModel = [[NoteModel alloc] initWithContext:self.managedObjectContext];
+                            NSArray * containedFiles = [noteModel containsFiles:toNotify];
+
+                            if (containedFiles && containedFiles.count > 0) {
+                                NSMutableString * whatevs  = [[NSMutableString alloc] init];
+                                for (NSManagedObject * containedFile in containedFiles) {
+                                    [whatevs appendFormat:@"Your watched files were committed \n%@", [containedFile valueForKey:@"filePath"]];
+                                }
+                                [self displayAlert:@"See repository" : whatevs];
+                            }
+                        }
+                    }];
+                }
+            }
+        } shouldSkipFirst:true];
+        
         // Update the view.
         [self configureView];
     }
+}
+    
+-(void) displayAlert:(NSString *) title  :(NSString *) body {
+    // shake it, baby
+    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+    
+    UILocalNotification* localNotification = [[UILocalNotification alloc] init];
+    localNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow:1];
+    localNotification.alertBody = body;
+    localNotification.alertAction = title;
+    localNotification.timeZone = [NSTimeZone defaultTimeZone];
+    localNotification.applicationIconBadgeNumber = [[UIApplication sharedApplication] applicationIconBadgeNumber] + 1;
+    
+    [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+    
+    // Request to reload table view data
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadData" object:self];
+
 }
 
 - (void)configureView
@@ -47,7 +109,7 @@
 {
     [super viewDidLoad];
 
-    self.items = [[NSArray alloc] initWithObjects:@"Feed", @"Conversations", @"Planning Poker", nil];
+    self.items = [[NSArray alloc] initWithObjects:@"Feed", @"Conversations", @"Planning Poker", @"Notes", nil];
     
     [self configureView];
 }
@@ -136,11 +198,16 @@
     
     if ([[segue identifier] isEqualToString:@"showFeed"] || [[segue identifier] isEqualToString:@"showConversations"]) {
         [[segue destinationViewController] setRepo:self.repo];
-    } else if ([[segue identifier] isEqualToString:@"showPlanningPoker"]) {
+    }
+    else if ([[segue identifier] isEqualToString:@"showPlanningPoker"]) {
         if ([segue.destinationViewController isKindOfClass:[PlanningPokerViewController class]]) {
             PlanningPokerViewController *ppvc = (PlanningPokerViewController *)segue.destinationViewController;
             ppvc.title = @"Planning Poker";
         }
+    }
+    else if ([[segue identifier] isEqualToString:@"showNotes"]) {
+        [[segue destinationViewController] setManagedObjectContext: self.managedObjectContext];
+        [[segue destinationViewController] setRepo:self.repo];
     }
 }
 

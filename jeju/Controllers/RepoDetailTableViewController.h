@@ -14,6 +14,8 @@
 
 @property (strong, nonatomic) OCTRepository *repo;
 
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+
 @property (strong, nonatomic) NSArray *items;
 
 

@@ -12,6 +12,14 @@
 
 @implementation OctokitModel
 
++(instancetype) instanceFromDefaults
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    return [[OctokitModel alloc] initWithToken:[defaults objectForKey:@"token"]
+                                   andUserName:[defaults objectForKey:@"user"]];
+}
+
 - (instancetype)initWithToken:(NSString *)token andUserName:(NSString *)userName
 {
     self = [super init];
@@ -156,20 +164,24 @@
     return source.task;
 }
 
--(BFTask *) getCommits:(NSString *)forRepo withOwner:(NSString *)owner notMatchingEtag:(NSString *) etag since:(NSDate *)date
+-(BFTask *) getCommits:(NSString *)forRepo withOwner:(NSString *)owner notMatchingEtag:(NSString *) etag since:(NSDate *)date fromBranch:(NSString *) branch
 {
     BFTaskCompletionSource * source = [BFTaskCompletionSource taskCompletionSource];
     
-    NSString * path = [[NSString alloc] initWithFormat:@"/repos/%@/%@/commits", owner, forRepo];
-    
+    NSMutableString * path = [[NSMutableString alloc] initWithFormat:@"/repos/%@/%@/commits", owner, forRepo];
+
     NSMutableArray * results = [[NSMutableArray alloc] init];
     OCTClient * client = [self getAuthenticatedClient];
     
     
-    NSDictionary * params = nil;
+    NSMutableDictionary * params = [[NSMutableDictionary alloc] init];
     
     if(date) {
-        params = @{@"since": date};
+        [params setObject:date forKey:@"since"];
+    }
+    
+    if(branch) {
+        [path appendFormat:@"/%@", branch];
     }
     
     NSMutableURLRequest * request = [client requestWithMethod:@"GET" path:path parameters:params notMatchingEtag:etag ];
@@ -188,7 +200,7 @@
 -(BFTask *) getCommit:(NSString *)sha fromRepo:(OCTRepository *)repo
 {
     BFTaskCompletionSource * source = [BFTaskCompletionSource taskCompletionSource];
-    
+    NSLog(@"Getting %@", sha);
     RACSignal * signal = [[self getAuthenticatedClient] fetchCommitFromRepository:repo SHA:sha];
     [[signal deliverOn:[RACScheduler mainThreadScheduler]] subscribeNext:^(OCTGitCommit * x) {
         [source setResult:x];
@@ -196,5 +208,29 @@
     
     return source.task;
 }
+
+-(BFTask *) getFilePaths:(OCTRepository *) repo
+{
+    NSString *path = [[NSString alloc] initWithFormat:@"repos/%@/%@/contents", repo.ownerLogin, repo.name];
+    return [self getDataForPath:path andParameters:nil returnClass:OCTContent.class];
+
+}
+
+-(BFTask *) getTree:(OCTRepository *) repo sha:(NSString *) sha
+{
+    //Get the latest commit
+    
+    NSString *path = [[NSString alloc] initWithFormat:@"repos/%@/%@/git/trees/%@?recursive=1", repo.ownerLogin, repo.name, sha];
+    
+    return [self getDataForPath:path andParameters:nil returnClass:OCTTree.class];
+}
+
+-(BFTask *) getHeadOfMaster: (OCTRepository *) repo {
+    
+    NSString *path = [[NSString alloc] initWithFormat:@"repos/%@/%@/git/refs/heads/master", repo.ownerLogin, repo.name];
+    
+    return [self getDataForPath:path andParameters:nil returnClass:OCTRef.class];
+}
+
 
 @end

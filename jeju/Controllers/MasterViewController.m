@@ -5,6 +5,7 @@
 //  Created by Markus Berget on 2014-04-01.
 //  Copyright (c) 2014 Markus Berget. All rights reserved.
 //
+// Dosé rules!   
 
 #import "MasterViewController.h"
 
@@ -116,6 +117,7 @@
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         OCTRepository *repo = [self.repos objectAtIndex:indexPath.row];
         [[segue destinationViewController] setRepo:repo];
+        [[segue destinationViewController] setManagedObjectContext:self.managedObjectContext];
     }
 }
 
