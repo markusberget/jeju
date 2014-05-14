@@ -45,7 +45,7 @@
                 for (int i = 0; i < count; ++i) {
                     OCTGitCommit * commit = [commits objectAtIndex:i];
                     
-                    if ([[commit authorName] compare:[model userName]]) {
+                    if ([[[commit committer] login] isEqualToString:[model userName]]) {
                         continue;
                     }
                     
@@ -61,9 +61,9 @@
                             NSArray * containedFiles = [noteModel containsFiles:toNotify];
 
                             if (containedFiles && containedFiles.count > 0) {
-                                NSMutableString * whatevs  = [[NSMutableString alloc] init];
+                                NSMutableString * whatevs  = [[NSMutableString alloc] initWithString:@"Your watched files were committed" ];
                                 for (NSManagedObject * containedFile in containedFiles) {
-                                    [whatevs appendFormat:@"Your watched files were committed \n%@", [containedFile valueForKey:@"filePath"]];
+                                    [whatevs appendFormat:@"\n%@", [containedFile valueForKey:@"filePath"]];
                                 }
                                 [self displayAlert:@"See repository" : whatevs];
                             }
@@ -86,6 +86,7 @@
     localNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow:1];
     localNotification.alertBody = body;
     localNotification.alertAction = title;
+    localNotification.soundName = UILocalNotificationDefaultSoundName;
     localNotification.timeZone = [NSTimeZone defaultTimeZone];
     localNotification.applicationIconBadgeNumber = [[UIApplication sharedApplication] applicationIconBadgeNumber] + 1;
     
