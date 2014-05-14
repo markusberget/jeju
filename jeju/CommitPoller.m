@@ -16,7 +16,7 @@ static CommitPoller * _poller = nil;
 NSMutableDictionary * commits;
 NSMutableDictionary * observers;
 static NSMutableDictionary * commitDetails;
-
+bool polling = NO;
 
 @synthesize model = _model;
 
@@ -57,11 +57,14 @@ static NSMutableDictionary * commitDetails;
 -(void)stopPolling
 {
     [self.pollTimer invalidate];
+    polling = NO;
+    _model = nil;
 }
 
 
 -(void)startPollingRepo:(OCTRepository *) repo
 {
+    polling = YES;
     if(!commitDetails) {
         commitDetails = [[NSMutableDictionary alloc] init];
     }
@@ -120,19 +123,21 @@ static NSMutableDictionary * commitDetails;
 
 -(void) fetchData
     {
-        if(self.repo) {
-            [[self.model getCommits: self.repo.name
-                          withOwner:self.repo.ownerLogin
-                    notMatchingEtag:self.lastEtag
-                              since:self.lastPollDate
+        if (polling) {
+            if(self.repo) {
+               [[self.model getCommits: self.repo.name
+                           withOwner:self.repo.ownerLogin
+                       notMatchingEtag:self.lastEtag
+                               since:self.lastPollDate
                         fromBranch:self.branch]
-             
-             continueWithBlock:^id(BFTask *task) {
-
-                 [self handleNewCommits: task.result];
-
-                 return nil;
-             }];
+            
+               continueWithBlock:^id(BFTask *task) {
+                
+                   [self handleNewCommits: task.result];
+                
+                    return nil;
+                }];
+            }
         }
     }
 

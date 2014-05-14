@@ -8,6 +8,7 @@
 
 #import "LoginViewController.h"
 #import "Octokit.h"
+#import "CommitPoller.h"
 
 @interface LoginViewController ()
 
@@ -72,6 +73,8 @@
         [defaults setObject:nil forKey:@"token"];
     }
     [self styleButtons];
+    [[CommitPoller instance] stopPolling];
+    
 }
 
 -(BOOL)isLoggedIn
