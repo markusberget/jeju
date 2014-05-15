@@ -138,7 +138,7 @@
     
 }
 
-- (BOOL)uploadEstimate:(NSNumber *)estimate :(NSNumber *)projectId :(NSNumber *)storyId :(NSString *)token
+- (VerdictModel *)uploadEstimate:(NSNumber *)estimate :(NSNumber *)projectId :(NSNumber *)storyId :(NSString *)token
 {
     NSString *post = [NSString stringWithFormat:@"{\"estimate\":%@}", estimate];
     NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
@@ -160,7 +160,25 @@
     NSString* newStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     NSLog(@"%@", newStr);
     
-    return error == nil;
+    
+    NSError *jsonParseError;
+    NSMutableDictionary  *json = [NSJSONSerialization JSONObjectWithData:data options: NSJSONReadingMutableContainers error: &jsonParseError];
+    VerdictModel *verdictToReturn = [[VerdictModel alloc] init];
+    if (json[@"general_problem"] != nil) {
+        verdictToReturn.message = json[@"general_problem"];
+        verdictToReturn.succeeded = false;
+        
+    }
+    else if(json[@"estimate"] != nil){
+        verdictToReturn.message = [NSString stringWithFormat:@"Successfully uploaded the estimate %@ to %@.", json[@"estimate"], json[@"name"]];
+        verdictToReturn.succeeded = true;
+    }
+    else {
+        verdictToReturn.message = @"Something unexpected happened while trying to upload";
+        verdictToReturn.succeeded = false;
+    }
+    
+    return verdictToReturn;
 }
 
 
