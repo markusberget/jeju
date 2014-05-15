@@ -16,7 +16,12 @@
 
 @interface StoriesTableViewController ()
 @property (strong, nonatomic) PivotalTrackerRepository *pivotalTrackerRepository;
-@property (strong, nonatomic) NSArray *stories;
+@property (strong, nonatomic) NSMutableArray *startedStories;
+@property (strong, nonatomic) NSMutableArray *unstartedStories;
+@property (strong, nonatomic) NSMutableArray *storiesToShow;
+
+
+
 
 
 @end
@@ -51,9 +56,15 @@
 - (void) viewDidAppear:(BOOL)animated
 {
     if (self.project != nil) {
-        self.stories = [self.pivotalTrackerRepository getStoriesFrom:self.project.id With:[[NSUserDefaults standardUserDefaults] objectForKey:@"pttoken"] FilterOn:@"started"];
+        self.startedStories = [self.pivotalTrackerRepository getStoriesFrom:self.project.id With:[[NSUserDefaults standardUserDefaults] objectForKey:@"pttoken"] FilterOn:@"started"];
         
-        [self.tableView reloadData];
+        self.storiesToShow = [self.pivotalTrackerRepository getStoriesFrom:self.project.id With:[[NSUserDefaults standardUserDefaults] objectForKey:@"pttoken"] FilterOn:@"started"];
+        
+        
+        
+        self.unstartedStories = [self.pivotalTrackerRepository getStoriesFrom:self.project.id With:[[NSUserDefaults standardUserDefaults] objectForKey:@"pttoken"] FilterOn:@"unstarted"];
+        
+        [self fillList];
     }
     
     
@@ -70,13 +81,23 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     [self configureView];
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    /*NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 
-    NSMutableArray *stories = [[self pivotalTrackerRepository] getStoriesFrom:self.project.id With:[defaults objectForKey:@"pttoken"] FilterOn:@"started"];
+    NSMutableArray *startedStories = [[self pivotalTrackerRepository] getStoriesFrom:self.project.id With:[defaults objectForKey:@"pttoken"] FilterOn:@"started"];
     
-    self.stories = stories;
+    NSMutableArray *storiesToShow = [[self pivotalTrackerRepository] getStoriesFrom:self.project.id With:[defaults objectForKey:@"pttoken"] FilterOn:@"started"];
     
-    [self.tableView reloadData];
+    
+    
+    NSMutableArray *unstartedStories = [[self pivotalTrackerRepository] getStoriesFrom:self.project.id With:[defaults objectForKey:@"pttoken"] FilterOn:@"unstarted"];
+    
+    
+    
+    self.startedStories = startedStories;
+    self.unstartedStories = unstartedStories;
+    self.storiesToShow = storiesToShow;
+    
+    [self.tableView reloadData];*/
     
 }
 
@@ -97,7 +118,44 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return self.stories.count;
+    return self.storiesToShow.count;
+}
+
+- (IBAction) segmentedControlIndexChanged
+{
+    switch (self.segmentControl.selectedSegmentIndex)
+    {
+        case 0:
+            [self fillList];
+            break;
+        case 1:
+            [self fillList];
+            break;
+        default:
+            break;
+    }
+}
+
+-(void)fillList
+{
+    if (self.segmentControl.selectedSegmentIndex == 0)
+    {
+        [self.storiesToShow removeAllObjects];
+        
+        for(StoryModel *story in self.startedStories)
+        {
+            [self.storiesToShow insertObject:story atIndex:0];
+        }
+    }
+    else
+    {
+        [self.storiesToShow removeAllObjects];
+        for(StoryModel *story in self.unstartedStories)
+        {
+            [self.storiesToShow insertObject:story atIndex:0];
+        }
+    }
+    [self.tableView reloadData];
 }
 
 
@@ -111,27 +169,28 @@
         cell = [nib objectAtIndex:0];
     }
     
-    StoryModel *story = [self.stories objectAtIndex:indexPath.row];
+    
+    
+    
+    StoryModel *story = [self.storiesToShow objectAtIndex:indexPath.row];
+    
+    
     cell.storyNameLabel.text = story.name;
     
-    
+    cell.estimateLabel.text = [story.estimate stringValue];
+    cell.typeLabel.text = story.state;
+
+    cell.ownerLabel.text = [NSString stringWithFormat:@"%@", story.owner.name];
     return cell;
 }
 
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    StoryModel *story = [self.stories objectAtIndex:indexPath.row];
+    StoryModel *story = [self.storiesToShow objectAtIndex:indexPath.row];
     [self performSegueWithIdentifier:@"showPlanningPoker" sender:self];
 }
 
-- (void)configureCell:(StoryTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
-{
-    StoryModel *story = [self.stories objectAtIndex:indexPath.row];
-    cell.storyNameLabel.text = story.name;
-    NSLog(@"Story name and namelabel:");
-    NSLog(@"%@", story.name);
-    NSLog(@"%@", cell.storyNameLabel.text);
-}
+
 
 
 
@@ -180,7 +239,7 @@
 {
     if ([[segue identifier] isEqualToString:@"showPlanningPoker"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        StoryModel *story = [self.stories objectAtIndex:indexPath.row];
+        StoryModel *story = [self.storiesToShow objectAtIndex:indexPath.row];
         [[segue destinationViewController] setStory:story];
         //        [[segue destinationViewController] setRepo:repo];
     }

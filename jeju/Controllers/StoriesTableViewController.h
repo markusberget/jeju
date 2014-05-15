@@ -10,6 +10,14 @@
 #import "ProjectModel.h"
 
 @interface StoriesTableViewController : UITableViewController
+{
+    UISegmentedControl *segmentControl;
+}
+
+
 @property (strong, nonatomic) ProjectModel *project;
+@property (strong, nonatomic) IBOutlet UISegmentedControl *segmentControl;
+
+- (IBAction)segmentedControlIndexChanged;
 
 @end

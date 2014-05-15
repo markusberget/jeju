@@ -30,7 +30,7 @@
     NSError *jsonParseError;
     NSMutableDictionary  *json = [NSJSONSerialization JSONObjectWithData:data options: NSJSONReadingMutableContainers error: &jsonParseError];
     
-    NSLog(@"%@", json[@"username"]);
+    //NSLog(@"%@", json[@"username"]);
     PivotalTrackerUser *userToReturn = [[PivotalTrackerUser alloc] init];
     userToReturn.userName = json[@"username"];
     userToReturn.token = json[@"api_token"];
@@ -100,7 +100,6 @@
         story.state = storyDictionary[@"current_state"];
         story.owner = [self getUserFrom:projectId :storyDictionary[@"id"] :token];
         story.type = storyDictionary[@"story_type"];
-        
         [storiesToReturn addObject:story];
     }
     

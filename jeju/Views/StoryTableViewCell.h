@@ -14,7 +14,8 @@
 @property (nonatomic, weak) IBOutlet UILabel *storyNameLabel;
 @property (nonatomic, weak) IBOutlet UILabel *ownerLabel;
 @property (nonatomic, weak) IBOutlet UILabel *typeLabel;
-@property (nonatomic, strong) StoryModel *story;
+@property (nonatomic, weak) IBOutlet UILabel *estimateLabel;
+@property (nonatomic, weak) StoryModel *story;
 
 
 @end
