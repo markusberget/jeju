@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "StoryModel.h"
 
 @interface PlanningPokerCardViewController : UIViewController
 - (void)setCardButtonText:(NSString *)text;
+@property (strong, nonatomic) StoryModel* story;
 @end

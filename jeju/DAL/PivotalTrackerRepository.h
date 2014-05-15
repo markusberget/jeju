@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "PivotalTrackerUser.h"
 #import "ProjectModel.h"
+#import "VerdictModel.h"
 
 @interface PivotalTrackerRepository : NSObject
 
@@ -20,4 +21,5 @@
 
 -(PivotalTrackerUser *)getUserFrom:(NSNumber *)projectId :(NSNumber *)storyId :(NSString *)token;
 
+-(VerdictModel *) uploadEstimate:(NSNumber *)estimate :(NSNumber *)projectId :(NSNumber *)storyId :(NSString *)token;
 @end

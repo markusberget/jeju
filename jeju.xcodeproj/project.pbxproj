@@ -23,6 +23,7 @@
 		81741A8318F527DD000C4033 /* ConversationsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 81741A8218F527DD000C4033 /* ConversationsTableViewCell.m */; };
 		81741A8618F54AF1000C4033 /* DateUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 81741A8518F54AF1000C4033 /* DateUtil.m */; };
 		837EC50D191A2F9100470F8D /* StoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 837EC50C191A2F9100470F8D /* StoryModel.m */; };
+		8384E5391924B95700E33056 /* VerdictModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8384E5381924B95700E33056 /* VerdictModel.m */; };
 		8396C4EA1918F85B00F11FBE /* ProjectsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8396C4E91918F85B00F11FBE /* ProjectsTableViewController.m */; };
 		8396C4EE19192F3900F11FBE /* PivotalTrackerLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8396C4ED19192F3900F11FBE /* PivotalTrackerLoginViewController.m */; };
 		8396C4F11919374800F11FBE /* PivotalTrackerRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = 8396C4F01919374800F11FBE /* PivotalTrackerRepository.m */; };
@@ -89,6 +90,8 @@
 		81741A8518F54AF1000C4033 /* DateUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateUtil.m; sourceTree = "<group>"; };
 		837EC50B191A2F9100470F8D /* StoryModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StoryModel.h; path = Models/StoryModel.h; sourceTree = "<group>"; };
 		837EC50C191A2F9100470F8D /* StoryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StoryModel.m; path = Models/StoryModel.m; sourceTree = "<group>"; };
+		8384E5371924B95700E33056 /* VerdictModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VerdictModel.h; path = Models/VerdictModel.h; sourceTree = "<group>"; };
+		8384E5381924B95700E33056 /* VerdictModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VerdictModel.m; path = Models/VerdictModel.m; sourceTree = "<group>"; };
 		8396C4E81918F85B00F11FBE /* ProjectsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectsTableViewController.h; sourceTree = "<group>"; };
 		8396C4E91918F85B00F11FBE /* ProjectsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectsTableViewController.m; sourceTree = "<group>"; };
 		8396C4EC19192F3900F11FBE /* PivotalTrackerLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PivotalTrackerLoginViewController.h; sourceTree = "<group>"; };
@@ -186,6 +189,8 @@
 				8396C4F61919452000F11FBE /* ProjectModel.m */,
 				837EC50B191A2F9100470F8D /* StoryModel.h */,
 				837EC50C191A2F9100470F8D /* StoryModel.m */,
+				8384E5371924B95700E33056 /* VerdictModel.h */,
+				8384E5381924B95700E33056 /* VerdictModel.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -480,6 +485,7 @@
 				633CB9B418F69B5A00FCA06D /* FeedTableViewController.m in Sources */,
 				A0F46C8A18F483E600C16AB1 /* BranchTableViewController.m in Sources */,
 				A0F46C8F18F483E600C16AB1 /* RepoDetailTableViewController.m in Sources */,
+				8384E5391924B95700E33056 /* VerdictModel.m in Sources */,
 				A059512A18EAF9D900E6BB44 /* AppDelegate.m in Sources */,
 				8396C4EA1918F85B00F11FBE /* ProjectsTableViewController.m in Sources */,
 				A059512618EAF9D900E6BB44 /* main.m in Sources */,

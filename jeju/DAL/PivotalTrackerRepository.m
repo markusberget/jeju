@@ -136,7 +136,48 @@
     
 }
 
-
+- (VerdictModel *)uploadEstimate:(NSNumber *)estimate :(NSNumber *)projectId :(NSNumber *)storyId :(NSString *)token
+{
+    NSString *post = [NSString stringWithFormat:@"{\"estimate\":%@}", estimate];
+    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+    
+    NSString *postLength = [NSString stringWithFormat:@"%lu", (unsigned long)[postData length]];
+    
+    NSURL *url = [NSURL URLWithString: [NSString stringWithFormat:@"https://www.pivotaltracker.com/services/v5/projects/%@/stories/%@", projectId, storyId]];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    [request setValue:token forHTTPHeaderField:@"X-TrackerToken"];
+    [request setURL:url];
+    [request setHTTPMethod:@"PUT"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setHTTPBody:postData];
+    
+    NSError *error;
+    NSURLResponse *response;
+    NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+    
+    NSString* newStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    NSLog(@"%@", newStr);
+    
+    
+    NSError *jsonParseError;
+    NSMutableDictionary  *json = [NSJSONSerialization JSONObjectWithData:data options: NSJSONReadingMutableContainers error: &jsonParseError];
+    VerdictModel *verdictToReturn = [[VerdictModel alloc] init];
+    if (json[@"general_problem"] != nil) {
+        verdictToReturn.message = json[@"general_problem"];
+        verdictToReturn.succeeded = false;
+        
+    }
+    else if(json[@"estimate"] != nil){
+        verdictToReturn.message = [NSString stringWithFormat:@"Successfully uploaded the estimate %@ to %@.", json[@"estimate"], json[@"name"]];
+        verdictToReturn.succeeded = true;
+    }
+    else {
+        verdictToReturn.message = @"Something unexpected happened while trying to upload";
+        verdictToReturn.succeeded = false;
+    }
+    
+    return verdictToReturn;
+}
 
 
 @end
