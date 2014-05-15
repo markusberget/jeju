@@ -1,5 +1,5 @@
 PODS:
-  - AFNetworking (1.3.3)
+  - AFNetworking (1.3.4)
   - Bolts (1.0.0)
   - ISO8601DateFormatter (0.7)
   - Mantle (1.3.1):
@@ -22,11 +22,11 @@ DEPENDENCIES:
   - OctoKit (~> 0.5)
 
 SPEC CHECKSUMS:
-  AFNetworking: 61fdd49e2ffe6380378df37b3b6e70630bb9dd66
+  AFNetworking: e403d4333a4e1956cb3fe42364c3c879f820c9a0
   Bolts: 45bceb8be6243d242caf74308563bba02c2af2a3
   ISO8601DateFormatter: 00944e437ea647f4244454ce8809d313861d08de
   Mantle: abc3b0c81bc66eb624cf9cebb8640e377d5a44ae
   OctoKit: 3de1b55185da7d54bfd38bc477075a422863e962
   ReactiveCocoa: 953a45dda30674fe704d1d9c77cc874141742f47
 
-COCOAPODS: 0.31.1
+COCOAPODS: 0.32.1
