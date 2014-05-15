@@ -10,6 +10,8 @@
 
 #import "MasterViewController.h"
 #import "octokit.h"
+#import "MyRootViewController.h"
+#import "ContextSingleton.h"
 
 @implementation AppDelegate
 
@@ -21,8 +23,14 @@
 {
     // Override point for customization after application launch.
     /*UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
-    MasterViewController *controller = (MasterViewController *)navigationController.topViewController;
+    MyRootViewController*controller = (MyRootViewController *)navigationController.topViewController;
     controller.managedObjectContext = self.managedObjectContext;*/
+    /*UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;
+    UINavigationController *navigationController = (UINavigationController *)tabBarController.selectedViewController;
+    MasterViewController *controller = (MasterViewController *)navigationController.topViewController;
+    //controller.managedObjectContext = self.managedObjectContext; */
+    [ContextSingleton setContext:self.managedObjectContext];
+
         
     return YES;
 }

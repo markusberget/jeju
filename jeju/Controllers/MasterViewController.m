@@ -11,6 +11,7 @@
 
 #import "RepoDetailTableViewController.h"
 #import "OctokitModel.h"
+#import "ContextSingleton.h"
 
 @interface MasterViewController ()
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
@@ -117,7 +118,7 @@
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         OCTRepository *repo = [self.repos objectAtIndex:indexPath.row];
         [[segue destinationViewController] setRepo:repo];
-        [[segue destinationViewController] setManagedObjectContext:self.managedObjectContext];
+        //[[segue destinationViewController] setManagedObjectContext:self.managedObjectContext];
     }
 }
 

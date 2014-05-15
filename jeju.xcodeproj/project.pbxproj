@@ -36,6 +36,8 @@
 		8396C4F4191938F900F11FBE /* PivotalTrackerUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8396C4F3191938F900F11FBE /* PivotalTrackerUser.m */; };
 		8396C4F71919452000F11FBE /* ProjectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8396C4F61919452000F11FBE /* ProjectModel.m */; };
 		8396C4FA191A245B00F11FBE /* StoriesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8396C4F9191A245B00F11FBE /* StoriesTableViewController.m */; };
+		839DFC801924FD14000F2008 /* MyRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 839DFC7F1924FD14000F2008 /* MyRootViewController.m */; };
+		839DFC831924FF5D000F2008 /* ContextSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 839DFC821924FF5D000F2008 /* ContextSingleton.m */; };
 		A059511818EAF9D900E6BB44 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A059511718EAF9D900E6BB44 /* Foundation.framework */; };
 		A059511A18EAF9D900E6BB44 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A059511918EAF9D900E6BB44 /* CoreGraphics.framework */; };
 		A059511C18EAF9D900E6BB44 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A059511B18EAF9D900E6BB44 /* UIKit.framework */; };
@@ -122,6 +124,10 @@
 		8396C4F61919452000F11FBE /* ProjectModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProjectModel.m; path = Models/ProjectModel.m; sourceTree = "<group>"; };
 		8396C4F8191A245B00F11FBE /* StoriesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoriesTableViewController.h; sourceTree = "<group>"; };
 		8396C4F9191A245B00F11FBE /* StoriesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoriesTableViewController.m; sourceTree = "<group>"; };
+		839DFC7E1924FD14000F2008 /* MyRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyRootViewController.h; sourceTree = "<group>"; };
+		839DFC7F1924FD14000F2008 /* MyRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyRootViewController.m; sourceTree = "<group>"; };
+		839DFC811924FF5D000F2008 /* ContextSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ContextSingleton.h; path = jeju/ContextSingleton.h; sourceTree = "<group>"; };
+		839DFC821924FF5D000F2008 /* ContextSingleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ContextSingleton.m; path = jeju/ContextSingleton.m; sourceTree = "<group>"; };
 		A059511418EAF9D900E6BB44 /* jeju.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = jeju.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A059511718EAF9D900E6BB44 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A059511918EAF9D900E6BB44 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -240,6 +246,8 @@
 		A059510B18EAF9D900E6BB44 = {
 			isa = PBXGroup;
 			children = (
+				839DFC811924FF5D000F2008 /* ContextSingleton.h */,
+				839DFC821924FF5D000F2008 /* ContextSingleton.m */,
 				A059511F18EAF9D900E6BB44 /* jeju */,
 				A059514518EAF9D900E6BB44 /* jejuTests */,
 				A059511618EAF9D900E6BB44 /* Frameworks */,
@@ -354,6 +362,8 @@
 				7750D6B9191A334000290A88 /* CreateNoteViewController.m */,
 				77A7B7D218F7EC7400CBD357 /* NotesTableViewController.h */,
 				77A7B7D318F7EC7400CBD357 /* NotesTableViewController.m */,
+				839DFC7E1924FD14000F2008 /* MyRootViewController.h */,
+				839DFC7F1924FD14000F2008 /* MyRootViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -530,6 +540,7 @@
 				A059512A18EAF9D900E6BB44 /* AppDelegate.m in Sources */,
 				8396C4EA1918F85B00F11FBE /* ProjectsTableViewController.m in Sources */,
 				63BAD7171922523000717EFA /* CommitObserver.m in Sources */,
+				839DFC801924FD14000F2008 /* MyRootViewController.m in Sources */,
 				A059512618EAF9D900E6BB44 /* main.m in Sources */,
 				63DA4CF0191B718800841E58 /* NoteModel.m in Sources */,
 				81741A8318F527DD000C4033 /* ConversationsTableViewCell.m in Sources */,
@@ -545,6 +556,7 @@
 				8396C4F11919374800F11FBE /* PivotalTrackerRepository.m in Sources */,
 				837EC50D191A2F9100470F8D /* StoryModel.m in Sources */,
 				8396C4FA191A245B00F11FBE /* StoriesTableViewController.m in Sources */,
+				839DFC831924FF5D000F2008 /* ContextSingleton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
