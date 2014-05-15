@@ -55,7 +55,7 @@
 
 - (void) viewDidAppear:(BOOL)animated
 {
-    if (self.project != nil) {
+   /* if (self.project != nil) {
         self.startedStories = [self.pivotalTrackerRepository getStoriesFrom:self.project.id With:[[NSUserDefaults standardUserDefaults] objectForKey:@"pttoken"] FilterOn:@"started"];
         
         self.storiesToShow = [self.pivotalTrackerRepository getStoriesFrom:self.project.id With:[[NSUserDefaults standardUserDefaults] objectForKey:@"pttoken"] FilterOn:@"started"];
@@ -65,7 +65,7 @@
         self.unstartedStories = [self.pivotalTrackerRepository getStoriesFrom:self.project.id With:[[NSUserDefaults standardUserDefaults] objectForKey:@"pttoken"] FilterOn:@"unstarted"];
         
         [self fillList];
-    }
+    }*/
     
     
 }
@@ -81,7 +81,7 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     [self configureView];
-    /*NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 
     NSMutableArray *startedStories = [[self pivotalTrackerRepository] getStoriesFrom:self.project.id With:[defaults objectForKey:@"pttoken"] FilterOn:@"started"];
     
@@ -97,7 +97,7 @@
     self.unstartedStories = unstartedStories;
     self.storiesToShow = storiesToShow;
     
-    [self.tableView reloadData];*/
+    [self.tableView reloadData];
     
 }
 
@@ -180,7 +180,7 @@
     cell.estimateLabel.text = [story.estimate stringValue];
     cell.typeLabel.text = story.state;
 
-    cell.ownerLabel.text = [NSString stringWithFormat:@"%@", story.owner.name];
+    cell.ownerLabel.text = story.owner;
     return cell;
 }
 

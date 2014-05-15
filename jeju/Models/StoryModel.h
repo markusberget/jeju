@@ -15,7 +15,7 @@
 @property (strong, nonatomic) NSNumber *estimate;
 @property (strong , nonatomic) NSString *url;
 @property (strong, nonatomic) NSString *state;
-@property (strong, nonatomic) PivotalTrackerUser *owner;
+@property (strong, nonatomic) NSString *owner;
 @property (strong, nonatomic) NSString *type;
 @property (strong, nonatomic) NSNumber *projectId;
 @property (strong, nonatomic) NSNumber *storyId;

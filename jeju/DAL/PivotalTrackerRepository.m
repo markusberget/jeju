@@ -30,7 +30,6 @@
     NSError *jsonParseError;
     NSMutableDictionary  *json = [NSJSONSerialization JSONObjectWithData:data options: NSJSONReadingMutableContainers error: &jsonParseError];
     
-    //NSLog(@"%@", json[@"username"]);
     PivotalTrackerUser *userToReturn = [[PivotalTrackerUser alloc] init];
     userToReturn.userName = json[@"username"];
     userToReturn.token = json[@"api_token"];
@@ -88,7 +87,6 @@
     NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
     
     NSString* newStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    NSLog(@"%@", newStr);
     NSError *jsonParseError;
     NSMutableArray *jsonArray = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error: &jsonParseError];
     
@@ -98,8 +96,10 @@
         story.name = storyDictionary[@"name"] != nil ? storyDictionary[@"name"] : @"N/A";
         story.estimate = storyDictionary[@"estimate"];
         story.state = storyDictionary[@"current_state"];
-        story.owner = [self getUserFrom:projectId :storyDictionary[@"id"] :token];
+        story.owner = [self getUserFrom:projectId :storyDictionary[@"id"] :token].name;
         story.type = storyDictionary[@"story_type"];
+        story.projectId = projectId;
+        story.storyId = storyDictionary[@"id"];
         [storiesToReturn addObject:story];
     }
     
@@ -121,7 +121,6 @@
     NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
     
     NSString* newStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    NSLog(@"%@", newStr);
     
     NSError *jsonParseError;
     NSMutableArray *jsonArray = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error: &jsonParseError];
@@ -156,7 +155,6 @@
     NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
     
     NSString* newStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    NSLog(@"%@", newStr);
     
     
     NSError *jsonParseError;
