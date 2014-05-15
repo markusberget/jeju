@@ -11,7 +11,7 @@
 #import "CommitPoller.h"
 #import "NoteModel.h"
 #import <AudioToolbox/AudioServices.h>
-
+#import "ContextSingleton.h"
 
 @interface RepoDetailTableViewController ()
 @property (strong, nonatomic) NSMutableArray * watchedFiles;
@@ -57,15 +57,15 @@
                         }
                         
                         if (i == count - 1) {
-                            NoteModel * noteModel = [[NoteModel alloc] initWithContext:self.managedObjectContext];
+                            NoteModel * noteModel = [[NoteModel alloc] initWithContext:[ContextSingleton context]];
                             NSArray * containedFiles = [noteModel containsFiles:toNotify];
 
                             if (containedFiles && containedFiles.count > 0) {
-                                NSMutableString * whatevs  = [[NSMutableString alloc] initWithString:@"Your watched files were committed" ];
+                                NSMutableString * whatevs  = [[NSMutableString alloc] initWithString:@"The following files were changed: " ];
                                 for (NSManagedObject * containedFile in containedFiles) {
                                     [whatevs appendFormat:@"\n%@", [containedFile valueForKey:@"filePath"]];
                                 }
-                                [self displayAlert:@"See repository" : whatevs];
+                                [self displayAlert:@"Change detected!" : whatevs];
                             }
                         }
                     }];
@@ -94,7 +94,13 @@
     
     // Request to reload table view data
     [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadData" object:self];
-
+    
+    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:title
+                                                     message:body
+                                                    delegate:self
+                                           cancelButtonTitle:@"Dismiss"
+                                           otherButtonTitles:nil, nil];
+    [alert show];
 }
 
 - (void)configureView
