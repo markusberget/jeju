@@ -29,8 +29,19 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self setBordersForPlanningPokerCards];
+    
+    [self configureView];
     // Do any additional setup after loading the view.
+}
+
+- (void)configureView
+{
+    // Update the user interface for the detail item.
+    
+    if (self.story) {
+        self.navigationItem.title = self.story.name;
+    }
+    [self setBordersForPlanningPokerCards];
 }
 
 - (void)didReceiveMemoryWarning
@@ -75,18 +86,11 @@
         if ([segue.destinationViewController isKindOfClass:[PlanningPokerCardViewController class]]) {
             PlanningPokerCardViewController *ppcvc = (PlanningPokerCardViewController *)segue.destinationViewController;
             [ppcvc setCardButtonText:self.textOfLastClickedPlanningPokerCardButton];
+            [ppcvc setStory:self.story];
         }
     }
 }
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+
 
 @end

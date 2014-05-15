@@ -148,6 +148,183 @@
             </objects>
             <point key="canvasLocation" x="890" y="-637"/>
         </scene>
+        <!--Projects Table View Controller-->
+        <scene sceneID="ulT-cs-cLk">
+            <objects>
+                <tableViewController id="Jc1-2y-vUu" customClass="ProjectsTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Ii7-v5-PxU">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="Rzp-c8-NAC" style="IBUITableViewCellStyleDefault" id="Ema-2S-wTg">
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ema-2S-wTg" id="BWa-6i-hpZ">
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Rzp-c8-NAC">
+                                            <rect key="frame" x="15" y="0.0" width="270" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="HrP-Ub-WNG" kind="push" identifier="showProjectDetail" id="0Bq-z1-4f9"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Jc1-2y-vUu" id="1ch-Eu-gfC"/>
+                            <outlet property="delegate" destination="Jc1-2y-vUu" id="zFa-2d-PI3"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="4Qu-du-tvI">
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="IQA-lp-R4Z">
+                            <connections>
+                                <segue destination="WLx-t3-AE5" kind="push" id="OJM-bT-dTH"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VaE-zQ-0jY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="953" y="938"/>
+        </scene>
+        <!--Stories Table View Controller-->
+        <scene sceneID="T3y-oa-45G">
+            <objects>
+                <tableViewController storyboardIdentifier="StoriesTableViewController" id="HrP-Ub-WNG" customClass="StoriesTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="82" sectionHeaderHeight="22" sectionFooterHeight="22" id="f6l-9A-OwR">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="3yP-v5-pcN">
+                            <rect key="frame" x="0.0" y="64" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="KVT-tI-rCj">
+                                    <rect key="frame" x="73" y="8" width="175" height="29"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <segments>
+                                        <segment title="STARTED"/>
+                                        <segment title="UNSTARTED"/>
+                                    </segments>
+                                    <connections>
+                                        <action selector="segmentedControlIndexChanged" destination="HrP-Ub-WNG" eventType="valueChanged" id="E0T-zb-GvN"/>
+                                    </connections>
+                                </segmentedControl>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        </view>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="StoryTableViewCell" rowHeight="82" id="Uqr-TI-kH3" customClass="StoryTableViewCell">
+                                <rect key="frame" x="0.0" y="130" width="320" height="82"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Uqr-TI-kH3" id="xTv-MG-GfX">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="81"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="Jlt-r1-DQU" kind="push" identifier="showPlanningPoker" id="Hcf-NF-cdm"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="HrP-Ub-WNG" id="5Xd-NT-Pg2"/>
+                            <outlet property="delegate" destination="HrP-Ub-WNG" id="iSI-r6-PrG"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="Xe7-eC-SC5"/>
+                    <connections>
+                        <outlet property="segmentControl" destination="KVT-tI-rCj" id="kU6-6V-Sol"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nCo-Ax-IaE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1507" y="938"/>
+        </scene>
+        <!--Pivotal Tracker Login View Controller-->
+        <scene sceneID="05v-FD-Lig">
+            <objects>
+                <viewController storyboardIdentifier="PivotalTrackerLoginViewController" id="WLx-t3-AE5" customClass="PivotalTrackerLoginViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="pKo-0K-zzj"/>
+                        <viewControllerLayoutGuide type="bottom" id="ffD-VJ-VRU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="q4f-qH-MC9">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tqG-kZ-CPQ">
+                                <rect key="frame" x="20" y="311" width="189" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0D9-ux-Cji">
+                                <rect key="frame" x="20" y="389" width="189" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                            </textField>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qRG-kW-Ua9">
+                                <rect key="frame" x="20" y="282" width="79" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Password" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sd9-8b-XoV">
+                                <rect key="frame" x="20" y="360" width="76" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ggi-Qv-0mB">
+                                <rect key="frame" x="247" y="351" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Login">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="LoginButtonPressed:" destination="WLx-t3-AE5" eventType="touchUpInside" id="Zdh-AK-m3U"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Pivotal-Tracker-Stacked.png" translatesAutoresizingMaskIntoConstraints="NO" id="c60-SS-uEF">
+                                <rect key="frame" x="60" y="128" width="200" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Login with" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="24W-0g-slX">
+                                <rect key="frame" x="118" y="99" width="84" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jod-gO-Yoc">
+                                <rect key="frame" x="20" y="251" width="280" height="2"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="wqM-N3-cnL"/>
+                    <connections>
+                        <outlet property="passwordTextField" destination="0D9-ux-Cji" id="Ddo-M0-ZJh"/>
+                        <outlet property="userNameTextField" destination="tqG-kZ-CPQ" id="C2y-sY-w9F"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="S1J-ya-m6H" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1500" y="1674"/>
+        </scene>
         <!--Planning Poker View Controller-->
         <scene sceneID="AFe-Xz-vWp">
             <objects>
@@ -175,7 +352,7 @@
                                 <rect key="frame" x="20" y="428" width="80" height="96"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                <state key="normal" title="40">
+                                <state key="normal" title="55">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -186,7 +363,7 @@
                                 <rect key="frame" x="120" y="428" width="80" height="96"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                <state key="normal" title="100">
+                                <state key="normal" title="89">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -197,7 +374,7 @@
                                 <rect key="frame" x="220" y="312" width="80" height="96"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                <state key="normal" title="20">
+                                <state key="normal" title="34">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -208,7 +385,7 @@
                                 <rect key="frame" x="20" y="312" width="80" height="96"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                <state key="normal" title="8">
+                                <state key="normal" title="13">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -219,7 +396,7 @@
                                 <rect key="frame" x="120" y="312" width="80" height="96"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                <state key="normal" title="13">
+                                <state key="normal" title="21">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -230,7 +407,7 @@
                                 <rect key="frame" x="220" y="196" width="80" height="96"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                <state key="normal" title="5">
+                                <state key="normal" title="8">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -241,7 +418,7 @@
                                 <rect key="frame" x="20" y="196" width="80" height="96"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                <state key="normal" title="2">
+                                <state key="normal" title="3">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -252,7 +429,7 @@
                                 <rect key="frame" x="120" y="196" width="80" height="96"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                <state key="normal" title="3">
+                                <state key="normal" title="5">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -263,7 +440,7 @@
                                 <rect key="frame" x="220" y="80" width="80" height="96"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                <state key="normal" title="1">
+                                <state key="normal" title="2">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -285,7 +462,7 @@
                                 <rect key="frame" x="120" y="80" width="80" height="96"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                <state key="normal" title="1/2">
+                                <state key="normal" title="1">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -309,12 +486,12 @@
                         <outletCollection property="planningPokerCards" destination="wHN-4r-2W4" id="XaJ-d5-axl"/>
                         <outletCollection property="planningPokerCards" destination="nK0-mT-LfA" id="YOE-Rq-Fzx"/>
                         <outletCollection property="planningPokerCards" destination="CtZ-M8-wKb" id="iYw-qF-WFG"/>
-                        <segue destination="gSp-bi-ga3" kind="push" identifier="Planning Poker Card" id="JTG-h0-zYE"/>
+                        <segue destination="gSp-bi-ga3" kind="push" identifier="Planning Poker Card" id="lvr-3U-QW2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pFK-nv-iO5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1582" y="933"/>
+            <point key="canvasLocation" x="2108" y="933"/>
         </scene>
         <!--Notes Table View Controller-->
         <scene sceneID="cpG-cB-HLP">
@@ -459,17 +636,29 @@
                                     <action selector="touchPlanningPokerCardButton:" destination="gSp-bi-ga3" eventType="touchUpInside" id="f6U-rt-pP4"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RlE-dg-WVb">
+                                <rect key="frame" x="96" y="484" width="128" height="64"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="Upload">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="uploadEstimateToPivotalTracker:" destination="gSp-bi-ga3" eventType="touchUpInside" id="qFg-g5-1AW"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="sXb-k7-K3U"/>
                     <connections>
                         <outlet property="planningPokerCardButton" destination="KCz-LS-3UU" id="YLY-wV-FB1"/>
+                        <outlet property="uploadEstimateButton" destination="RlE-dg-WVb" id="Sfc-QC-p7p"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r6G-Bo-4XN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2082" y="933"/>
+            <point key="canvasLocation" x="2608" y="933"/>
         </scene>
         <!--Repo Detail Table View Controller-->
         <scene sceneID="9W9-V4-yKV">
@@ -540,9 +729,6 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="Jlt-r1-DQU" kind="push" identifier="showPlanningPoker" id="jcX-dm-GHY"/>
-                                </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Notes" textLabel="MpK-GA-ZOH" style="IBUITableViewCellStyleDefault" id="5cS-8z-OuM">
                                 <rect key="frame" x="0.0" y="218" width="320" height="44"/>
@@ -826,8 +1012,27 @@
             </objects>
             <point key="canvasLocation" x="2127" y="-621"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="r7Q-a5-tje">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Gah-zu-uzU" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="51c-Ee-Ugl">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Jc1-2y-vUu" kind="relationship" relationship="rootViewController" id="Oq2-hg-uaq"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xb4-CN-f7j" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="427" y="938"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="Pivotal-Tracker-Stacked.png" width="796" height="450"/>
         <image name="cardback" width="240" height="288"/>
         <image name="octocat_gems.png" width="512" height="512"/>
     </resources>
