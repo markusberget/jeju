@@ -4,11 +4,11 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller - Item-->
+        <!--Navigation Controller - GitHub-->
         <scene sceneID="cUi-kZ-frf">
             <objects>
                 <navigationController id="rS3-R9-Ivy" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="6MM-Lm-fGt"/>
+                    <tabBarItem key="tabBarItem" title="GitHub" image="github" id="6MM-Lm-fGt"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="yXu-0R-QUA">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1009,11 +1009,11 @@
             </objects>
             <point key="canvasLocation" x="2127" y="-621"/>
         </scene>
-        <!--Navigation Controller - Item-->
+        <!--Navigation Controller - Pivotal Tracker-->
         <scene sceneID="r7Q-a5-tje">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Gah-zu-uzU" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="mMn-pi-0PI"/>
+                    <tabBarItem key="tabBarItem" title="Pivotal Tracker" image="pivotal" id="mMn-pi-0PI"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="51c-Ee-Ugl">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1050,7 +1050,9 @@
     </scenes>
     <resources>
         <image name="cardback" width="240" height="288"/>
+        <image name="github" width="60" height="60"/>
         <image name="octocat_gems.png" width="512" height="512"/>
+        <image name="pivotal" width="60" height="60"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
