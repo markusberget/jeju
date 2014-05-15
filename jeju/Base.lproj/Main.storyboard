@@ -542,7 +542,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZZK-Il-ioa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1582" y="1677"/>
+            <point key="canvasLocation" x="2132" y="1674"/>
         </scene>
         <!--Create Note View Controller-->
         <scene sceneID="MR4-7y-UW7">
@@ -611,7 +611,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fHv-BS-tW3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2071" y="1677"/>
+            <point key="canvasLocation" x="2597" y="1669"/>
         </scene>
         <!--Planning Poker Card View Controller-->
         <scene sceneID="4wf-nq-9cW">

@@ -214,6 +214,14 @@
 			children = (
 				635DD8EC18F3EDFE009D7590 /* OctokitModel.h */,
 				635DD8ED18F3EDFE009D7590 /* OctokitModel.m */,
+				8396C4F2191938F900F11FBE /* PivotalTrackerUser.h */,
+				8396C4F3191938F900F11FBE /* PivotalTrackerUser.m */,
+				8396C4F51919452000F11FBE /* ProjectModel.h */,
+				8396C4F61919452000F11FBE /* ProjectModel.m */,
+				837EC50B191A2F9100470F8D /* StoryModel.h */,
+				837EC50C191A2F9100470F8D /* StoryModel.m */,
+				8384E5371924B95700E33056 /* VerdictModel.h */,
+				8384E5381924B95700E33056 /* VerdictModel.m */,
 				63DA4CEE191B718800841E58 /* NoteModel.h */,
 				63DA4CEF191B718800841E58 /* NoteModel.m */,
 			);
@@ -266,6 +274,7 @@
 		A059511F18EAF9D900E6BB44 /* jeju */ = {
 			isa = PBXGroup;
 			children = (
+				8396C4EB1919060600F11FBE /* DAL */,
 				630067FA191A4AC500635C76 /* Tasks */,
 				A0F46C9018F4869300C16AB1 /* Views */,
 				A0F46C7A18F483E600C16AB1 /* Controllers */,
@@ -339,6 +348,8 @@
 				633CB9B318F69B5A00FCA06D /* FeedTableViewController.m */,
 				633CB9BE18F701F400FCA06D /* CommitViewController.h */,
 				633CB9BF18F701F400FCA06D /* CommitViewController.m */,
+				8396C4F8191A245B00F11FBE /* StoriesTableViewController.h */,
+				8396C4F9191A245B00F11FBE /* StoriesTableViewController.m */,
 				7750D6B8191A334000290A88 /* CreateNoteViewController.h */,
 				7750D6B9191A334000290A88 /* CreateNoteViewController.m */,
 				77A7B7D218F7EC7400CBD357 /* NotesTableViewController.h */,
@@ -502,8 +513,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8396C4F71919452000F11FBE /* ProjectModel.m in Sources */,
 				77A7B7D418F7EC7400CBD357 /* NotesTableViewController.m in Sources */,
 				A0F46C8B18F483E600C16AB1 /* LoginViewController.m in Sources */,
+				8396C4EE19192F3900F11FBE /* PivotalTrackerLoginViewController.m in Sources */,
 				7750D6BA191A334000290A88 /* CreateNoteViewController.m in Sources */,
 				A0F46C8D18F483E600C16AB1 /* PlanningPokerCardViewController.m in Sources */,
 				A059513018EAF9D900E6BB44 /* jeju.xcdatamodeld in Sources */,
@@ -515,6 +528,7 @@
 				A0F46C8F18F483E600C16AB1 /* RepoDetailTableViewController.m in Sources */,
 				8384E5391924B95700E33056 /* VerdictModel.m in Sources */,
 				A059512A18EAF9D900E6BB44 /* AppDelegate.m in Sources */,
+				8396C4EA1918F85B00F11FBE /* ProjectsTableViewController.m in Sources */,
 				63BAD7171922523000717EFA /* CommitObserver.m in Sources */,
 				A059512618EAF9D900E6BB44 /* main.m in Sources */,
 				63DA4CF0191B718800841E58 /* NoteModel.m in Sources */,
