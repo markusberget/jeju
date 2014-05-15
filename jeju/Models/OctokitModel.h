@@ -83,6 +83,8 @@
 
 -(BFTask *) getHeadOfMaster: (OCTRepository *) repo;
 
+-(BFTask *) sendMessage: (NSString *)message forConversation: (OCTIssue *) conversation inRepo: (OCTRepository *) repo;
+
 +(instancetype) instanceFromDefaults;
 
 @end

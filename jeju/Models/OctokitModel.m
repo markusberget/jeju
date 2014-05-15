@@ -243,5 +243,34 @@
     return [self getDataForPath:path andParameters:nil returnClass:OCTRef.class];
 }
 
+-(BFTask *) sendMessage: (NSString *)message forConversation: (OCTIssue *) conversation inRepo: (OCTRepository *) repo {
+    
+    NSString *path = [[NSString alloc] initWithFormat:@"/repos/%@/%@/issues/%@/comments", repo.ownerLogin, repo.name, conversation.objectID];
+    
+    BFTaskCompletionSource *source = [BFTaskCompletionSource taskCompletionSource];
+    
+    NSMutableURLRequest *request = [[self getAuthenticatedClient] requestWithMethod:@"POST" path:path parameters:nil notMatchingEtag:nil ];
+    
+    NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:message, @"body", nil];
+    
+    NSData *json = [NSJSONSerialization dataWithJSONObject:params
+                                    options:NSJSONWritingPrettyPrinted // Pass 0 if you don't care about the readability of the generated string
+                                      error:nil];
+    
+    
+    [request setHTTPBody: json];
+        
+    RACSignal *signal = [[self getAuthenticatedClient] enqueueRequest:request resultClass:OCTIssue.class];
+    
+    [[[signal deliverOn:[RACScheduler mainThreadScheduler]] collect] subscribeNext:^(NSArray *issues) {
+        [source setResult:issues];
+    }
+                                                                             error:^(NSError *error) {
+                                                                                 [source setError:error];
+    }];
+    
+    return source.task;
+}
+
 
 @end

@@ -124,6 +124,38 @@
     return cell;
 }
 
+-(IBAction)sendMessage:(id)sender {
+    
+    NSString *message = self.message.text;
+    
+    NSLog(@"%@", self.conversation.objectID);
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    self.octokitModel = [[OctokitModel alloc] initWithToken:[defaults objectForKey:@"token"]
+                                                andUserName:[defaults objectForKey:@"user"]];
+    // we get the repositories
+    [[self.octokitModel sendMessage:message forConversation:self.conversation inRepo:self.repo] continueWithBlock:^id(BFTask *task) {
+        
+        if (task.error) {
+            NSLog(@"%@", task.error.description);
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Whoops!"
+                                                            message:@"Something went wrong."
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"Ok"
+                                                  otherButtonTitles:nil];
+            [alert show];
+        } else {
+            [self fetchMessages];
+        }
+        return nil;
+    }];
+    
+    
+    //Reset the message field
+    self.message.text = nil;
+}
+
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath

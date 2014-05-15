@@ -21,8 +21,9 @@
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) IBOutlet UIView *writeMessageView;
 
+@property (nonatomic, strong) IBOutlet UITextField *message;
 
-
+-(IBAction)sendMessage:(id)sender;
 
 -(void) setConversation:(OCTIssue *)conversation andRepo:(OCTRepository *) newRepo;
 
