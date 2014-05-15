@@ -7,6 +7,7 @@
 //
 
 #import "NoteModel.h"
+#import "ContextSingleton.h"
 
 @implementation NoteModel
 
@@ -22,7 +23,8 @@
 
 
 -(NSArray *)containsFiles:(NSArray *) files {
-    NSEntityDescription * description = [NSEntityDescription entityForName:@"Note" inManagedObjectContext: self.context];
+    //NSEntityDescription * description = [NSEntityDescription entityForName:@"Note" inManagedObjectContext: self.context];
+    NSEntityDescription * description = [NSEntityDescription entityForName:@"Note" inManagedObjectContext: ContextSingleton.context];
     NSFetchRequest * request = [[NSFetchRequest alloc] init];
     
     [request setEntity:description];
@@ -31,7 +33,8 @@
     NSPredicate * predicate = [NSPredicate  predicateWithFormat:@"ANY %K IN %@", @"filePath", files];
     [request setPredicate:predicate];
     NSError * error;
-    NSArray * results = [self.context executeFetchRequest:request error:&error];
+    //NSArray * results = [self.context executeFetchRequest:request error:&error];
+    NSArray * results = [ContextSingleton.context executeFetchRequest:request error:&error];
     
     if (results == nil) {
         //DEALWITHIT.gif /--O^O/

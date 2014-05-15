@@ -11,6 +11,7 @@
 #import "CommitPoller.h"
 #import "NoteModel.h"
 #import <AudioToolbox/AudioServices.h>
+#import "ContextSingleton.h"
 
 
 @interface RepoDetailTableViewController ()
@@ -57,7 +58,8 @@
                         }
                         
                         if (i == count - 1) {
-                            NoteModel * noteModel = [[NoteModel alloc] initWithContext:self.managedObjectContext];
+                            //NoteModel * noteModel = [[NoteModel alloc] initWithContext:self.managedObjectContext];
+                            NoteModel * noteModel = [[NoteModel alloc] initWithContext:ContextSingleton.context];
                             NSArray * containedFiles = [noteModel containsFiles:toNotify];
 
                             if (containedFiles && containedFiles.count > 0) {
@@ -110,7 +112,7 @@
 {
     [super viewDidLoad];
 
-    self.items = [[NSArray alloc] initWithObjects:@"Feed", @"Conversations", @"Planning Poker", @"Notes", nil];
+    self.items = [[NSArray alloc] initWithObjects:@"Feed", @"Conversations", @"Notes", nil];
     
     [self configureView];
 }
@@ -207,7 +209,9 @@
         }
     }
     else if ([[segue identifier] isEqualToString:@"showNotes"]) {
-        [[segue destinationViewController] setManagedObjectContext: self.managedObjectContext];
+        //[[segue destinationViewController] setManagedObjectContext: self.managedObjectContext];
+        [[segue destinationViewController] setManagedObjectContext: ContextSingleton.context];
+        
         [[segue destinationViewController] setRepo:self.repo];
     }
 }
