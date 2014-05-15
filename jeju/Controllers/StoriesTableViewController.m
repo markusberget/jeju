@@ -55,7 +55,7 @@
 
 - (void) viewDidAppear:(BOOL)animated
 {
-   /* if (self.project != nil) {
+    if (self.project != nil) {
         self.startedStories = [self.pivotalTrackerRepository getStoriesFrom:self.project.id With:[[NSUserDefaults standardUserDefaults] objectForKey:@"pttoken"] FilterOn:@"started"];
         
         self.storiesToShow = [self.pivotalTrackerRepository getStoriesFrom:self.project.id With:[[NSUserDefaults standardUserDefaults] objectForKey:@"pttoken"] FilterOn:@"started"];
@@ -65,7 +65,7 @@
         self.unstartedStories = [self.pivotalTrackerRepository getStoriesFrom:self.project.id With:[[NSUserDefaults standardUserDefaults] objectForKey:@"pttoken"] FilterOn:@"unstarted"];
         
         [self fillList];
-    }*/
+    }
     
     
 }

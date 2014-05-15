@@ -10,7 +10,6 @@
 		223FBAFF191A4CFA00A2AEF5 /* StoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 223FBAFE191A4CFA00A2AEF5 /* StoryTableViewCell.xib */; };
 		223FBB02191A4D7700A2AEF5 /* StoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 223FBB01191A4D7700A2AEF5 /* StoryTableViewCell.m */; };
 		223FBB04191BDF2A00A2AEF5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 223FBB03191BDF2A00A2AEF5 /* QuartzCore.framework */; };
-		229F5F091924CB34008B2AD3 /* Pivotal-Tracker-Stacked.png in Resources */ = {isa = PBXBuildFile; fileRef = 229F5F081924CB34008B2AD3 /* Pivotal-Tracker-Stacked.png */; };
 		22A31B9418EDDC0600ADB7FB /* octocat_gems.png in Resources */ = {isa = PBXBuildFile; fileRef = 22A31B9318EDDC0600ADB7FB /* octocat_gems.png */; };
 		3DC80690CA5244C7A6D79B31 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A3C1FE5AAFE74CA8ADA25BFA /* libPods.a */; };
 		6333C41A18F810E10039D324 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6333C41918F810E10039D324 /* Images.xcassets */; };
@@ -25,6 +24,7 @@
 		81741A8618F54AF1000C4033 /* DateUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 81741A8518F54AF1000C4033 /* DateUtil.m */; };
 		837EC50D191A2F9100470F8D /* StoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 837EC50C191A2F9100470F8D /* StoryModel.m */; };
 		8384E5391924B95700E33056 /* VerdictModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8384E5381924B95700E33056 /* VerdictModel.m */; };
+		8384E53D1924D3E400E33056 /* Pivotal-Tracker-Stacked.png in Resources */ = {isa = PBXBuildFile; fileRef = 8384E53C1924D3E400E33056 /* Pivotal-Tracker-Stacked.png */; };
 		8396C4EA1918F85B00F11FBE /* ProjectsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8396C4E91918F85B00F11FBE /* ProjectsTableViewController.m */; };
 		8396C4EE19192F3900F11FBE /* PivotalTrackerLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8396C4ED19192F3900F11FBE /* PivotalTrackerLoginViewController.m */; };
 		8396C4F11919374800F11FBE /* PivotalTrackerRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = 8396C4F01919374800F11FBE /* PivotalTrackerRepository.m */; };
@@ -71,7 +71,6 @@
 		223FBB00191A4D7700A2AEF5 /* StoryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryTableViewCell.h; sourceTree = "<group>"; };
 		223FBB01191A4D7700A2AEF5 /* StoryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryTableViewCell.m; sourceTree = "<group>"; };
 		223FBB03191BDF2A00A2AEF5 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		229F5F081924CB34008B2AD3 /* Pivotal-Tracker-Stacked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Pivotal-Tracker-Stacked.png"; path = "../../../../../Downloads/Pivotal-Tracker-Stacked.png"; sourceTree = "<group>"; };
 		22A31B9318EDDC0600ADB7FB /* octocat_gems.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = octocat_gems.png; sourceTree = "<group>"; };
 		6333C41918F810E10039D324 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		633CB9B218F69B5A00FCA06D /* FeedTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedTableViewController.h; sourceTree = "<group>"; };
@@ -94,6 +93,7 @@
 		837EC50C191A2F9100470F8D /* StoryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StoryModel.m; path = Models/StoryModel.m; sourceTree = "<group>"; };
 		8384E5371924B95700E33056 /* VerdictModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VerdictModel.h; path = Models/VerdictModel.h; sourceTree = "<group>"; };
 		8384E5381924B95700E33056 /* VerdictModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VerdictModel.m; path = Models/VerdictModel.m; sourceTree = "<group>"; };
+		8384E53C1924D3E400E33056 /* Pivotal-Tracker-Stacked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Pivotal-Tracker-Stacked.png"; sourceTree = "<group>"; };
 		8396C4E81918F85B00F11FBE /* ProjectsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectsTableViewController.h; sourceTree = "<group>"; };
 		8396C4E91918F85B00F11FBE /* ProjectsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectsTableViewController.m; sourceTree = "<group>"; };
 		8396C4EC19192F3900F11FBE /* PivotalTrackerLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PivotalTrackerLoginViewController.h; sourceTree = "<group>"; };
@@ -175,7 +175,7 @@
 		22A31B9518EDDC1A00ADB7FB /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				229F5F081924CB34008B2AD3 /* Pivotal-Tracker-Stacked.png */,
+				8384E53C1924D3E400E33056 /* Pivotal-Tracker-Stacked.png */,
 				22A31B9318EDDC0600ADB7FB /* octocat_gems.png */,
 			);
 			name = Assets;
@@ -421,7 +421,7 @@
 			files = (
 				633CB9BD18F6D5FC00FCA06D /* CommitTableViewCell.xib in Resources */,
 				223FBAFF191A4CFA00A2AEF5 /* StoryTableViewCell.xib in Resources */,
-				229F5F091924CB34008B2AD3 /* Pivotal-Tracker-Stacked.png in Resources */,
+				8384E53D1924D3E400E33056 /* Pivotal-Tracker-Stacked.png in Resources */,
 				81741A8018F524C5000C4033 /* ConversationTableViewCell.xib in Resources */,
 				A059512418EAF9D900E6BB44 /* InfoPlist.strings in Resources */,
 				6333C41A18F810E10039D324 /* Images.xcassets in Resources */,
