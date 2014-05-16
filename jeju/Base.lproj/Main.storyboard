@@ -1046,13 +1046,13 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="Gah-zu-uzU" kind="relationship" relationship="viewControllers" id="usu-ni-rMU"/>
                         <segue destination="rS3-R9-Ivy" kind="relationship" relationship="viewControllers" id="4sO-14-MLn"/>
+                        <segue destination="Gah-zu-uzU" kind="relationship" relationship="viewControllers" id="usu-ni-rMU"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q3e-yp-tVX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="407" y="938"/>
+            <point key="canvasLocation" x="369" y="933"/>
         </scene>
     </scenes>
     <resources>
