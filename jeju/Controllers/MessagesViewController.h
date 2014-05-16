@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "OctoKit.h"
 #import "OctoKitModel.h"
+#import "DAKeyboardControl.h"
 
 @interface MessagesViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 

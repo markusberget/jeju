@@ -53,6 +53,7 @@
 		A059514218EAF9D900E6BB44 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A059511D18EAF9D900E6BB44 /* CoreData.framework */; };
 		A059514A18EAF9D900E6BB44 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A059514818EAF9D900E6BB44 /* InfoPlist.strings */; };
 		A059514C18EAF9D900E6BB44 /* jejuTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A059514B18EAF9D900E6BB44 /* jejuTests.m */; };
+		A07A31E4192582190034B21A /* DAKeyboardControl.m in Sources */ = {isa = PBXBuildFile; fileRef = A07A31E3192582190034B21A /* DAKeyboardControl.m */; };
 		A0F46C8918F483E600C16AB1 /* ConversationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0F46C7C18F483E600C16AB1 /* ConversationTableViewController.m */; };
 		A0F46C8A18F483E600C16AB1 /* BranchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0F46C7E18F483E600C16AB1 /* BranchTableViewController.m */; };
 		A0F46C8B18F483E600C16AB1 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0F46C8018F483E600C16AB1 /* LoginViewController.m */; };
@@ -146,6 +147,8 @@
 		A059514718EAF9D900E6BB44 /* jejuTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "jejuTests-Info.plist"; sourceTree = "<group>"; };
 		A059514918EAF9D900E6BB44 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A059514B18EAF9D900E6BB44 /* jejuTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = jejuTests.m; sourceTree = "<group>"; };
+		A07A31E2192582190034B21A /* DAKeyboardControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAKeyboardControl.h; sourceTree = "<group>"; };
+		A07A31E3192582190034B21A /* DAKeyboardControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAKeyboardControl.m; sourceTree = "<group>"; };
 		A0F46C7B18F483E600C16AB1 /* ConversationTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConversationTableViewController.h; sourceTree = "<group>"; };
 		A0F46C7C18F483E600C16AB1 /* ConversationTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConversationTableViewController.m; sourceTree = "<group>"; };
 		A0F46C7D18F483E600C16AB1 /* BranchTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BranchTableViewController.h; sourceTree = "<group>"; };
@@ -292,6 +295,7 @@
 				A059512018EAF9D900E6BB44 /* Supporting Files */,
 				81741A8418F54AF1000C4033 /* DateUtil.h */,
 				81741A8518F54AF1000C4033 /* DateUtil.m */,
+				A07A31E1192582190034B21A /* DAKeyboardControl */,
 			);
 			path = jeju;
 			sourceTree = "<group>";
@@ -327,6 +331,15 @@
 				A059514818EAF9D900E6BB44 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A07A31E1192582190034B21A /* DAKeyboardControl */ = {
+			isa = PBXGroup;
+			children = (
+				A07A31E2192582190034B21A /* DAKeyboardControl.h */,
+				A07A31E3192582190034B21A /* DAKeyboardControl.m */,
+			);
+			path = DAKeyboardControl;
 			sourceTree = "<group>";
 		};
 		A0F46C7A18F483E600C16AB1 /* Controllers */ = {
@@ -535,6 +548,7 @@
 				A0F46C8918F483E600C16AB1 /* ConversationTableViewController.m in Sources */,
 				633CB9B418F69B5A00FCA06D /* FeedTableViewController.m in Sources */,
 				A0F46C8A18F483E600C16AB1 /* BranchTableViewController.m in Sources */,
+				A07A31E4192582190034B21A /* DAKeyboardControl.m in Sources */,
 				A0F46C8F18F483E600C16AB1 /* RepoDetailTableViewController.m in Sources */,
 				8384E5391924B95700E33056 /* VerdictModel.m in Sources */,
 				A059512A18EAF9D900E6BB44 /* AppDelegate.m in Sources */,

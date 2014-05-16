@@ -8,6 +8,7 @@
 
 #import "MessagesViewController.h"
 
+
 @interface MessagesViewController ()
 
 @end
@@ -76,10 +77,10 @@
     [super viewDidLoad];
     
     //Adding top border to writeMessageView
-    CALayer *topBorder = [CALayer layer];
-    topBorder.frame = CGRectMake(0.0f, 0.0f, self.writeMessageView.frame.size.width, 0.5f);
-    topBorder.backgroundColor = [[UIColor alloc] initWithRed:0 green:0 blue:0 alpha:.3].CGColor;
-    [self.writeMessageView.layer addSublayer:topBorder];
+//    CALayer *topBorder = [CALayer layer];
+//    topBorder.frame = CGRectMake(0.0f, 0.0f, self.writeMessageView.frame.size.width, 0.5f);
+//    topBorder.backgroundColor = [[UIColor alloc] initWithRed:0 green:0 blue:0 alpha:.3].CGColor;
+//    [self.writeMessageView.layer addSublayer:topBorder];
     
     
     // Uncomment the following line to preserve selection between presentations.
